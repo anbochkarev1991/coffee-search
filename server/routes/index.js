@@ -1,6 +1,4 @@
-import express from 'express';
-
-const router = express.Router();
+import { Router as router } from 'express';
 
 router.route('/').get((req, res) => {
   return res.end();
