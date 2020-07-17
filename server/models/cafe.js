@@ -10,9 +10,13 @@ const cafeSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
   },
-  location: {
-    type: String,
+  latitude: {
     required: true,
+    type: Number,
+  },
+  longitude: {
+    required: true,
+    type: Number,
   },
   rating: {
     type: Number,
