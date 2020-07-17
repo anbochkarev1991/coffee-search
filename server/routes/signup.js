@@ -1,7 +1,8 @@
-import {Router as router} from 'express';
+import express from 'express';
 import User from '../models/user.js';
 import bcrypt from 'bcrypt';
 
+const router = express.Router();
 const saltRounds = 10;
 
 router.post('/', async (req, res) => {

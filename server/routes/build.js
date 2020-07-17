@@ -1,5 +1,7 @@
-import { Router as router } from 'express';
+import express from 'express';
 import fs from 'fs';
+
+const router = express.Router();
 
 function deploy() {
   try {
