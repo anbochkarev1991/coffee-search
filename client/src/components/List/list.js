@@ -6,7 +6,7 @@ function List() {
 
   return (
     <div>
-      <h3>List of cafes</h3>
+      <h3>Amazing list of cafes</h3>
       {list &&
         list.map((cafe) => (
           <React.Fragment key={cafe._id}>
