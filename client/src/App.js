@@ -14,27 +14,31 @@ import CafePage from './pages/cafe/cafe';
 
 function App() {
   return (
-    <Router>
-      <CafePage />
-      <Route path="/menu">
-        <Menu />
-      </Route>
-      <Route path="/barista">
-        <Barista />
-      </Route>
-      <Route path="/batch">
-        <Batch />
-      </Route>
-      <Route path="/events">
-        <EventsCafe />
-      </Route>
-      <Route path="/comments">
-        <Comments />
-      </Route>
-      <Route path="/insta">
-        <Insta />
-      </Route>
-    </Router>
+    <>
+      <Router>
+        <Route path="/cafe/:id">
+          <CafePage />
+        </Route>
+        <Route path="/cafe/:id/menu">
+          <Menu />
+        </Route>
+        <Route path="/cafe/:id/barista">
+          <Barista />
+        </Route>
+        <Route path="/cafe/:id/batch">
+          <Batch />
+        </Route>
+        <Route path="/cafe/:id/events">
+          <EventsCafe />
+        </Route>
+        <Route path="/cafe/:id/comments">
+          <Comments />
+        </Route>
+        <Route path="/cafe/:id/insta">
+          <Insta />
+        </Route>
+      </Router>
+    </>
   );
 }
 
