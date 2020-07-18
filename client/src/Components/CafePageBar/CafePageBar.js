@@ -11,12 +11,12 @@ export default function CafePageBar() {
     <>
       <h1 className="titleCafe">Кофейня "Черное золото"</h1>
       <div className="tab">
-        <button className="tablinks" onClick={() => history.push("/cafe/:id/menu")}>Меню</button>
-        <button className="tablinks" onClick={() => history.push("/cafe/:id/barista")}>Баристы</button>
-        <button className="tablinks" onClick={() => history.push("/cafe/:id/batch")}>Купажи</button>
-        <button className="tablinks" onClick={() => history.push("/cafe/:id/events")}>События</button>
-        <button className="tablinks" onClick={() => history.push("/cafe/:id/comments")}>Отзывы</button>
-        <button className="tablinks" onClick={() => history.push("/cafe/:id/insta")}>Instagram</button>
+        <button className="tablinks" onClick={() => history.push("/cafes/:id/menu")}>Меню</button>
+        <button className="tablinks" onClick={() => history.push("/cafes/:id/barista")}>Баристы</button>
+        <button className="tablinks" onClick={() => history.push("/cafes/:id/batch")}>Купажи</button>
+        <button className="tablinks" onClick={() => history.push("/cafes/:id/events")}>События</button>
+        <button className="tablinks" onClick={() => history.push("/cafes/:id/comments")}>Отзывы</button>
+        <button className="tablinks" onClick={() => history.push("/cafes/:id/insta")}>Instagram</button>
       </div>
     </>
   )

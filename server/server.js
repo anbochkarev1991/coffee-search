@@ -5,11 +5,10 @@ import morgan from 'morgan';
 // Routers import
 import indexRouter from './routes/index.js';
 
-const { connect } = mongoose;
 const port = process.env.PORT ?? 3001;
 const app = express();
 
-connect('mongodb://localhost:27017/coffee', {
+mongoose.connect('mongodb://localhost:27017/coffee', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
