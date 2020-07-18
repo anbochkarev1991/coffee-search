@@ -2,15 +2,15 @@ import React from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import Navbar from './Components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import Home from './pages/home/home';
 import Profile from './pages/profile/profile';
-import Menu from './Components/CafePageBar/Menu/Menu';
-import Barista from './Components/CafePageBar/Barista/Barista';
-import Batch from './Components/CafePageBar/Batch/Batch';
-import EventsCafe from './Components/CafePageBar/EventsCafe/EventsCafe';
-import Comments from './Components/CafePageBar/Comments/Comments';
-import Insta from './Components/CafePageBar/Instagram/Instagram';
+import Menu from './components/CafePageBar/Menu/Menu';
+import Barista from './components/CafePageBar/Barista/Barista';
+import Batch from './components/CafePageBar/Batch/Batch';
+import EventsCafe from './components/CafePageBar/EventsCafe/EventsCafe';
+import Comments from './components/CafePageBar/Comments/Comments';
+import Insta from './components/CafePageBar/Instagram/Instagram';
 // import logo from './logo.svg';
 import './App.css';
 import CafePage from './pages/cafe/cafe';
