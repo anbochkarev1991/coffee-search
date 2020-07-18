@@ -1,5 +1,7 @@
-import { Router as router } from 'express';
+import express from 'express';
 import Cafe from '../models/cafe.js';
+
+const router = express.Router();
 
 router.route('/').get(async (req, res) => {
   try {

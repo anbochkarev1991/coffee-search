@@ -1,9 +1,15 @@
-import { FAILED, LOAD_CAFE_LIST } from './action-types';
+import { FAILED, LOAD_CAFE_LIST, LOAD_CAFE_LIST_SAGA } from './action-types';
 
 export function loadCafeList(list) {
   return {
-    action: LOAD_CAFE_LIST,
+    type: LOAD_CAFE_LIST,
     payload: list,
+  };
+}
+
+export function loadCafeListSaga() {
+  return {
+    type: LOAD_CAFE_LIST_SAGA,
   };
 }
 
