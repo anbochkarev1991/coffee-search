@@ -4,7 +4,7 @@ export default (state = { list: [], error: '' }, action) => {
   switch (action.type) {
     case LOAD_CAFE_LIST:
       return {
-        state: action.payload,
+        list: action.payload,
         error: '',
       };
     case FAILED:
