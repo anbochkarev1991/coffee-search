@@ -25,7 +25,12 @@ connect(process.env.DB_CONNECT, {
   useUnifiedTopology: true,
   useFindAndModify: false,
   useCreateIndex: true,
-});
+  },
+  function (err) {
+    if (err) throw err;
+    console.log('БД подключена');
+  }
+); 
 
 
 app.use(express.json());
@@ -34,7 +39,7 @@ app.use(morgan('dev'));
 app.use(session({
   store: new FileStore(),
   key: 'user_sid',
-  secret: bcrypt.hash(process.env.SECRET_PHRASE, saltRounds),
+  secret: 'knfjdnijfnisndfijnijdqniwe',
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -47,12 +52,12 @@ app.use('/api/', indexRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
 
-app.use((req, res, next) => {
-  res.locals.isAuth = !!req.session.user;
-  if (req.session.user) {
-    res.locals.userName = req.session.user.login;
-  }
-});
+// app.use((req, res, next) => {
+//   res.locals.isAuth = !!req.session.user;
+//   if (req.session.user) {
+//     res.locals.userName = req.session.user.login;
+//   }
+// });
 
 app.use('/api/logout', logoutRouter);
 

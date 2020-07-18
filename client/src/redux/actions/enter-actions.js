@@ -24,7 +24,7 @@ export function callLogin() {
   };
 }
 
-export function login(login) {
+export function loginFunc(login) {
   return {
     type: LOGIN,
     payload: login,
