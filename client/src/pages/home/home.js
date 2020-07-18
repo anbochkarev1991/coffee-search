@@ -3,9 +3,10 @@ import React from 'react';
 function Home() {
   return (
     <>
-      <Trends />
+    <h1>sad</h1>
+      {/* <Trends />
       <Map />
-      <List />
+      <List /> */}
     </>
   );
 }

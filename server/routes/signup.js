@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
      password: await bcrypt.hash(password, saltRounds),
      birthday });
   await newUser.save();
-  res.json().end();
+  return res.end();
   } catch(err) {
     res.json(err.message);
   }

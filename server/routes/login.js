@@ -9,7 +9,7 @@ router.get('/', async (reg, res) => {
   const user = await User.findOne({ email: email });
   if (user && (await bcrypt.compare(password, user.password))) {
     req.session.user = user;
-    res.json().end();
+    return res.end();
   }
   } catch (err) {
     res.json(err.message);
