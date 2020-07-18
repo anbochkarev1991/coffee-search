@@ -4,6 +4,7 @@ import morgan from 'morgan';
 
 // Routers import
 import indexRouter from './routes/index.js';
+import cafesRouter from './routes/cafes.js';
 
 const port = process.env.PORT ?? 3001;
 const app = express();
@@ -20,6 +21,7 @@ app.use(morgan('dev'));
 
 // Routers
 app.use('/api/', indexRouter);
+app.use('/api/cafes', cafesRouter);
 
 app.listen(port, () => {
   console.log('Server is up on port', port);
