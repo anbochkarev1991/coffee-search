@@ -10,7 +10,6 @@ export default function Logout() {
   useEffect(() => {
     (async () => {
       await fetch('/api/logout');
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
       dispatch(logout());
       history.push('/');
     })();

@@ -3,15 +3,14 @@ import mongoose from 'mongoose';
 import morgan from 'morgan';
 import session from 'express-session';
 import sessionStorage from 'session-file-store';
-import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
-import mongodb from 'mongodb';
 
 // Routers import
 import indexRouter from './routes/index.js';
 import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
+import cafesRouter from './routes/cafes.js';
 
 dotenv.config();
 const saltRounds = 10;
@@ -60,6 +59,7 @@ app.use('/api/login', loginRouter);
 // });
 
 app.use('/api/logout', logoutRouter);
+app.use('/api/cafes', cafesRouter);
 
 app.listen(port, () => {
   console.log('Server is up on port', port);

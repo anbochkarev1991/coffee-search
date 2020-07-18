@@ -15,6 +15,7 @@ export default function Login() {
     password: '',
   });
 
+  const { login, password } = inputs;
   async function handleSubmit(event) {
     event.preventDefault();
     const response = await fetch('/api/login', {
@@ -27,16 +28,17 @@ export default function Login() {
         password,
       })
     });
-    console.log(response.status);
     if (response.status === 200) {
+      setError(false);
       dispatch(loginFunc(inputs.login));
-      console.log(inputs.login);
       setTimeout(() => {
         return history.push('/');
       }, 1000);
+    } else {
+      setError('Неправильные логин или пароль');
     }
-    setError('Ошибка входа');
   }
+  
 
   function handleChange({ target: { name, value } }) {
     setInputs({
@@ -45,7 +47,6 @@ export default function Login() {
     })
   }
 
-  const { login, password } = inputs;
 
   return (
     <>

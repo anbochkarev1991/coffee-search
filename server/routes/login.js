@@ -10,6 +10,8 @@ router.post('/', async (req, res) => {
   if (user && (await bcrypt.compare(password, user.password))) {
     req.session.user = user;
     return res.end();
+  } else {
+    res.status(401).end()
   }
   } catch (err) {
     res.json(err.message);
