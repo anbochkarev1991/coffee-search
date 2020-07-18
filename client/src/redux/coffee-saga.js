@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { LOAD_CAFE_LIST_SAGA } from './actions/action-types';
-import { loadCafeList } from './actions/actions';
+import { failed, loadCafeList } from './actions/actions';
 
 // Load list of all cafes from DB
 

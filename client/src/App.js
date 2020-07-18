@@ -4,12 +4,13 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/home/home';
+import Profile from './pages/profile/profile';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Router>
+        <Navbar />
         <Switch>
           <Route path="/profile">
             <Profile />

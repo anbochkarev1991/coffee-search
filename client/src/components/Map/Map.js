@@ -1,12 +1,12 @@
 import React from 'react';
 
-function List() {
+function Map() {
   return (
     <div>
-      <h3>List of cafes</h3>
+      <h3>Beautiful map</h3>
       <div></div>
     </div>
   );
 }
 
-export default List;
+export default Map;

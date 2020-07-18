@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
     <>
-      <Link to="/">Home</Link>
-      <Link to="/logout">Logout</Link>
-      <Link to="/profile">Profile</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/registration">Registration</Link>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/logout">Logout</NavLink>
+      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/login">Login</NavLink>
+      <NavLink to="/registration">Registration</NavLink>
     </>
   );
 }
