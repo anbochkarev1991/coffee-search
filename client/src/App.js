@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 import Home from './pages/home/home';
 import Profile from './pages/profile/profile';
 import Menu from './Components/CafePageBar/Menu/Menu';
@@ -20,33 +20,40 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
+
         <Switch>
+          {/* <Route path="/cafes/:id">
+            <CafePage />
+          </Route> */}
+          <Route path="/cafes/:id/menu">
+            <CafePage />
+            <Menu />
+          </Route>
+          <Route path="/cafes/:id/barista">
+            <CafePage />
+            <Barista />
+          </Route>
+          <Route path="/cafes/:id/batch">
+            <CafePage />
+            <Batch />
+          </Route>
+          <Route path="/cafes/:id/events">
+            <CafePage />
+            <EventsCafe />
+          </Route>
+          <Route path="/cafes/:id/comments">
+            <CafePage />
+            <Comments />
+          </Route>
+          <Route path="/cafes/:id/insta">
+            <CafePage />
+            <Insta />
+          </Route>
           <Route path="/profile">
             <Profile />
           </Route>
           <Route path="/">
             <Home />
-          </Route>
-          <Route path="/cafes/:id">
-            <CafePage />
-          </Route>
-          <Route path="/cafes/:id/menu">
-            <Menu />
-          </Route>
-          <Route path="/cafes/:id/barista">
-            <Barista />
-          </Route>
-          <Route path="/cafes/:id/batch">
-            <Batch />
-          </Route>
-          <Route path="/cafes/:id/events">
-            <EventsCafe />
-          </Route>
-          <Route path="/cafes/:id/comments">
-            <Comments />
-          </Route>
-          <Route path="/cafes/:id/insta">
-            <Insta />
           </Route>
         </Switch>
       </Router>

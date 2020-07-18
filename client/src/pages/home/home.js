@@ -1,7 +1,7 @@
 import React from 'react';
-import Trends from '../../components/Trends/Trends';
-import Map from '../../components/Map/Map';
-import List from '../../components/List/List';
+import Trends from '../../Components/Trends/Trends';
+import Map from '../../Components/Map/Map';
+import List from '../../Components/List/List';
 
 function Home() {
   return (
