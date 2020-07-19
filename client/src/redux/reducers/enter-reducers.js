@@ -21,14 +21,7 @@ export default (state = {}, action) => {
     case CALL_LOGOUT:
       return state;
     case LOGOUT:
-      return {
-        ...state,
-        email: action.payload.email,
-        favorites: action.payload.favorites,
-        userName: action.payload.login,
-        subscriptions: action.payload.subscriptions,
-        id: action.payload.id,
-      };
+      return {};
     case EDIT_USER:
       return action.payload;
     default:

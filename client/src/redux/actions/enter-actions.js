@@ -49,13 +49,7 @@ export function callLogout() {
 export function logout() {
   return {
     type: LOGOUT,
-    payload: {
-      email: '',
-      favorites: '',
-      login: '',
-      subscriptions: '',
-      id: '',
-    },
+    payload: {},
   };
 }
 

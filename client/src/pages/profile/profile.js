@@ -21,13 +21,7 @@ function Profile() {
     setEditing(!editing);
   }
 
-  function cancelEdit() {
-    setEditing(!editing);
-    setInputs(user);
-  }
-
   function save() {
-    console.log('User:', user, 'Inputs:', inputs);
     setEditing(!editing);
     dispatch(editUser(inputs));
   }
@@ -63,7 +57,7 @@ function Profile() {
           <button onClick={save} type="button">
             Save
           </button>
-          <button onClick={cancelEdit} type="button">
+          <button onClick={edit} type="button">
             Cancel
           </button>
         </>
