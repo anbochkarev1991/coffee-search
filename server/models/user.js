@@ -25,7 +25,6 @@ const userSchema = new Schema({
     type: String,
     required: 'Password is required',
     minlength: 6,
-    maxlength: 20,
   },
   registered: {
     type: Date,

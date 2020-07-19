@@ -1,10 +1,13 @@
 import mongoose from 'mongoose';
 import Cafe from './models/cafe.js';
 import User from './models/user.js';
+import dotenv from 'dotenv';
 
 const { connect, disconnect } = mongoose;
+dotenv.config();
 
-connect('mongodb://localhost:27017/coffee', {
+
+connect(process.env.DB_CONNECT, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
