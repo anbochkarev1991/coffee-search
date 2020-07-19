@@ -6,14 +6,14 @@ export function callSignup() {
   };
 }
 
-export function signup(payload) {
+export function signup(data) {
   return {
     type: SIGNUP,
     payload: {
-      login: payload.login,
-      email: payload.email,
-      password: payload.password,
-      birthday: payload.birthday,
+      login: data.login,
+      email: data.email,
+      password: data.password,
+      birthday: data.birthday,
     },
   };
 }

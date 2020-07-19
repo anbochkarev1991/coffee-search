@@ -16,7 +16,7 @@ function Home() {
     <>
       {/* <Trends /> */}
       <Map />
-      {/* <List /> */}
+      <List />
     </>
   );
 }
