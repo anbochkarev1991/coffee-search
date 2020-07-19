@@ -11,7 +11,8 @@ router.post('/', async (req, res) => {
   const newUser = new User({ login, email,
      password: await bcrypt.hash(password, saltRounds) });
   await newUser.save();
-  return res.end();
+  newUser.password = '';
+  return res.json(newUser);
   } catch(err) {
     res.json(err.message);
   }
