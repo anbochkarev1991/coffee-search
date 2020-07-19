@@ -10,11 +10,12 @@ export function signup(data) {
   return {
     type: SIGNUP,
     payload: {
-      login: data.login,
       email: data.email,
-      password: data.password,
-      birthday: data.birthday,
-    },
+      favorites: data.favorites,
+      login: data.login,
+      subscriptions: data.subscriptions,
+      id: data._id,
+    }
   };
 }
 
@@ -24,11 +25,15 @@ export function callLogin() {
   };
 }
 
-export function loginFunc(login) {
+export function loginFunc(data) {
   return {
     type: LOGIN,
     payload: {
-      login,
+      email: data.email,
+      favorites: data.favorites,
+      login: data.login,
+      subscriptions: data.subscriptions,
+      id: data._id,
     }
   };
 }
@@ -43,7 +48,11 @@ export function logout() {
   return {
     type: LOGOUT,
     payload: {
+      email: '',
+      favorites: '',
       login: '',
+      subscriptions: '',
+      id: '',
     }
   };
 }

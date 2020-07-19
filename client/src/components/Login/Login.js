@@ -28,9 +28,10 @@ export default function Login() {
         password,
       })
     });
+    const result = await response.json();
     if (response.status === 200) {
       setError(false);
-      dispatch(loginFunc(inputs.login));
+      dispatch(loginFunc(result));
       setTimeout(() => {
         return history.push('/');
       }, 1000);

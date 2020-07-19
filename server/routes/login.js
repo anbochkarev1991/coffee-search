@@ -9,7 +9,8 @@ router.post('/', async (req, res) => {
   const user = await User.findOne({ login: login });
   if (user && (await bcrypt.compare(password, user.password))) {
     req.session.user = user;
-    return res.end();
+    user.password = '';
+    return res.json(user);
   } else {
     res.status(401).end()
   }
