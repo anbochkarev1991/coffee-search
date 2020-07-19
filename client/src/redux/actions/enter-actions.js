@@ -1,4 +1,12 @@
-import { CALL_SIGNUP, SIGNUP, CALL_LOGIN, LOGIN, CALL_LOGOUT, LOGOUT } from './action-types';
+import {
+  CALL_SIGNUP,
+  SIGNUP,
+  CALL_LOGIN,
+  LOGIN,
+  CALL_LOGOUT,
+  LOGOUT,
+  EDIT_USER,
+} from './action-types';
 
 export function callSignup() {
   return {
@@ -15,7 +23,7 @@ export function signup(data) {
       login: data.login,
       subscriptions: data.subscriptions,
       id: data._id,
-    }
+    },
   };
 }
 
@@ -25,16 +33,10 @@ export function callLogin() {
   };
 }
 
-export function loginFunc(data) {
+export function loginFunc(user) {
   return {
     type: LOGIN,
-    payload: {
-      email: data.email,
-      favorites: data.favorites,
-      login: data.login,
-      subscriptions: data.subscriptions,
-      id: data._id,
-    }
+    payload: user,
   };
 }
 
@@ -53,6 +55,13 @@ export function logout() {
       login: '',
       subscriptions: '',
       id: '',
-    }
+    },
+  };
+}
+
+export function editUser(user) {
+  return {
+    type: EDIT_USER,
+    payload: user,
   };
 }

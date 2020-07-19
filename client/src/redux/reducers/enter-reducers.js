@@ -1,10 +1,26 @@
-import { CALL_SIGNUP, SIGNUP, CALL_LOGIN, LOGIN, CALL_LOGOUT, LOGOUT } from '../actions/action-types';
+import {
+  CALL_SIGNUP,
+  SIGNUP,
+  CALL_LOGIN,
+  LOGIN,
+  CALL_LOGOUT,
+  LOGOUT,
+  EDIT_USER,
+} from '../actions/action-types';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case CALL_SIGNUP: 
+    case CALL_SIGNUP:
       return state;
     case SIGNUP:
+      return action.payload;
+    case CALL_LOGIN:
+      return state;
+    case LOGIN:
+      return action.payload;
+    case CALL_LOGOUT:
+      return state;
+    case LOGOUT:
       return {
         ...state,
         email: action.payload.email,
@@ -13,28 +29,8 @@ export default (state = {}, action) => {
         subscriptions: action.payload.subscriptions,
         id: action.payload.id,
       };
-    case CALL_LOGIN:
-      return state;
-    case LOGIN:
-      return {
-        ...state,
-        email: action.payload.email,
-        favorites: action.payload.favorites,
-        userName: action.payload.login,
-        subscriptions: action.payload.subscriptions,
-        id: action.payload.id,
-      }
-    case CALL_LOGOUT:
-      return state;
-    case LOGOUT: 
-      return {
-        ...state,
-        email: action.payload.email,
-        favorites: action.payload.favorites,
-        userName: action.payload.login,
-        subscriptions: action.payload.subscriptions,
-        id: action.payload.id,
-      }
+    case EDIT_USER:
+      return action.payload;
     default:
       return state;
   }

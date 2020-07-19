@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Favorites from '../../components/Favotites/Favorites';
 import { useSelector, useDispatch } from 'react-redux';
-import { editUser } from '../../redux/actions/user-actions';
+import { editUser } from '../../redux/actions/enter-actions';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -17,6 +17,7 @@ function Profile() {
   }
 
   function edit() {
+    setInputs(user);
     setEditing(!editing);
   }
 
@@ -26,8 +27,9 @@ function Profile() {
   }
 
   function save() {
-    dispatch(editUser(inputs));
+    console.log('User:', user, 'Inputs:', inputs);
     setEditing(!editing);
+    dispatch(editUser(inputs));
   }
 
   return (
@@ -50,14 +52,14 @@ function Profile() {
             value={inputs.email}
             placeholder="Email"
           ></input>
-          <input
+          {/* <input
             required
             type="text"
             onChange={handleChange}
             name=""
             value={inputs.password}
             placeholder="Password"
-          ></input>
+          ></input> */}
           <button onClick={save} type="button">
             Save
           </button>
