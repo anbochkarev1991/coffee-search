@@ -9,6 +9,7 @@ function Navbar() {
       <NavLink to="/profile">Profile</NavLink>
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/registration">Registration</NavLink>
+      <NavLink to="/cafes/:id/menu">{' >>>>>>>'}Cafe</NavLink>
     </>
   );
 }
