@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 function Favorites() {
-  const user = useSelector((state) => state.enter.user);
+  const user = useSelector((state) => state.enter);
   const favs = user.favorites;
 
   return (

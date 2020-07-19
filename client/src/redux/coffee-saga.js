@@ -28,7 +28,7 @@ async function fetchEdit(user) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ task }),
+    body: JSON.stringify({ user }),
   });
   return response.json();
 }
