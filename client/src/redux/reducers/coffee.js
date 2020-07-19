@@ -13,3 +13,4 @@ export default (state = { list: [], error: '' }, action) => {
       return state;
   }
 };
+
