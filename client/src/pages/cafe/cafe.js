@@ -23,16 +23,18 @@ export default function CafePage() {
   return (
     <>
       <CafePageBar />
-      <button
-        type="button"
-        onClick={
-          user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
-        }
-      >
-        {user.favorites.includes(id)
-          ? 'Remove from favorites'
-          : 'Add to favorites'}
-      </button>
+      {user.login && (
+        <button
+          type="button"
+          onClick={
+            user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
+          }
+        >
+          {user.favorites.includes(id)
+            ? 'Remove from favorites'
+            : 'Add to favorites'}
+        </button>
+      )}
     </>
   );
 }
