@@ -47,34 +47,44 @@ export default function Singup() {
 
   return (
     <>
-      <form className={styles.signupForm} onSubmit={handleSubmit}>
-        <label htmlFor="login">Login:
-          <input 
-            name="login"
-            type="text"
-            placeholder="login"
-            required 
-            onChange={handleChange}
-            value={login} />
-          </label>
-        <label htmlFor="email">Email:
-        <input 
-            name="email"
-            type="email"
-            placeholder="email"
-            required 
-            onChange={handleChange}
-            value={email} />
-        </label>
-        <label htmlFor="password">Password:
-        <input 
-            name="password"
-            type="password"
-            placeholder="password"
-            required 
-            onChange={handleChange}
-            value={password} />
-        </label>
+      <form onSubmit={handleSubmit}>
+        <div className={"form-group"}>
+          <label htmlFor="login">Login:
+            <input 
+              name="login"
+              type="text"
+              placeholder="Login"
+              required 
+              onChange={handleChange}
+              value={login}
+              className={"form-control"}
+             />
+            </label>
+          </div>
+          <div className={"form-group"}>
+            <label htmlFor="email">Email:
+            <input 
+                name="email"
+                type="email"
+                placeholder="email"
+                required 
+                onChange={handleChange}
+                value={email}
+                className={"form-control"} />
+            </label>
+          </div>
+          <div className={"form-group"}>
+            <label htmlFor="password">Password:
+            <input 
+                name="password"
+                type="password"
+                placeholder="password"
+                required 
+                onChange={handleChange}
+                value={password}
+                className={"form-control"} />
+            </label>
+          </div>
         {/* <label htmlFor="birthday">Birthday:
         <input 
             name="birthday"
@@ -83,7 +93,7 @@ export default function Singup() {
             onChange={handleChange}
             />
         </label> */}
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" className="btn btn-primary mb-2">Зарегистрироваться</button>
       </form>
     {user && <h3>Добро пожаловать, {user}!</h3>}
     {error}

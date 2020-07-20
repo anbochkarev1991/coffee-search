@@ -51,29 +51,35 @@ export default function Login() {
   return (
     <>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
-        <label htmlFor="login">
-          Login:
-          <input
-            name="login"
-            type="text"
-            placeholder="login"
-            required
-            onChange={handleChange}
-            value={login}
-          />
-        </label>
-        <label htmlFor="password">
-          Password:
-          <input
-            name="password"
-            type="password"
-            placeholder="password"
-            required
-            onChange={handleChange}
-            value={password}
-          />
-        </label>
-        <button type="submit">Войти</button>
+        <div className={"form-group"}>
+          <label htmlFor="login">
+            Login:
+            <input
+              name="login"
+              type="text"
+              placeholder="login"
+              required
+              onChange={handleChange}
+              value={login}
+              className={"form-control"}
+            />
+          </label>
+        </div>
+        <div className={"form-group"}>
+          <label htmlFor="password">
+            Password:
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              required
+              onChange={handleChange}
+              value={password}
+              className={"form-control"}
+            />
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary mb-2">Войти</button>
       </form>
       {user && <h3>Добро пожаловать, {user}!</h3>}
       {error}
