@@ -14,6 +14,7 @@ import Batch from './components/CafePageBar/Batch/Batch';
 import EventsCafe from './components/CafePageBar/EventsCafe/EventsCafe';
 import Comments from './components/CafePageBar/Comments/Comments';
 import Insta from './components/CafePageBar/Instagram/Instagram';
+import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 // import logo from './logo.svg';
 import './App.css';
 import CafePage from './pages/cafe/cafe';
@@ -54,9 +55,9 @@ function App() {
             <CafePage />
             <Insta />
           </Route>
-          <Route path="/profile">
+          <PrivateRouter path="/profile">
             <Profile />
-          </Route>
+          </PrivateRouter>
           <Route path="/signup">
             <Signup />
           </Route>

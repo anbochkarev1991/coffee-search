@@ -7,7 +7,6 @@ dotenv.config();
 function Map() {
 
   const cafes = useSelector((state) => state.coffee.list);
-  console.log(cafes.length);
   
   useEffect(() => {
     if (cafes.length > 0) {
