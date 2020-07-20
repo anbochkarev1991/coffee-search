@@ -7,7 +7,7 @@ router.route('/').patch(async (req, res) => {
   const { user } = req.body;
   try {
     await User.findByIdAndUpdate(user._id, {
-      $set: { login: user.login, email: user.email },
+      $set: { login: user.login, email: user.email, favorites: user.favorites },
     });
     return res.json({ user });
   } catch (error) {
