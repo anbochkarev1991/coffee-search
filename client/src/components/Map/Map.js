@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import dotenv from 'dotenv';
 import styles from './Map.module.css';
@@ -6,13 +6,16 @@ dotenv.config();
 
 function Map() {
 
+
+const [mapActive, setMapActive] = useState(false)
   const cafes = useSelector((state) => state.coffee.list);
   
   useEffect(() => {
-    if (cafes && cafes.length > 0) {
+    if (cafes && cafes.length > 0 && !mapActive) {
       (() => handleLoad())();
+      setMapActive(true)
     }
-  }, [handleLoad]);
+  }, [cafes]);
   
   function handleLoad() {
     window.ymaps.ready(() => {
