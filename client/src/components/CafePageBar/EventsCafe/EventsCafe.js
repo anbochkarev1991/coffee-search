@@ -1,31 +1,32 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCafeEvent } from '../../../redux/actions/eventsCafe-action';
 
-export default function EventsCafe() {
-  const { id } = useParams()
-  console.log('>>>>>>>>ID_USE_PARAMS: ', id)
+export default function EventsCafe({ id }) {
+  // const { id } = useParams()
+  // const params = useParams()
+  // const loc = useLocation()
+  const idEvent = id
 
   const dispatch = useDispatch();
-  const eventCafe = useSelector((state) => state.eventsCafe[id]);
+  const eventCafe = useSelector((state) => state.eventsCafe[idEvent.id]);
 
   async function showEvent() {
-    const response = await fetch(`/api/cafes/${id}/events`);
+    const response = await fetch(`/api/cafes/${idEvent.id}/events`);
     console.log('>>>>>>>RESPONSE', response)
     const result = await response.json()
     console.log('>>>>>RESULT_BEFORE: ', result)
-    const data = result.eventCafe.filter((event) => event.location === id)
+    const data = result.eventCafe.filter((event) => event.location === idEvent.id)
     console.log('>>>>>>>>>FETCH_RESPONSE: ', data)
     if (response.status === 200) {
-      dispatch(loadCafeEvent(data, id))
+      dispatch(loadCafeEvent(data, idEvent.id))
     }
   }
 
   useEffect(() => {
     showEvent();
   }, [])
-
 
   return (
     <>
