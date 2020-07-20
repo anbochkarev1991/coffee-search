@@ -26,4 +26,15 @@ router.route('/:id/events').get(async (req, res) => {
   }
 })
 
+router.post('/new', async (req, res) => {
+  const { latitude, longitude, name, rating } = req.body;
+  try {
+  const newCafe = new Cafe({ latitude, longitude, name, rating });
+  await newCafe.save();
+  res.json(newCafe);
+  } catch(err) {
+    res.status(500).end();
+  }
+})
+
 export default router;
