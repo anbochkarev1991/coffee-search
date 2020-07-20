@@ -8,19 +8,19 @@ export default function EventsCafe({ id }) {
   // const params = useParams()
   // const loc = useLocation()
   const idEvent = id
+  console.log('>>>>>>>ID >>>>>>: ', idEvent)
 
   const dispatch = useDispatch();
-  const eventCafe = useSelector((state) => state.eventsCafe[idEvent.id]);
+  const eventCafe = useSelector((state) => state.eventsCafe[idEvent]);
 
   async function showEvent() {
-    const response = await fetch(`/api/cafes/${idEvent.id}/events`);
+    const response = await fetch(`/api/cafes/${idEvent}/events`);
     console.log('>>>>>>>RESPONSE', response)
     const result = await response.json()
     console.log('>>>>>RESULT_BEFORE: ', result)
-    const data = result.eventCafe.filter((event) => event.location === idEvent.id)
-    console.log('>>>>>>>>>FETCH_RESPONSE: ', data)
-    if (response.status === 200) {
-      dispatch(loadCafeEvent(data, idEvent.id))
+    if(result.eventCafe.length){
+      const data = result.eventCafe.filter((event) => event.location === idEvent)
+      dispatch(loadCafeEvent(data, idEvent))
     }
   }
 
