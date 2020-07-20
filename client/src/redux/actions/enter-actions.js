@@ -6,6 +6,7 @@ import {
   CALL_LOGOUT,
   LOGOUT,
   EDIT_USER,
+  ADD_TO_FAV,
 } from './action-types';
 
 export function callSignup() {

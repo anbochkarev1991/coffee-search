@@ -27,9 +27,6 @@ function App() {
         <Navbar />
 
         <Switch>
-          {/* <Route path="/cafes/:id">
-            <CafePage />
-          </Route> */}
           <Route path="/cafes/:id/menu">
             <CafePage />
             <Menu />
@@ -53,6 +50,9 @@ function App() {
           <Route path="/cafes/:id/insta">
             <CafePage />
             <Insta />
+          </Route>
+          <Route path="/cafes/:id">
+            <CafePage />
           </Route>
           <Route path="/profile">
             <Profile />

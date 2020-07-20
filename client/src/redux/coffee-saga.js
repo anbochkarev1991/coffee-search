@@ -1,7 +1,11 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { LOAD_CAFE_LIST_SAGA, EDIT_USER } from './actions/action-types';
+import {
+  LOAD_CAFE_LIST_SAGA,
+  EDIT_USER,
+  ADD_TO_FAV,
+} from './actions/action-types';
 import { failed, loadCafeList } from './actions/actions';
-// import { signup, login, logout } from './actions/enter-actions';
+import { addToFav } from './actions/enter-actions';
 // import { CALL_SIGNUP } from './actions/action-types';
 
 // Load list of all cafes from DB
