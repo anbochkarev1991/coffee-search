@@ -14,16 +14,10 @@ export function callSignup() {
   };
 }
 
-export function signup(data) {
+export function signup(user) {
   return {
     type: SIGNUP,
-    payload: {
-      email: data.email,
-      favorites: data.favorites,
-      login: data.login,
-      subscriptions: data.subscriptions,
-      id: data._id,
-    },
+    payload: user,
   };
 }
 
