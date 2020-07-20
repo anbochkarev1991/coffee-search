@@ -13,15 +13,15 @@ const eventSchema = new Schema({
   },
   date: {
     type: Date,
-    required: true,
+    default: Date.now,
   },
   location: {
     type: mongoose.ObjectId,
-    ref: Cafe,
+    ref: 'Cafe',
   },
   author: {
     type: mongoose.ObjectId,
-    ref: User,
+    ref: 'User',
   },
 });
 
