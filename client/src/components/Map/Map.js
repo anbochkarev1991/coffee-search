@@ -9,10 +9,10 @@ function Map() {
   const cafes = useSelector((state) => state.coffee.list);
   
   useEffect(() => {
-    if (cafes.length > 0) {
-      window.addEventListener('load', handleLoad());
+    if (cafes && cafes.length > 0) {
+      (() => handleLoad())();
     }
-  }, [cafes.length]);
+  }, [handleLoad]);
   
   function handleLoad() {
     window.ymaps.ready(() => {
@@ -35,6 +35,16 @@ function Map() {
     }
 
     newMap.geoObjects.add(cafesCollection);
+
+      window.ymaps.geolocation.get({
+        provider: 'browser',
+        mapStateAutoApply: true
+    }).then(function (result) {
+        // Синим цветом пометим положение, полученное через браузер.
+        // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
+        result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
+        newMap.geoObjects.add(result.geoObjects);
+    });
 
     })
   }
