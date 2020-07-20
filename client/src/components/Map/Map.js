@@ -18,7 +18,7 @@ function Map() {
     window.ymaps.ready(() => {
       const newMap = new window.ymaps.Map('map', {
         center: [55.76, 37.64],
-        zoom: 10,
+        zoom: 12,
       }),
 
     cafesCollection = new window.ymaps.GeoObjectCollection(null, {
@@ -43,7 +43,7 @@ function Map() {
     <>
       <h3>Beautiful map</h3>
       <div className={styles.mapPosition}>
-        <div  id="map" style={{width: "600px", height: "400px"}}></div>
+        <div  id="map" style={{width: "700px", height: "600px"}}></div>
       </div>
     </>
   );

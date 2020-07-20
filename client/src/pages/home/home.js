@@ -13,11 +13,19 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <>
-      <Trends />
-      <Map />
-      <List />
-    </>
+    <div className={"container"}>
+      <div className={"row"}>
+        <div className={"col"}>
+          <Trends />
+        </div>
+        <div className={"col"}>
+          <Map />
+        </div>
+        <div className={"col"}>
+        <List />
+        </div>
+      </div>
+    </div>
   );
 }
 
