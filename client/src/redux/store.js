@@ -5,6 +5,7 @@ import { all } from 'redux-saga/effects';
 import coffeeSaga from './coffee-saga';
 import coffeeReducer from './reducers/coffee';
 import enterReducer from './reducers/enter-reducers';
+import eventReducer from './reducers/eventsCafe-reducers';
 
 const sagaMiddleware = reduxSaga();
 
@@ -15,6 +16,7 @@ const store = createStore(
   combineReducers({
     coffee: coffeeReducer,
     enter: enterReducer,
+    eventsCafe: eventReducer,
   }),
   initialState,
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
