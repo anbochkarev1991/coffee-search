@@ -6,7 +6,6 @@ import {
   CALL_LOGOUT,
   LOGOUT,
   EDIT_USER,
-  ADD_TO_FAV,
 } from '../actions/action-types';
 
 export default (state = {}, action) => {

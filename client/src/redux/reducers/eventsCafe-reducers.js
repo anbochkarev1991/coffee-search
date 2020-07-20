@@ -5,9 +5,9 @@ export default (state = {}, action) => {
     case LOAD_CAFE_EVENTS:
       return {
         ...state,
-        [action.payload.id]: action.payload.event
+        [action.payload.id]: action.payload.event,
       };
     default:
       return state;
   }
-}
+};
