@@ -10,21 +10,22 @@ import {
 } from '../actions/action-types';
 
 export default (state = {}, action) => {
+  console.log(state);
   switch (action.type) {
     case CALL_SIGNUP:
       return state;
     case SIGNUP:
-      return action.payload;
+      return { ...action.payload };
     case CALL_LOGIN:
       return state;
     case LOGIN:
-      return action.payload;
+      return { ...action.payload };
     case CALL_LOGOUT:
       return state;
     case LOGOUT:
       return {};
     case EDIT_USER:
-      return action.payload;
+      return { ...action.payload };
     default:
       return state;
   }
