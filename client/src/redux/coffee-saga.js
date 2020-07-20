@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { LOAD_CAFE_LIST_SAGA } from './actions/action-types';
+import { LOAD_CAFE_LIST_SAGA, EDIT_USER } from './actions/action-types';
 import { failed, loadCafeList } from './actions/actions';
 // import { signup, login, logout } from './actions/enter-actions';
 // import { CALL_SIGNUP } from './actions/action-types';
@@ -19,6 +19,29 @@ function* workerLoad() {
     yield put(failed(error.message));
   }
   yield put(loadCafeList(list));
+}
+
+// Edit user info
+async function fetchEdit(user) {
+  const response = await fetch('/api/users', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ user }),
+  });
+  return response.json();
+}
+
+function* workerEdit(action) {
+  try {
+    const json = yield call(fetchEdit, action.payload);
+    if (json.error) {
+      yield put(failed(json.error));
+    }
+  } catch (error) {
+    yield put(failed(error.message));
+  }
 }
 
 // // user signup logic
@@ -46,5 +69,6 @@ function* workerLoad() {
 
 export default function* watcher() {
   yield takeEvery(LOAD_CAFE_LIST_SAGA, workerLoad);
+  yield takeEvery(EDIT_USER, workerEdit);
   // yield takeEvery(CALL_SIGNUP, workerSignup);
 }

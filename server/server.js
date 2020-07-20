@@ -11,6 +11,7 @@ import signupRouter from './routes/signup.js';
 import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
 import cafesRouter from './routes/cafes.js';
+import usersRouter from './routes/users.js';
 
 dotenv.config();
 const saltRounds = 10;
@@ -19,37 +20,41 @@ const { connect } = mongoose;
 const port = process.env.PORT ?? 3001;
 const app = express();
 
-connect(process.env.DB_CONNECT, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
+connect(
+  process.env.DB_CONNECT,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
   },
   function (err) {
     if (err) throw err;
     console.log('БД подключена');
-  }
-); 
-
+  },
+);
 
 app.use(express.json());
 app.use(morgan('dev'));
 
-app.use(session({
-  store: new FileStore(),
-  key: 'user_sid',
-  secret: 'knfjdnijfnisndfijnijdqniwe',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    expires: new Date(253402300000000),
-  }
-}));
+app.use(
+  session({
+    store: new FileStore(),
+    key: 'user_sid',
+    secret: 'knfjdnijfnisndfijnijdqniwe',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      expires: new Date(253402300000000),
+    },
+  }),
+);
 
 // Routers
 app.use('/api/', indexRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
+app.use('/api/users', usersRouter);
 
 // app.use((req, res, next) => {
 //   res.locals.isAuth = !!req.session.user;

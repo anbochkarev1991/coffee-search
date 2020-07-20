@@ -29,8 +29,9 @@ export default function Singup() {
         password,
       })
     });
+    const result= await response.json();
     if (response.status === 200) {
-      dispatch(signup(inputs))
+      dispatch(signup(result))
       history.push('/');
     }
     setError('Ошибка регистрации');

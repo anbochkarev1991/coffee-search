@@ -8,3 +8,4 @@ export const FAILED = 'FAILED';
 export const LOAD_CAFE_LIST = 'LOAD_CAFE_LIST';
 export const LOAD_CAFE_LIST_SAGA = 'LOAD_CAFE_LIST_SAGA';
 export const LOAD_CAFE_EVENTS = 'LOAD_CAFE_EVENTS';
+export const EDIT_USER = 'EDIT_USER';

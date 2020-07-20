@@ -1,4 +1,12 @@
-import { CALL_SIGNUP, SIGNUP, CALL_LOGIN, LOGIN, CALL_LOGOUT, LOGOUT } from './action-types';
+import {
+  CALL_SIGNUP,
+  SIGNUP,
+  CALL_LOGIN,
+  LOGIN,
+  CALL_LOGOUT,
+  LOGOUT,
+  EDIT_USER,
+} from './action-types';
 
 export function callSignup() {
   return {
@@ -6,15 +14,10 @@ export function callSignup() {
   };
 }
 
-export function signup(payload) {
+export function signup(user) {
   return {
     type: SIGNUP,
-    payload: {
-      login: payload.login,
-      email: payload.email,
-      password: payload.password,
-      birthday: payload.birthday,
-    },
+    payload: user,
   };
 }
 
@@ -24,12 +27,10 @@ export function callLogin() {
   };
 }
 
-export function loginFunc(login) {
+export function loginFunc(user) {
   return {
     type: LOGIN,
-    payload: {
-      login,
-    }
+    payload: user,
   };
 }
 
@@ -42,8 +43,13 @@ export function callLogout() {
 export function logout() {
   return {
     type: LOGOUT,
-    payload: {
-      login: '',
-    }
+    payload: {},
+  };
+}
+
+export function editUser(user) {
+  return {
+    type: EDIT_USER,
+    payload: user,
   };
 }

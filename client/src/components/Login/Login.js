@@ -16,6 +16,7 @@ export default function Login() {
   });
 
   const { login, password } = inputs;
+
   async function handleSubmit(event) {
     event.preventDefault();
     const response = await fetch('/api/login', {
@@ -26,53 +27,56 @@ export default function Login() {
       body: JSON.stringify({
         login,
         password,
-      })
+      }),
     });
+
+    const result = await response.json();
+
     if (response.status === 200) {
       setError(false);
-      dispatch(loginFunc(inputs.login));
-      setTimeout(() => {
-        return history.push('/');
-      }, 1000);
+      dispatch(loginFunc(result));
+      return history.push('/');
     } else {
       setError('Неправильные логин или пароль');
     }
   }
-  
 
   function handleChange({ target: { name, value } }) {
     setInputs({
       ...inputs,
       [name]: value,
-    })
+    });
   }
-
 
   return (
     <>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
-        <label htmlFor="login">Login:
-          <input 
+        <label htmlFor="login">
+          Login:
+          <input
             name="login"
             type="text"
             placeholder="login"
-            required 
+            required
             onChange={handleChange}
-            value={login} />
-          </label>
-        <label htmlFor="password">Password:
-        <input 
+            value={login}
+          />
+        </label>
+        <label htmlFor="password">
+          Password:
+          <input
             name="password"
             type="password"
             placeholder="password"
-            required 
+            required
             onChange={handleChange}
-            value={password} />
+            value={password}
+          />
         </label>
         <button type="submit">Войти</button>
       </form>
-    {user && <h3>Добро пожаловать, {user}!</h3>}
-    {error}
+      {user && <h3>Добро пожаловать, {user}!</h3>}
+      {error}
     </>
   );
 }
