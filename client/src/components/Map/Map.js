@@ -7,6 +7,7 @@ dotenv.config();
 function Map() {
 
 
+
 const [mapActive, setMapActive] = useState(false)
   const cafes = useSelector((state) => state.coffee.list);
   
@@ -18,17 +19,20 @@ const [mapActive, setMapActive] = useState(false)
   }, [cafes]);
   
   function handleLoad() {
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+
     window.ymaps.ready(() => {
       const newMap = new window.ymaps.Map('map', {
-        center: [55.76, 37.64],
-        zoom: 12,
+        center: [position.coords.latitude, position.coords.longitude],
+        zoom: 13,
       }),
 
     cafesCollection = new window.ymaps.GeoObjectCollection(null, {
       present: 'islands#icon',
       iconColor: '#ff6347',
     })
-
+    
     for (let i = 0; i < cafes.length; i++) {
       cafesCollection.add(new window.ymaps.Placemark([cafes[i].latitude, cafes[i].longitude], {
         balloonContentHeader: cafes[i].name,
@@ -36,21 +40,18 @@ const [mapActive, setMapActive] = useState(false)
         hintContent: cafes[i].name,
       }));
     }
-
+    
     newMap.geoObjects.add(cafesCollection);
 
-      window.ymaps.geolocation.get({
-        provider: 'browser',
-        mapStateAutoApply: true
-    }).then(function (result) {
-        // Синим цветом пометим положение, полученное через браузер.
-        // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
-        result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
-        newMap.geoObjects.add(result.geoObjects);
-    });
-
+    const myPlacemark = new window.ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
+      balloonContentHeader: 'Ваше местоположение',
+      hintContent: 'Ваше местоположение',
     })
-  }
+
+    newMap.geoObjects.add(myPlacemark);
+  })
+});
+}
 
   return (
     <>
