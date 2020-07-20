@@ -36,11 +36,23 @@ const [mapActive, setMapActive] = useState(false)
     for (let i = 0; i < cafes.length; i++) {
       cafesCollection.add(new window.ymaps.Placemark([cafes[i].latitude, cafes[i].longitude], {
         balloonContentHeader: cafes[i].name,
+        balloonContentBody: `<a href=/cafes/${cafes[i]._id}/menu>Перейти на страницу кафе</a>`,
         balloonContentFooter: `Рейтинг: ${cafes[i].rating}`,
         hintContent: cafes[i].name,
       }));
     }
     
+    const myGeocoder = window.ymaps.geocode("Ул. Вавилова, 1");
+      myGeocoder.then(
+    function (res) {
+      newMap.geoObjects.add(res.geoObjects);
+      console.log(res.geoObjects._boundsAggregator._geoBounds[0]);
+    },
+    function (err) {
+      console.log(err);
+    }
+);
+
     newMap.geoObjects.add(cafesCollection);
 
     const myPlacemark = new window.ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
