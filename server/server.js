@@ -12,6 +12,7 @@ import loginRouter from './routes/login.js';
 import logoutRouter from './routes/logout.js';
 import cafesRouter from './routes/cafes.js';
 import usersRouter from './routes/users.js';
+import eventsRouter from './routes/events.js';
 
 dotenv.config();
 const saltRounds = 10;
@@ -55,6 +56,7 @@ app.use('/api/', indexRouter);
 app.use('/api/signup', signupRouter);
 app.use('/api/login', loginRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/events', eventsRouter);
 
 // app.use((req, res, next) => {
 //   res.locals.isAuth = !!req.session.user;

@@ -15,16 +15,16 @@ function Home() {
   }, [dispatch]);
 
   return (
-    <div className={"container"}>
-      <div className={"row"}>
-        <div className={"col"}>
+    <div className={'container'}>
+      <div className={'row'}>
+        <div className={'col'}>
           <Trends />
         </div>
-        <div className={"col"}>
+        <div className={'col'}>
           <Map />
         </div>
-        <div className={"col"}>
-        <List />
+        <div className={'col'}>
+          <List />
         </div>
       </div>
     </div>
