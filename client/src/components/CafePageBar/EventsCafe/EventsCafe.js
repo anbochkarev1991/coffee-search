@@ -96,16 +96,18 @@ export default function EventsCafe({ id }) {
             <input type="submit" value="Создать" style={{ "backgroundColor": "dodgerblue" }} />
           </form>
         </Modal>
-        {eventCafe && eventCafe.map((event) => (
-          <React.Fragment>
-            <p>
-              <strong>{event.title}</strong>
-            </p>
-            <p>Информация: {event.body}</p>
-            <p>Дата: {event.date}</p>
-            <p>Организатор: {event.author}</p>
-          </React.Fragment>
-        ))}
+       
+        {eventCafe &&
+          eventCafe.map((event) => (
+            <React.Fragment key={event._id}>
+              <p>
+                <strong>{event.title}</strong>
+              </p>
+              <p>Информация: {event.body}</p>
+              <p>Дата: {event.date}</p>
+              <p>Организатор: {event.author}</p>
+            </React.Fragment>
+          ))}
       </div>
     </>
   );

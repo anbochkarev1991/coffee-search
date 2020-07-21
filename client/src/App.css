@@ -37,7 +37,9 @@
   }
 }
 
-* {box-sizing: border-box}
+* {
+  box-sizing: border-box;
+}
 
 .tab {
   float: right;
@@ -50,7 +52,7 @@
 .tab button {
   display: block;
   background-color: inherit;
-  color: black ;
+  color: black;
   padding: 22px 16px;
   width: 100%;
   border: none;
@@ -78,7 +80,7 @@
   height: 300px;
 }
 
-.cafeContent{
+.cafeContent {
   background-color: dodgerblue;
   box-shadow: lightskyblue 0 0 20px;
   width: 60%;
@@ -86,11 +88,11 @@
   margin: auto;
 }
 
-.titleCafe{
- text-align: center;
- color: dodgerblue;
- text-shadow:lightskyblue 0 0 15px;
-
+.titleCafe {
+  text-align: center;
+  color: dodgerblue;
+  text-shadow: lightskyblue 0 0 15px;
+  margin: 0 1vw;
 }
 
 .addEventBtn {
