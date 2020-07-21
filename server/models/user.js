@@ -33,12 +33,8 @@ const userSchema = new Schema({
   birthday: {
     type: Date,
   },
-  favorites: {
-    type: [Schema.Types.ObjectId],
-  },
-  subscriptions: {
-    type: [Schema.Types.ObjectId],
-  },
+  favorites: [{ type: Schema.Types.ObjectId, ref: 'Cafe' }],
+  subscriptions: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
   sex: {
     type: String,
   },

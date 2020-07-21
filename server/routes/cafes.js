@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.route('/').get(async (req, res) => {
   try {
-    const list = await Cafe.find();
+    const list = await Cafe.find().sort({ rating: -1 });
     return res.json({ list });
   } catch (error) {
     console.log(error.message);
@@ -54,5 +54,33 @@ router
       return res.json({ error: error.message });
     }
   })
+router.route('/:id').get(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const cafe = await Cafe.findById(id);
+    return res.json({ cafe });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ error: error.message });
+  }
+});
+
+router.post('/new', async (req, res) => {
+  const { cafe } = req.body;
+  try {
+    const newCafe = new Cafe({
+      latitude: cafe.latitude,
+      longitude: cafe.longitude,
+      address: cafe.address,
+      name: cafe.name,
+      rating: cafe.rating,
+    });
+    await newCafe.save();
+    res.json(newCafe);
+  } catch (err) {
+    console.log(err);
+    res.status(500).end();
+  }
+});
 
 export default router;

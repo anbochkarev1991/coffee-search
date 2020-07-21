@@ -21,19 +21,20 @@ export default function EventsCafe({ id }) {
   // Load event from DB
   async function showEvent() {
     const response = await fetch(`/api/cafes/${idEvent}/events`);
-    // console.log('>>>>>>>RESPONSE', response)
-    const result = await response.json()
-    // console.log('>>>>>RESULT_BEFORE: ', result)
+    console.log('>>>>>>>RESPONSE', response);
+    const result = await response.json();
+    console.log('>>>>>RESULT_BEFORE: ', result);
     if (result.eventCafe.length) {
-      const data = result.eventCafe.filter((event) => event.location === idEvent)
-      console.log('>>>>>>>>DATA: ', data)
-      dispatch(loadCafeEvent(data, idEvent))
+      const data = result.eventCafe.filter(
+        (event) => event.location === idEvent,
+      );
+      dispatch(loadCafeEvent(data, idEvent));
     }
   }
 
   useEffect(() => {
     showEvent();
-  }, [])
+  }, []);
 
   //Modal Window
   const modalRef = React.useRef()

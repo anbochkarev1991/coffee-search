@@ -9,6 +9,7 @@ const cafeSchema = new Schema({
   },
   owner: {
     type: Schema.Types.ObjectId,
+    ref: 'User',
   },
   latitude: {
     required: true,
@@ -17,6 +18,10 @@ const cafeSchema = new Schema({
   longitude: {
     required: true,
     type: Number,
+  },
+  address: {
+    type: String,
+    required: true,
   },
   rating: {
     type: Number,

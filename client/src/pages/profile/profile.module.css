@@ -1,0 +1,19 @@
+.profile {
+  padding: 3vh 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-bottom: 3vw;
+}
+
+.favsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}

@@ -5,6 +5,7 @@ import Map from '../../components/Map/Map';
 import List from '../../components/List/List';
 import { useDispatch } from 'react-redux';
 import { loadCafeListSaga } from '../../redux/actions/actions';
+import { loadAllEventsSaga } from '../../redux/actions/events-actions';
 dotenv.config();
 
 function Home() {
@@ -12,19 +13,20 @@ function Home() {
 
   useEffect(() => {
     dispatch(loadCafeListSaga());
+    dispatch(loadAllEventsSaga());
   }, [dispatch]);
 
   return (
-    <div className={"container"}>
-      <div className={"row"}>
-        <div className={"col"}>
-          <Trends />
-        </div>
-        <div className={"col"}>
+    <div className={'container'}>
+      <div className={'row'}>
+        <div className={'col'}>
           <Map />
         </div>
-        <div className={"col"}>
-        <List />
+        <div className={'col'}>
+          <List />
+        </div>
+        <div className={'col'}>
+          <Trends />
         </div>
       </div>
     </div>
