@@ -7,9 +7,9 @@ function Trends() {
   const list = useSelector((state) => state.events.list);
 
   return (
-    <div>
+    <div className={styles.trendsList}>
       <h3>Events</h3>
-      <ul className={styles.trendsList}>
+      <ul>
         {list &&
           list.map((event) => (
             <React.Fragment key={event.date}>

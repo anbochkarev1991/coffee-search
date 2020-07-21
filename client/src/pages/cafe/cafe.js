@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { editUser } from '../../redux/actions/enter-actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Route, Switch } from 'react-router-dom';
@@ -15,6 +15,15 @@ export default function CafePage() {
   const history = useHistory();
   const { id } = useParams();
   const user = useSelector((state) => state.enter);
+  const [cafe, setCafe] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`/api/cafes/${id}`);
+      const json = await response.json();
+      setCafe(json.cafe);
+    })();
+  }, [setCafe]);
 
   function addToFavorites() {
     user.favorites.push(id);
@@ -28,12 +37,15 @@ export default function CafePage() {
   }
 
   return (
-
     <>
       {user.login && (
         <button
           type="button"
-          className={ user.favorites.includes(id) ? "btn btn btn-outline-danger my-2 my-sm-0" : "btn btn btn-outline-info my-2 my-sm-0"}
+          className={
+            user.favorites.includes(id)
+              ? 'btn btn btn-outline-danger my-2 my-sm-0'
+              : 'btn btn btn-outline-info my-2 my-sm-0'
+          }
           onClick={
             user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
           }
@@ -43,14 +55,44 @@ export default function CafePage() {
             : 'Add to favorites'}
         </button>
       )}
-      <h1 className="titleCafe">Кофейня "Черное золото"</h1>
+      <h1 className="titleCafe">{cafe.name}</h1>
       <div className="tab">
-        <button className="tablinks" onClick={() => history.push(`/cafes/${id}/menu`)}>Меню</button>
-        <button className="tablinks" onClick={() => history.push(`/cafes/${id}/barista`)}>Баристы</button>
-        <button className="tablinks" onClick={() => history.push(`/cafes/${id}/batch`)}>Купажи</button>
-        <button className="tablinks" onClick={() => history.push(`/cafes/${id}/events`)}>События</button>
-        <button className="tablinks" onClick={() => history.push(`/cafes/${id}/comments`)}>Отзывы</button>
-        <button className="tablinks" onClick={() => history.push(`/cafes/${id}/insta`)}>Instagram</button>
+        <button
+          className="tablinks"
+          onClick={() => history.push(`/cafes/${id}/menu`)}
+        >
+          Меню
+        </button>
+        <button
+          className="tablinks"
+          onClick={() => history.push(`/cafes/${id}/barista`)}
+        >
+          Бариста
+        </button>
+        <button
+          className="tablinks"
+          onClick={() => history.push(`/cafes/${id}/batch`)}
+        >
+          Зерно
+        </button>
+        <button
+          className="tablinks"
+          onClick={() => history.push(`/cafes/${id}/events`)}
+        >
+          События
+        </button>
+        <button
+          className="tablinks"
+          onClick={() => history.push(`/cafes/${id}/comments`)}
+        >
+          Отзывы
+        </button>
+        <button
+          className="tablinks"
+          onClick={() => history.push(`/cafes/${id}/insta`)}
+        >
+          Instagram
+        </button>
       </div>
 
       <Switch>
@@ -74,5 +116,5 @@ export default function CafePage() {
         </Route>
       </Switch>
     </>
-  )
+  );
 }
