@@ -32,7 +32,7 @@ export default function EventsCafe({ id }) {
         <h2>События в нашей кофейне:</h2>
         {eventCafe &&
           eventCafe.map((event) => (
-            <React.Fragment>
+            <React.Fragment key={event._id}>
               <p>
                 <strong>{event.title}</strong>
               </p>
