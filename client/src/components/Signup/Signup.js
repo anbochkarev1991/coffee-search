@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import styles from './Signup.module.css';
 import { signup } from '../../redux/actions/enter-actions';
 
 export default function Singup() {

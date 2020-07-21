@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
@@ -14,8 +13,6 @@ import './App.css';
 import Cafe from './pages/cafe/cafe'
 
 function App() {
-  const user = useSelector((state) => state.enter.userName);
-
   return (
     <div className="App">
       <Router>
