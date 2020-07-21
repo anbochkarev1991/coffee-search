@@ -8,19 +8,20 @@ const postSchema = new Schema({
     required: true,
   },
   body: {
-    type: String
+    type: String,
   },
   expirationdate: {
     type: Date,
     required: true,
   },
   author: {
-    type: String
+    type: mongoose.ObjectId,
+    ref: 'User',
   },
   cafe: {
     type: Schema.Types.ObjectId,
-    ref: 'cafe'
-  }
-})
+    ref: 'Cafe',
+  },
+});
 
 export default model('Post', postSchema);

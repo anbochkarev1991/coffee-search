@@ -1,4 +1,4 @@
-import mongoose, { Date } from 'mongoose';
+import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 
@@ -13,17 +13,18 @@ const commentSchema = new Schema({
   },
   date: {
     type: Date,
+    default: Date.now,
   },
   author: {
     type: mongoose.ObjectId,
-    ref: User,
+    ref: 'User',
   },
   response: {
     type: String,
   },
   cafe: {
     type: mongoose.ObjectId,
-    ref: Cafe,
+    ref: 'Cafe',
   },
 });
 
