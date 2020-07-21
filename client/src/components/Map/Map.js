@@ -35,26 +35,35 @@ const [mapActive, setMapActive] = useState(false)
     
     for (let i = 0; i < cafes.length; i++) {
       cafesCollection.add(new window.ymaps.Placemark([cafes[i].latitude, cafes[i].longitude], {
-        balloonContentHeader: cafes[i].name,
-        balloonContentBody: `<a href=/cafes/${cafes[i]._id}/menu>Перейти на страницу кафе</a>`,
+        balloonContentHeader: `<a href=/cafes/${cafes[i]._id}/menu>${cafes[i].name}</a>`,
         balloonContentFooter: `Рейтинг: ${cafes[i].rating}`,
         hintContent: cafes[i].name,
       }));
     }
     
-    const myGeocoder = window.ymaps.geocode("Ул. Вавилова, 1");
-      myGeocoder.then(
-    function (res) {
-      newMap.geoObjects.add(res.geoObjects);
-      console.log(res.geoObjects._boundsAggregator._geoBounds[0]);
-    },
-    function (err) {
-      console.log(err);
-    }
-);
+    const myGeocoder = window.ymaps.geocode("Соловьиный проезд, 2");
+        myGeocoder.then(
+      function (res) {
+        newMap.geoObjects.add(res.geoObjects);
+        console.log(res.geoObjects.properties._data.metaDataProperty.GeocoderResponseMetaData.boundedBy[0].reverse());
+      },
+      function (err) {
+        console.log(err);
+      }
+    );
 
     newMap.geoObjects.add(cafesCollection);
 
+  //   window.ymaps.geolocation.get({
+  //     provider: 'browser',
+  //     mapStateAutoApply: true
+  // }).then(function (result) {
+  //     // Темно-зеленым цветом пометим положение, полученное через браузер.
+  //     // Если браузер не поддерживает эту функциональность, метка не будет добавлена на карту.
+  //     result.geoObjects.options.set('preset', 'islands#darkgreenCircleIcon');
+  //     newMap.geoObjects.add(result.geoObjects);
+  // });
+    // Альтернативный метод определения геолокации пользователя с помощью браузерного Geolocation API (точность меньше)
     const myPlacemark = new window.ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
       balloonContentHeader: 'Ваше местоположение',
       hintContent: 'Ваше местоположение',

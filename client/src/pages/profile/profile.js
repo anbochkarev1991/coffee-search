@@ -26,6 +26,17 @@ function Profile() {
     dispatch(editUser(inputs));
   }
 
+//   const myGeocoder = window.ymaps.geocode("Соловьиный проезд, 2");
+//   myGeocoder.then(
+// function (res) {
+//   // newMap.geoObjects.add(res.geoObjects);
+//   console.log(res.geoObjects.properties._data.metaDataProperty.GeocoderResponseMetaData.boundedBy[0].reverse());
+// },
+// function (err) {
+//   console.log(err);
+// }
+// );
+
   return (
     <div>
       {editing ? (
