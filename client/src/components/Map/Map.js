@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import dotenv from 'dotenv';
 import styles from './Map.module.css';
+import AddCafe from '../AddCafe/AddCafe';
 dotenv.config();
 
 function Map() {
 
 const [mapActive, setMapActive] = useState(false)
   const cafes = useSelector((state) => state.coffee.list);
-  
+  const user = useSelector((state) => state.enter.login);
   useEffect(() => {
     if (cafes && cafes.length > 0 && !mapActive) {
       (() => handleLoad())();
@@ -66,6 +67,7 @@ const [mapActive, setMapActive] = useState(false)
       <div className={styles.mapPosition}>
         <div  id="map" style={{width: "700px", height: "600px"}}></div>
       </div>
+      {user && <AddCafe />}
     </>
   );
 }

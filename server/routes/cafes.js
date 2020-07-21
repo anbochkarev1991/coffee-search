@@ -32,6 +32,7 @@ router.post('/new', async (req, res) => {
   const newCafe = new Cafe({ 
     latitude: cafe.latitude,
     longitude: cafe.longitude,
+    address: cafe.address,
     name: cafe.name,
     rating: cafe.rating
   });
