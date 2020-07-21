@@ -8,7 +8,7 @@ function Trends() {
 
   return (
     <div>
-      <h3>News and events</h3>
+      <h3>Events</h3>
       <ul className={styles.trendsList}>
         {list &&
           list.map((event) => (
