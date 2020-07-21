@@ -9,6 +9,7 @@ import Batch from '../../components/CafePageBar/Batch/Batch';
 import EventsCafe from '../../components/CafePageBar/EventsCafe/EventsCafe';
 import Comments from '../../components/CafePageBar/Comments/Comments';
 import Insta from '../../components/CafePageBar/Instagram/Instagram';
+import styles from './cafe.module.css';
 
 export default function CafePage() {
   const dispatch = useDispatch();
@@ -38,24 +39,26 @@ export default function CafePage() {
 
   return (
     <>
-      {user.login && (
-        <button
-          type="button"
-          className={
-            user.favorites.includes(id)
-              ? 'btn btn btn-outline-danger my-2 my-sm-0'
-              : 'btn btn btn-outline-info my-2 my-sm-0'
-          }
-          onClick={
-            user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
-          }
-        >
-          {user.favorites.includes(id)
-            ? 'Remove from favorites'
-            : 'Add to favorites'}
-        </button>
-      )}
-      <h1 className="titleCafe">{cafe.name}</h1>
+      <div className={styles.cafeTitle}>
+        <h1 className="titleCafe">{cafe.name}</h1>
+        {user.login && (
+          <button
+            type="button"
+            className={
+              user.favorites.includes(id)
+                ? 'btn btn btn-outline-danger my-2 my-sm-0'
+                : 'btn btn btn-outline-info my-2 my-sm-0'
+            }
+            onClick={
+              user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
+            }
+          >
+            {user.favorites.includes(id)
+              ? 'Remove from favorites'
+              : 'Add to favorites'}
+          </button>
+        )}
+      </div>
       <div className="tab">
         <button
           className="tablinks"
