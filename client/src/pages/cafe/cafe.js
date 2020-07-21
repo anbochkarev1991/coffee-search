@@ -42,7 +42,7 @@ export default function CafePage() {
             : 'Add to favorites'}
         </button>
       )}
-      <h1 className="titleCafe">Кофейня "Черное золото"</h1>
+      <h1 className="titleCafe">Кофейня "Здесь будет title"</h1>
       <div className="tab">
         <button className="tablinks" onClick={() => history.push(`/cafes/${id}/menu`)}>Меню</button>
         <button className="tablinks" onClick={() => history.push(`/cafes/${id}/barista`)}>Баристы</button>

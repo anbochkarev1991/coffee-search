@@ -92,3 +92,9 @@
  text-shadow:lightskyblue 0 0 15px;
 
 }
+
+.addEventBtn {
+  font-size: 10px;
+  background-color: inherit;
+}
+
