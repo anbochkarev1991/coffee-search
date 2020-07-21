@@ -1,4 +1,9 @@
-import { FAILED, LOAD_CAFE_LIST, LOAD_CAFE_LIST_SAGA } from './action-types';
+import {
+  FAILED,
+  LOAD_CAFE_LIST,
+  LOAD_CAFE_LIST_SAGA,
+  ADD_CAFE,
+} from './action-types';
 
 export function loadCafeList(list) {
   return {
@@ -18,5 +23,12 @@ export function failed(err) {
     type: FAILED,
     payload: err,
     error: true,
+  };
+}
+
+export function addNewCafe(data) {
+  return {
+    type: ADD_CAFE,
+    payload: data,
   };
 }

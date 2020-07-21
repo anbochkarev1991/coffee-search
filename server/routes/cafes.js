@@ -27,12 +27,18 @@ router.route('/:id/events').get(async (req, res) => {
 });
 
 router.post('/new', async (req, res) => {
-  const { latitude, longitude, name, rating } = req.body;
+  const { cafe } = req.body;
   try {
-  const newCafe = new Cafe({ latitude, longitude, name, rating });
+  const newCafe = new Cafe({ 
+    latitude: cafe.latitude,
+    longitude: cafe.longitude,
+    name: cafe.name,
+    rating: cafe.rating
+  });
   await newCafe.save();
   res.json(newCafe);
   } catch(err) {
+    console.log(err);
     res.status(500).end();
   }
 })
