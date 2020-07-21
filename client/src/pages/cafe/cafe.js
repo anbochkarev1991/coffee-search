@@ -33,6 +33,7 @@ export default function CafePage() {
       {user.login && (
         <button
           type="button"
+          className={ user.favorites.includes(id) ? "btn btn btn-outline-danger my-2 my-sm-0" : "btn btn btn-outline-info my-2 my-sm-0"}
           onClick={
             user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
           }

@@ -13,7 +13,7 @@ export default function Logout() {
       dispatch(logout());
       history.push('/');
     })();
-  }, []);
+  }, [dispatch, history]);
 
   return (
     <>

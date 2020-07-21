@@ -68,6 +68,10 @@ app.use('/api/events', eventsRouter);
 app.use('/api/logout', logoutRouter);
 app.use('/api/cafes', cafesRouter);
 
+app.use((err, req, res, next) => {
+  console.log(err)
+})
+
 app.listen(port, () => {
   console.log('Server is up on port', port);
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import styles from './Navbar.module.css';
+import './Navbar.module.css';
 
 function Navbar() {
   const user = useSelector((state) => state.enter.login);
@@ -9,11 +9,11 @@ function Navbar() {
   return (
     <>
       <nav className={"navbar navbar-expand-lg navbar-dark bg-light"}>
-        <ul className={"nav nav-pills"}>
-          <NavLink to="/" className={"nav-item nav-link"}>Home</NavLink>
+        <ul className={"nav nav-tabs"}>
+         <NavLink exact to="/" className={"nav-item nav-link"}>Home</NavLink>
+          {!user && <NavLink to="/login" className={"nav-item nav-link"}>Login</NavLink>}
           {user && <NavLink to="/logout" className={"nav-item nav-link"}>Logout</NavLink>}
           {user && <NavLink to="/profile" className={"nav-item nav-link"}>Profile</NavLink>}
-          {!user && <NavLink to="/login" className={"nav-item nav-link"}>Login</NavLink>}
           {!user && <NavLink to="/signup" className={"nav-item nav-link"}>Registration</NavLink>}
         </ul>
         <form className={"form-inline container"}>
