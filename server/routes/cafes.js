@@ -30,12 +30,10 @@ router
   })
   .post(async (req, res) => {
     try {
-      // console.log('>>>>>>>>REQ_PARAMS_ID: ', req.params.id)
-      // console.log('>>>>>>>>REQ_BODY_BEFORTE: ', req.body)
       const eventFromSite = req.body;
       // console.log('>>>>>>>>REQ_BODY: ', eventFromSite.title)
 
-      const user = await User.find({ login: eventFromSite.author })
+      const user = await User.findOne({ login: eventFromSite.author })
       // console.log('>>>>>>>user>>>>>>: ', user)
 
       const newEvent = new Event({
@@ -46,8 +44,8 @@ router
         date: eventFromSite.date,
       })
       await newEvent.save();
-      res.json({ eventCafe });
-      res.end()
+      // console.log('>>>>>>NEW_EVENT: ', eventCafe)
+      res.json(newEvent);
 
     } catch (error) {
       console.log(error.message);
