@@ -15,6 +15,7 @@ export default function CafePage() {
   const history = useHistory();
   const { id } = useParams();
   const user = useSelector((state) => state.enter);
+  
 
   function addToFavorites() {
     user.favorites.push(id);

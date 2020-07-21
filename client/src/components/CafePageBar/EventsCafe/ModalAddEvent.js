@@ -24,7 +24,9 @@ const ModalAddEvent = forwardRef((props, ref) => {
     return ReactDOM.createPortal(<div className={styles.modal_wrapper}>
       <div onClick={close} className={styles.modal_backdrop} />
       <div className={styles.modal_box}>
+        <div className={styles.modal_Area}>
         {props.children}
+        </div>
       </div>
     </div>, document.getElementById("modal-root"))
   }

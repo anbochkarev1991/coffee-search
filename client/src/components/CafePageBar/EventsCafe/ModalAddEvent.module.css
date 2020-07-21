@@ -28,11 +28,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
   min-height: 40%;
-  width: 35%;
+  width: 500px;
   overflow-y: auto;
   background-color: orange;
   box-shadow: 0 0 10px rgba(0,0,0,0.25);
   z-index: 101;
   padding: 40px;
   border-radius: 25px;
+}
+
+.modal_Area{
+  /* margin:auto;
+  color: red;
+  height: 80%; */
 }

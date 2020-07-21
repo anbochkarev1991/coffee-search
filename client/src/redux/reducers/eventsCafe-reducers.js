@@ -1,4 +1,4 @@
-import { LOAD_CAFE_EVENTS } from '../actions/action-types';
+import { LOAD_CAFE_EVENTS, ADD_CAFE_EVENTS } from '../actions/action-types';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -7,6 +7,14 @@ export default (state = {}, action) => {
         ...state,
         [action.payload.id]: action.payload.event,
       };
+    case ADD_CAFE_EVENTS:
+      return {
+        ...state,
+        [action.payload.id]: [
+          ...state[action.payload.id],
+          action.payload.event
+        ],
+      }
     default:
       return state;
   }
