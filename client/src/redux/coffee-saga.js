@@ -3,9 +3,10 @@ import {
   LOAD_CAFE_LIST_SAGA,
   EDIT_USER,
   ADD_CAFE,
+  LOAD_ALL_EVENTS_SAGA,
 } from './actions/action-types';
 import { failed, loadCafeList } from './actions/actions';
-// import { CALL_SIGNUP } from './actions/action-types';
+import { loadAllEvents } from './actions/events-actions';
 
 // Load list of all cafes from DB
 async function fetchCafesList() {
@@ -47,6 +48,7 @@ function* workerEdit(action) {
   }
 }
 
+// Add new cafe
 async function fetchNewCafe(cafe) {
   const response = await fetch('/api/cafes/new', {
     method: 'POST',
@@ -70,32 +72,29 @@ function* workerAddCafe(action) {
   }
 }
 
-// // user signup logic
-// async function fetchSignup(user) {
-//   const response = await fetch('/api/signup', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       login: user.login,
-//       email: user.email,
-//       password: user.password,
-//       birthday: user.birthday,
-//     }),
-//   });
+// Load all events
+async function fetchEvents() {
+  const response = await fetch('/api/events');
+  return response.json();
+}
 
-//   return response.json();
-// }
-
-// function* workerSignup(action) {
-//   const newUser = yield call(fetchSignup, action.payload);
-//   yield put(signup(action.payload));
-// }
+function* workerEvents() {
+  let list;
+  try {
+    const json = yield call(fetchEvents);
+    list = json.list;
+    if (json.error) {
+      yield put(failed(json.error));
+    }
+  } catch (error) {
+    yield put(failed(error.message));
+  }
+  yield put(loadAllEvents(list));
+}
 
 export default function* watcher() {
   yield takeEvery(LOAD_CAFE_LIST_SAGA, workerLoad);
   yield takeEvery(EDIT_USER, workerEdit);
   yield takeEvery(ADD_CAFE, workerAddCafe);
-  // yield takeEvery(CALL_SIGNUP, workerSignup);
+  yield takeEvery(LOAD_ALL_EVENTS_SAGA, workerEvents);
 }

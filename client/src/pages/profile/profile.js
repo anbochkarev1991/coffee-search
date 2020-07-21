@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Favorites from '../../components/Favotites/Favorites';
 import { useSelector, useDispatch } from 'react-redux';
 import { editUser } from '../../redux/actions/enter-actions';
@@ -26,7 +26,7 @@ function Profile() {
     setCafe({
       ...cafe,
       [name]: value,
-    })
+    });
   }
 
   function edit() {
@@ -44,11 +44,14 @@ function Profile() {
     dispatch(editUser(inputs));
   }
 
-
   async function searchCoordinates(address) {
-    const response = await fetch(`https://geocode-maps.yandex.ru/1.x/?apikey=95ef75db-c7f0-447b-9810-88ce1efe26d6&geocode=${address}&format=json`);
+    const response = await fetch(
+      `https://geocode-maps.yandex.ru/1.x/?apikey=95ef75db-c7f0-447b-9810-88ce1efe26d6&geocode=${address}&format=json`,
+    );
     let result = await response.json();
-    result = result.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ').reverse();
+    result = result.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos
+      .split(' ')
+      .reverse();
     return [Number(result[0]), Number(result[1])];
   }
 
@@ -56,11 +59,13 @@ function Profile() {
     event.preventDefault();
     setAddCafe(!addCafe);
     const coords = await searchCoordinates(cafe.address);
-    dispatch(addNewCafe({
-      ...cafe,
-      latitude: coords[0],
-      longitude: coords[1],
-    }));
+    dispatch(
+      addNewCafe({
+        ...cafe,
+        latitude: coords[0],
+        longitude: coords[1],
+      }),
+    );
   }
   //   const myGeocoder = window.ymaps.geocode("Соловьиный проезд, 2");
   //   myGeocoder.then(
@@ -131,10 +136,9 @@ function Profile() {
         <Favorites />
       </div>
 
-
-      {addCafe ?
-        (<form onSubmit={saveCafe}>
-          <div className={"form-group"}>
+      {addCafe ? (
+        <form onSubmit={saveCafe}>
+          <div className={'form-group'}>
             <input
               required
               type="text"
@@ -142,10 +146,10 @@ function Profile() {
               name="name"
               value={cafe.name}
               placeholder="Name"
-              className={"form-control"}
+              className={'form-control'}
             />
           </div>
-          <div className={"form-group"}>
+          <div className={'form-group'}>
             <input
               required
               type="address"
@@ -153,10 +157,10 @@ function Profile() {
               name="address"
               value={cafe.address}
               placeholder="Address"
-              className={"form-control"}
+              className={'form-control'}
             />
           </div>
-          <div className={"form-group"}>
+          <div className={'form-group'}>
             <input
               required
               type="text"
@@ -164,24 +168,36 @@ function Profile() {
               name="rating"
               value={cafe.rating}
               placeholder="Rating"
-              className={"form-control"}
+              className={'form-control'}
             />
           </div>
-          <button onClick={saveCafe} type="button" className="btn btn-primary mb-2">
+          <button
+            onClick={saveCafe}
+            type="button"
+            className="btn btn-primary mb-2"
+          >
             Save
           </button>
-          <button onClick={addCafeForm} type="button" className="btn btn-primary mb-2">
+          <button
+            onClick={addCafeForm}
+            type="button"
+            className="btn btn-primary mb-2"
+          >
             Cancel
           </button>
-        </form>) : (
-          <>
-            <br />
-            <button onClick={addCafeForm} type="button" className="btn btn-primary mb-2">
-              Add cafe
-            </button>
-          </>
-        )
-      }
+        </form>
+      ) : (
+        <>
+          <br />
+          <button
+            onClick={addCafeForm}
+            type="button"
+            className="btn btn-primary mb-2"
+          >
+            Add cafe
+          </button>
+        </>
+      )}
     </div>
   );
 }

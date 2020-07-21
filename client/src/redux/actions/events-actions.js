@@ -1,4 +1,4 @@
-import { FAILED, LOAD_ALL_EVENTS, LOAD_ALL_EVENTS_SAGA } from './action-types';
+import { LOAD_ALL_EVENTS, LOAD_ALL_EVENTS_SAGA } from './action-types';
 
 export function loadAllEvents(list) {
   return {

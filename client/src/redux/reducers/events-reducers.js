@@ -4,7 +4,7 @@ export default (state = { list: [], error: '' }, action) => {
   switch (action.type) {
     case LOAD_ALL_EVENTS:
       return {
-        list: action.payload,
+        list: [...action.payload],
         error: '',
       };
     case FAILED:

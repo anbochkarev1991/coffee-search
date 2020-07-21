@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.route('/').get(async (req, res) => {
   try {
-    const list = Event.find().sort({ date: -1 });
+    const list = await Event.find().sort({ date: -1 });
     return res.json({ list });
   } catch (error) {
     console.log(error.message);
