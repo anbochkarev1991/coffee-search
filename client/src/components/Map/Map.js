@@ -6,8 +6,6 @@ dotenv.config();
 
 function Map() {
 
-
-
 const [mapActive, setMapActive] = useState(false)
   const cafes = useSelector((state) => state.coffee.list);
   
@@ -40,17 +38,6 @@ const [mapActive, setMapActive] = useState(false)
         hintContent: cafes[i].name,
       }));
     }
-    
-    const myGeocoder = window.ymaps.geocode("Соловьиный проезд, 2");
-        myGeocoder.then(
-      function (res) {
-        newMap.geoObjects.add(res.geoObjects);
-        console.log(res.geoObjects.properties._data.metaDataProperty.GeocoderResponseMetaData.boundedBy[0].reverse());
-      },
-      function (err) {
-        console.log(err);
-      }
-    );
 
     newMap.geoObjects.add(cafesCollection);
 
@@ -63,7 +50,6 @@ const [mapActive, setMapActive] = useState(false)
   //     result.geoObjects.options.set('preset', 'islands#darkgreenCircleIcon');
   //     newMap.geoObjects.add(result.geoObjects);
   // });
-    // Альтернативный метод определения геолокации пользователя с помощью браузерного Geolocation API (точность меньше)
     const myPlacemark = new window.ymaps.Placemark([position.coords.latitude, position.coords.longitude], {
       balloonContentHeader: 'Ваше местоположение',
       hintContent: 'Ваше местоположение',

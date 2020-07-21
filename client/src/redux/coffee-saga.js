@@ -2,7 +2,7 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 import {
   LOAD_CAFE_LIST_SAGA,
   EDIT_USER,
-  ADD_TO_FAV,
+  ADD_CAFE,
 } from './actions/action-types';
 import { failed, loadCafeList } from './actions/actions';
 import { addToFav } from './actions/enter-actions';
@@ -48,6 +48,29 @@ function* workerEdit(action) {
   }
 }
 
+async function fetchNewCafe(cafe) {
+  const response = await fetch('/api/cafes/new', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ cafe }),
+  });
+  console.log(response);
+  return response.json();
+}
+
+function* workerAddCafe(action) {
+  const json = yield call(fetchNewCafe, action.payload);
+  try {
+    if (json.err) {
+      yield put(failed(json.error));
+    }
+  } catch (err) {
+    yield put(failed(err.message));
+  }
+}
+
 // // user signup logic
 // async function fetchSignup(user) {
 //   const response = await fetch('/api/signup', {
@@ -74,5 +97,6 @@ function* workerEdit(action) {
 export default function* watcher() {
   yield takeEvery(LOAD_CAFE_LIST_SAGA, workerLoad);
   yield takeEvery(EDIT_USER, workerEdit);
+  yield takeEvery(ADD_CAFE, workerAddCafe);
   // yield takeEvery(CALL_SIGNUP, workerSignup);
 }

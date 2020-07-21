@@ -1,9 +1,8 @@
 import {
-  ADD_TO_FAV,
-  ADD_TO_FAV_SAGA,
   FAILED,
   LOAD_CAFE_LIST,
   LOAD_CAFE_LIST_SAGA,
+  ADD_CAFE,
 } from './action-types';
 
 export function loadCafeList(list) {
@@ -24,5 +23,12 @@ export function failed(err) {
     type: FAILED,
     payload: err,
     error: true,
+  };
+}
+
+export function addNewCafe(data) {
+  return {
+    type: ADD_CAFE,
+    payload: data,
   };
 }
