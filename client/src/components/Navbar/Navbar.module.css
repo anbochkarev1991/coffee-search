@@ -1,6 +1,5 @@
-.container {
+#container {
   display: flex;
   float: right;
-  justify-self: right;
 }
 

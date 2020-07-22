@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className={"navbar navbar-expand-lg navbar-dark bg-light"}>
+      <nav className={"navbar navbar-expand-lg navbar-dark bg-light d-flex justify-content-between"}>
         <ul className={"nav nav-tabs"}>
          <NavLink exact to="/" className={"nav-item nav-link"}>Home</NavLink>
           {!user && <NavLink to="/login" className={"nav-item nav-link"}>Login</NavLink>}
@@ -16,11 +16,9 @@ function Navbar() {
           {user && <NavLink to="/profile" className={"nav-item nav-link"}>Profile</NavLink>}
           {!user && <NavLink to="/signup" className={"nav-item nav-link"}>Registration</NavLink>}
         </ul>
-        <form className={"form-inline container"}>
-          <input className={"form-control mr-sm-2 container"} type="search" placeholder="Search" aria-label="Search" />
-          <button className={"btn btn-outline-success my-2 my-sm-0"} type="submit">Search</button>
-        </form>
-        {user &&<h5> Welcome, {user}</h5>}
+        <div className="d-flex justify-content-end">
+          {user &&<h5> Добро пожаловать, {user}</h5>}
+        </div>
       </nav>
     </>
   );
