@@ -94,25 +94,25 @@ function* workerEvents() {
 }
 
 // Add rate
-async function fetchAddRate(rate) {
-  const response = await fetch(`/api/cafes/${id}/rate`);
-}
+// async function fetchAddRate(rate) {
+//   const response = await fetch(`/api/cafes/${id}/rate`);
+// }
 
-function* workerRating(action) {
-  try {
-    const json = yield call(fetchAddRate, action.payload);
-    if (json.error) {
-      yield put(failed(json.error));
-    }
-  } catch (error) {
-    yield put(failed(error.message));
-  }
-}
+// function* workerRating(action) {
+//   try {
+//     const json = yield call(fetchAddRate, action.payload);
+//     if (json.error) {
+//       yield put(failed(json.error));
+//     }
+//   } catch (error) {
+//     yield put(failed(error.message));
+//   }
+// }
 
 export default function* watcher() {
   yield takeEvery(LOAD_CAFE_LIST_SAGA, workerLoad);
   yield takeEvery(EDIT_USER, workerEdit);
   yield takeEvery(ADD_CAFE, workerAddCafe);
   yield takeEvery(LOAD_ALL_EVENTS_SAGA, workerEvents);
-  yield takeEvery(ADD_RATE, workerRating);
+  // yield takeEvery(ADD_RATE, workerRating);
 }
