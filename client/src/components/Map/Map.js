@@ -12,7 +12,6 @@ function Map() {
   const [mapActive, setMapActive] = useState(false);
   const [newMap, setNewMap] = useState();
   const [error, setError] = useState(false);
-  const [city, setCity] = useState();
 
   const cafes = useSelector((state) => state.coffee.list);
   const user = useSelector((state) => state.enter.login);
