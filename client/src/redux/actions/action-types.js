@@ -13,3 +13,4 @@ export const ADD_CAFE_EVENTS = 'ADD_CAFE_EVENTS';
 export const LOAD_ALL_EVENTS = 'LOAD_ALL_EVENTS';
 export const LOAD_ALL_EVENTS_SAGA = 'LOAD_ALL_EVENTS_SAGA';
 export const ADD_CAFE = 'ADD_CAFE';
+export const ADD_RATE = 'ADD_RATE';

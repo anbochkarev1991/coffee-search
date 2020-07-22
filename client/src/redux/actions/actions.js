@@ -3,6 +3,7 @@ import {
   LOAD_CAFE_LIST,
   LOAD_CAFE_LIST_SAGA,
   ADD_CAFE,
+  ADD_RATE,
 } from './action-types';
 
 export function loadCafeList(list) {
@@ -30,5 +31,12 @@ export function addNewCafe(data) {
   return {
     type: ADD_CAFE,
     payload: data,
+  };
+}
+
+export function addRate(rate) {
+  return {
+    type: ADD_RATE,
+    payload: rate,
   };
 }
