@@ -24,7 +24,7 @@ function List() {
         list.map((cafe) => (
           <React.Fragment key={cafe._id}>
             <Link to={`/cafes/${cafe._id}/menu`}>
-              <strong>{cafe.name}</strong>
+              <strong className={styles.cafes}>{cafe.name}</strong>
             </Link>
             <p>
               Rating: {cafe.rating.length ? averageRating(cafe) : 'Unrated'}
