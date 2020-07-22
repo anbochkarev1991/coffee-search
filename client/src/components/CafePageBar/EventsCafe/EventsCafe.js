@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCafeEvent, addCafeEvent } from '../../../redux/actions/eventsCafe-action';
+import { loadCafeEvent, addCafeEvent, deleteCafeEvent } from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';
 
 export default function EventsCafe({ id }) {
@@ -12,24 +12,25 @@ export default function EventsCafe({ id }) {
     date: Date,
   })
 
-  const idEvent = id
-  // console.log('>>>>>>>ID >>>>>>: ', idEvent)
-
+  const idEvent = id;
   const dispatch = useDispatch();
   const eventCafe = useSelector((state) => state.eventsCafe[idEvent]);
+  const user = useSelector((state) => state.enter.login);
 
   // Load event from DB
   async function showEvent() {
     const response = await fetch(`/api/cafes/${idEvent}/events`);
     console.log('>>>>>>>RESPONSE', response);
     const result = await response.json();
-    console.log('>>>>>RESULT_BEFORE: ', result);
+    console.log('>>>>>RESULT_BEFORgE: ', result);
     if (result.eventCafe.length) {
       const data = result.eventCafe.filter(
         (event) => event.location === idEvent,
       );
+      console.log('>>>DATA POPULATE: ', data)
       dispatch(loadCafeEvent(data, idEvent));
     }
+    // return eventCafe;
   }
 
   useEffect(() => {
@@ -53,7 +54,6 @@ export default function EventsCafe({ id }) {
 
   async function addNewEvent(event) {
     event.preventDefault();
-    // console.log('>>>>>>NEW_EVENT: ', newEvent)
     const response = await fetch(`/api/cafes/${idEvent}/events`, {
       method: 'POST',
       headers: {
@@ -64,18 +64,30 @@ export default function EventsCafe({ id }) {
     modalRef.current.close()
     const result = await response.json()
     console.log('>>>>>>>>RESULT2222222: ', result)
-
-    // const data = result.filter((event) => event.location === idEvent)
-    // console.log('>>>>>>DATA_2: ', data)
     dispatch(addCafeEvent(result, idEvent))
-
   };
+
+  //Delete event cafe
+  async function deleteEventCafe(id) {
+    const response = await fetch(`/api/cafes/${idEvent}/events`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    });
+    if (response.status === 200) {
+      dispatch(deleteCafeEvent(id, idEvent));
+    }
+  };
+
 
   return (
     <>
       <div className="cafeContent">
         <h2>События в нашей кофейне:</h2>
-        <button className="addEventBtn" onClick={addEventModal}>Создать событие</button>
+        {user && <button className="addEventBtn" onClick={addEventModal}>Создать событие</button>}
+        <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
             <label htmlFor="newevent">
@@ -85,8 +97,6 @@ export default function EventsCafe({ id }) {
               <br></br>
               <input onChange={inputEvent} name="body" type="text" placeholder="Описание" style={{ "height": "75px", "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
-              {/* <input type="text" placeholder="Кофейня" style={{"width": "350px"}}/>
-          <br></br> */}
               <input onChange={inputEvent} name="author" type="text" placeholder="Организатор" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
               <input onChange={inputEvent} name="date" type="date" placeholder="Дата" style={{ "width": "420px", "backgroundColor": "orange" }} />
@@ -96,16 +106,18 @@ export default function EventsCafe({ id }) {
             <input type="submit" value="Создать" style={{ "backgroundColor": "dodgerblue" }} />
           </form>
         </Modal>
-       
+
         {eventCafe &&
           eventCafe.map((event) => (
             <React.Fragment key={event._id}>
+              <hr></hr>
               <p>
                 <strong>{event.title}</strong>
               </p>
               <p>Информация: {event.body}</p>
               <p>Дата: {event.date}</p>
-              <p>Организатор: {event.author}</p>
+              <p>Организатор: {event.author.login}</p>
+              {user && <button className="addEventBtn" id={event._id} onClick={() => deleteEventCafe(event._id)}>Удалить</button>}
             </React.Fragment>
           ))}
       </div>

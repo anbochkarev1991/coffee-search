@@ -131,7 +131,7 @@ export default function CafePage() {
       </div>
       <Switch>
         <Route path="/cafes/:id/menu">
-          <Menu />
+          <Menu id={id}/>
         </Route>
         <Route path="/cafes/:id/barista">
           <Barista />
