@@ -4,11 +4,22 @@ import { Link } from 'react-router-dom';
 import styles from './List.module.css';
 
 function List() {
-  const list = useSelector((state) => state.coffee.list);
+  let list = useSelector((state) => state.coffee.list);
+
+  function averageRating(element) {
+    return (
+      element.rating.reduce((acc, rate) => {
+        return acc + rate.value;
+      }, 0) / element.rating.length
+    );
+  }
+
+  list.sort((a, b) => averageRating(b) - averageRating(a));
+  list = list.slice(0, 10);
 
   return (
     <div className={styles.topRated}>
-      <h3>Top rated</h3>
+      <h3>Top 10</h3>
       {list &&
         list.map((cafe) => (
           <React.Fragment key={cafe._id}>
@@ -16,12 +27,7 @@ function List() {
               <strong>{cafe.name}</strong>
             </Link>
             <p>
-              Rating:{' '}
-              {cafe.rating.length
-                ? cafe.rating.reduce((acc, rate) => {
-                    return acc + rate.value;
-                  }, 0) / cafe.rating.length
-                : 'Unrated'}
+              Rating: {cafe.rating.length ? averageRating(cafe) : 'Unrated'}
             </p>
           </React.Fragment>
         ))}
