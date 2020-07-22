@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import styles from './Map.module.css';
 import AddCafe from '../AddCafe/AddCafe';
 import { searchCafe } from '../../redux/actions/actions';
+import { cities } from './cities';
 dotenv.config();
 
 function Map() {
@@ -27,6 +28,11 @@ function Map() {
       ...search,
       [name]: value,
     }))
+  }
+
+  async function selectChange({ target : { value }}) {
+    const coords = await searchCoordinates(value);
+    newMap.setCenter(coords, 13);
   }
 
   async function searchCoordinates(address) {
@@ -53,7 +59,7 @@ function Map() {
           latitude: cafe.latitude,
           longitude: cafe.longitude,
         }));
-        newMap.setCenter(coords)
+        newMap.setCenter(coords, 16)
       }
     } catch (err) {
       console.log(err);
@@ -101,14 +107,20 @@ function Map() {
   return (
     <>
       <h3>Beautiful map</h3>
+      <p>Выберете город:</p>
+      <select onChange={selectChange}>
+        <option>Москва</option>
+        <option>Санкт-Петербург</option>
+        {cities.map((city) => <option>{city}</option>)}
+      </select>
       <div className={styles.mapPosition}>
-        <div id="map" style={{ width: "700px", height: "600px" }}></div>
+        <div id="map" style={{ width: "600px", height: "500px" }}></div>
       </div>
       <form className={"form-inline justify-content-center"} onSubmit={handleSubmit}>
         {error && <h4 className={"form-control mr-sm-2"} style={{ color: "tomato", border: "1px solid lightgrey", width: "600px" }}>{error}</h4>}
         <input
           className={"form-control mr-sm-2 d-flex"}
-          style={{ width: "285px", margin: "0 0 0 20px" }}
+          style={{ width: "230px", margin: "0 0 0 20px" }}
           type="search"
           name="name"
           onChange={handleChange}
@@ -117,7 +129,7 @@ function Map() {
         />
         <input
           className={"form-control mr-sm-2"}
-          style={{ width: "285px", margin: "0 0 0 20px" }}
+          style={{ width: "230px", margin: "0 0 0 20px" }}
           type="search"
           name="address"
           onChange={handleChange}

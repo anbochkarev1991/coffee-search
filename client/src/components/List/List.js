@@ -15,7 +15,7 @@ function List() {
             <Link to={`/cafes/${cafe._id}`}>
               <strong>{cafe.name}</strong>
             </Link>
-            <p>Rating: {cafe.rating}</p>
+            {/* <p>Rating: {cafe.rating}</p> */}
           </React.Fragment>
         ))}
     </div>

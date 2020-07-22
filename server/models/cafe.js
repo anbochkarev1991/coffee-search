@@ -24,7 +24,7 @@ const cafeSchema = new Schema({
     required: true,
   },
   rating: {
-    type: Number,
+    type: Array,
   },
   info: {
     type: Object,
