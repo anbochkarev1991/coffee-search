@@ -30,13 +30,13 @@ export default function Login() {
       }),
     });
 
-    const result = await response.json();
+    // const result = await response.json();
 
     if (response.status === 200) {
       setError(false);
-      dispatch(loginFunc(result));
+      dispatch(loginFunc(await response.json()));
       return history.push('/');
-    } else {
+    } else if (response.status === 401) {
       setError('Неправильные логин или пароль');
     }
   }
@@ -80,9 +80,9 @@ export default function Login() {
           </label>
         </div>
         <button type="submit" className="btn btn-primary mb-2">Войти</button>
+        {user && <h3>Добро пожаловать, {user}!</h3>}
+        {error && <h4 className={"d-flex justify-content-center"} style={{ color: "tomato", border: "1px solid lightgrey", width: "600px" }}>{error}</h4>}
       </form>
-      {user && <h3>Добро пожаловать, {user}!</h3>}
-      {error}
     </>
   );
 }
