@@ -21,9 +21,8 @@ router
   .route('/:id/events')
   .get(async (req, res) => {
     try {
-      // console.log('>>>>>>>>REQ_PARAMS_ID: ', req.params.id)
-      const eventCafe = await Event.find({ location: req.params.id })
-      // console.log(eventCafe)
+      const eventCafe = await Event.find({ location: req.params.id }).populate('author').sort({ 'date': 1 });
+      console.log(eventCafe)
       return res.json({ eventCafe })
     } catch (error) {
       console.log(error.message);
@@ -33,11 +32,7 @@ router
   .post(async (req, res) => {
     try {
       const eventFromSite = req.body;
-      // console.log('>>>>>>>>REQ_BODY: ', eventFromSite.title)
-
       const user = await User.findOne({ login: eventFromSite.author })
-      // console.log('>>>>>>>user>>>>>>: ', user)
-
       const newEvent = new Event({
         title: eventFromSite.title,
         body: eventFromSite.body,
@@ -46,14 +41,22 @@ router
         date: eventFromSite.date,
       })
       await newEvent.save();
-      // console.log('>>>>>>NEW_EVENT: ', eventCafe)
       res.json(newEvent);
-
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
     }
   })
+  .delete(async (req, res) => {
+    try {
+      await Event.deleteOne({ _id: req.body.id });
+      res.end();
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+
 router.route('/:id').get(async (req, res) => {
   const { id } = req.params;
   try {
@@ -87,9 +90,7 @@ router
   .route('/:id/menu')
   .get(async (req, res) => {
     try {
-      // console.log('REQ_PARAMS_ID Menu: ', req.params.id)
       const menu = await Menu.find({ location: req.params.id })
-      // console.log('MENU from back', menu)
       return res.json({ menu })
     } catch (error) {
       console.log(error.message);
@@ -99,10 +100,7 @@ router
   .post(async (req, res) => {
     try {
       const itemFromSite = req.body;
-      console.log('>>>>>>>>REQ_BODY_ITEM: ', itemFromSite)
       const cafe = await Cafe.findOne({ _id: req.params.id })
-      console.log('>>>>>>>cafe>>>>>>: ', cafe)
-
       const newItem = new Menu({
         goods: itemFromSite.goods,
         cost: itemFromSite.cost,
@@ -118,7 +116,6 @@ router
   })
   .delete(async (req, res) => {
     try {
-      // console.log('>>>>>REQ_BODY_ID_DELETE: ', req.body.id)
       await Menu.deleteOne({ _id: req.body.id });
       res.end();
     } catch (error) {

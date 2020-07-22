@@ -78,8 +78,6 @@ export default function Menu({ id }) {
     if (response.status === 200) {
       dispatch(deleteItemMenu(id, idCafe))
     }
-
-
   };
 
   return (
