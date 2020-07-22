@@ -23,9 +23,7 @@ const cafeSchema = new Schema({
     type: String,
     required: true,
   },
-  rating: {
-    type: Array,
-  },
+  rating: [Object],
   info: {
     type: Object,
   },

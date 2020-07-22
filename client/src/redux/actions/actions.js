@@ -3,6 +3,7 @@ import {
   LOAD_CAFE_LIST,
   LOAD_CAFE_LIST_SAGA,
   ADD_CAFE,
+  ADD_RATE,
   SEARCH_CAFE,
 } from './action-types';
 
@@ -34,9 +35,16 @@ export function addNewCafe(data) {
   };
 }
 
+export function addRate(rate) {
+  return {
+    type: ADD_RATE,
+    payload: rate,
+  };
+}
+
 export function searchCafe(data) {
   return {
     type: SEARCH_CAFE,
     payload: data,
-  }
+  };
 }

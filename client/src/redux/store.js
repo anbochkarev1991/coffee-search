@@ -7,6 +7,7 @@ import coffeeReducer from './reducers/coffee';
 import enterReducer from './reducers/enter-reducers';
 import eventReducer from './reducers/eventsCafe-reducers';
 import allEventsReducer from './reducers/events-reducers';
+import menu from './reducers/menu-reducers';
 
 const sagaMiddleware = reduxSaga();
 
@@ -19,6 +20,7 @@ const store = createStore(
     enter: enterReducer,
     eventsCafe: eventReducer,
     events: allEventsReducer,
+    menu: menu,
   }),
   initialState,
   composeWithDevTools(applyMiddleware(sagaMiddleware)),
