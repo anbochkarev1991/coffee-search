@@ -1,10 +1,15 @@
 body {
   margin: 0;
+  width: 100%;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/coffee-search-images/brown-nut-lot-942810.jpg") repeat-y 0%;
+  background-size: cover;
+  background-clip: content-box;
 }
 
 code {

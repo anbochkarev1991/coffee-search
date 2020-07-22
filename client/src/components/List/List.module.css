@@ -1,6 +1,12 @@
 .topRated {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  align-items: center;
   text-align: left;
+  background-color: rgba(168, 111, 64, 0.623);
+  color: white;
+}
+
+.cafes {
+  color: rgb(58, 65, 68);
 }
