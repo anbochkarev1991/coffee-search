@@ -103,7 +103,7 @@ export default function CafePage() {
           <Menu id={id}/>
         </Route>
         <Route path="/cafes/:id/barista">
-          <Barista />
+          <Barista id={id}/>
         </Route>
         <Route path="/cafes/:id/batch">
           <Batch />

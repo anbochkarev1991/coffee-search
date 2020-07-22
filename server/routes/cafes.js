@@ -3,6 +3,7 @@ import Cafe from '../models/cafe.js';
 import Event from '../models/event.js';
 import User from '../models/user.js';
 import Menu from '../models/menu.js';
+import Barista from '../models/barista.js';
 
 
 const router = express.Router();
@@ -118,6 +119,20 @@ router
     try {
       await Menu.deleteOne({ _id: req.body.id });
       res.end();
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+
+router
+  .route('/:id/barista')
+  .get(async (req, res) => {
+    try {
+      console.log('>>>>>Barists REQ PARAMS: ', req.params.id)
+      const barista = await Barista.find({ location: req.params.id })
+      console.log('>>>>>BACKEND BARISTAS: ', barista)
+      return res.json({ barista })
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });

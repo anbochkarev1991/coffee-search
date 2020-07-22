@@ -99,4 +99,9 @@
   font-size: 10px;
   background-color: inherit;
 }
-
+.baristaContent{
+  width: 300px;
+  margin: auto;
+  padding: 15px;
+  /* display: flex; */
+}
