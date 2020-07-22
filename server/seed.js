@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import Cafe from './models/cafe.js';
 import User from './models/user.js';
 import Event from './models/event.js';
+import Menu from './models/menu.js';
 import dotenv from 'dotenv';
 
 const { connect, disconnect } = mongoose;
@@ -67,34 +68,54 @@ async function seed() {
   //   }),
   // ];
 
-  const events = [
-    // new Event({
-    //   title: 'Мастер класс по капучинно',
-    //   body: 'Бариста призер чемпионатов покажет каждому как варить, местпа ограничены - только 15 человек',
-    //   location: '5f12c5019632fa02e5660e56',
-    //   author: '5f12f7841134550a6f4939fa',
+  // const events = [
+  // new Event({
+  //   title: 'Мастер класс по капучинно',
+  //   body: 'Бариста призер чемпионатов покажет каждому как варить, местпа ограничены - только 15 человек',
+  //   location: '5f12c5019632fa02e5660e56',
+  //   author: '5f12f7841134550a6f4939fa',
 
-    // }),
-    // new Event({
-    //   title: 'Мастер класс по спаггети',
-    //   body: 'Шеф-повар покажет каждому как варить, места ограничены - только 12 человек',
-    //   location: '5f12c5019632fa02e5660e5a',
-    //   author: '5f142219cda6ce4d7e7b9d61',
+  // }),
+  // new Event({
+  //   title: 'Мастер класс по спаггети',
+  //   body: 'Шеф-повар покажет каждому как варить, места ограничены - только 12 человек',
+  //   location: '5f12c5019632fa02e5660e5a',
+  //   author: '5f142219cda6ce4d7e7b9d61',
 
-    // }),
-    new Event({
-      title: 'День Рождение бариста Толика',
-      body: 'Наш красава Толик принимает поздравления от друзей кофейни и угощает всех особенным эспрессо',
+  // }),
+  //   new Event({
+  //     title: 'День Рождение бариста Толика',
+  //     body: 'Наш красава Толик принимает поздравления от друзей кофейни и угощает всех особенным эспрессо',
+  //     location: '5f12c5019632fa02e5660e56',
+  //     author: '5f142219cda6ce4d7e7b9d61',
+  //   })
+  // ]
+
+  const menu = [
+    new Menu({
+      goods: 'Espresso',
+      cost: 150,
+      size: 0.4,
       location: '5f12c5019632fa02e5660e56',
-      author: '5f142219cda6ce4d7e7b9d61',
+    }),
+    new Menu({
+      goods: 'Americano',
+      cost: 120,
+      size: 0.6,
+      location: '5f12c5019632fa02e5660e56',
+    }),
+    new Menu({
+      goods: 'Espresso',
+      cost: 140,
+      size: 0.4,
+      location: '5f12c5019632fa02e5660e5a',
     })
   ]
 
-
   // await Cafe.insertMany(cafe);
   // await User.insertMany(users);
-  await Event.insertMany(events);
-
+  // await Event.insertMany(events);
+  await Menu.insertMany(menu)
   disconnect();
 }
 

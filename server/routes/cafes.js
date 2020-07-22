@@ -2,6 +2,8 @@ import express from 'express';
 import Cafe from '../models/cafe.js';
 import Event from '../models/event.js';
 import User from '../models/user.js';
+import Menu from '../models/menu.js';
+
 
 const router = express.Router();
 
@@ -80,5 +82,17 @@ router.post('/new', async (req, res) => {
     res.status(500).end();
   }
 });
+
+router.route('/:id/menu').get(async (req, res) => {
+  try {
+    console.log('REQ_PARAMS_ID Menu: ', req.params.id)
+    const menu = await Menu.find({ location: req.params.id })
+    console.log('MENU from back', menu)
+    return res.json({ menu })
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ error: error.message });
+  }
+})
 
 export default router;

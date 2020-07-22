@@ -30,6 +30,7 @@ export default function EventsCafe({ id }) {
       );
       dispatch(loadCafeEvent(data, idEvent));
     }
+    // return eventCafe;
   }
 
   useEffect(() => {
