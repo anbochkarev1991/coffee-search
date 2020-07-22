@@ -1,4 +1,4 @@
-import { LOAD_MENU } from '../actions/action-types';
+import { LOAD_MENU, ADD_MENU, DELETE_MENU } from '../actions/action-types';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -7,8 +7,20 @@ export default (state = {}, action) => {
         ...state,
         [action.payload.id]: action.payload.event,
       }
+    case ADD_MENU:
+      return {
+        ...state,
+        [action.payload.id]: [
+          ...(state[action.payload.id] || []),
+          action.payload.event
+        ],
+      }
+    case DELETE_MENU:
+      return {
+        ...state,
+        [action.payload.id]: state[action.payload.id].filter((item) => action.payload.event !== item._id)
+      }
     default:
       return state;
   }
 }
-

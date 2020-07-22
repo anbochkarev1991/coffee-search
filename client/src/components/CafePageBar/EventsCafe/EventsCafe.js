@@ -77,6 +77,7 @@ export default function EventsCafe({ id }) {
       <div className="cafeContent">
         <h2>События в нашей кофейне:</h2>
         <button className="addEventBtn" onClick={addEventModal}>Создать событие</button>
+        <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
             <label htmlFor="newevent">

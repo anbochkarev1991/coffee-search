@@ -15,3 +15,6 @@ export const LOAD_ALL_EVENTS_SAGA = 'LOAD_ALL_EVENTS_SAGA';
 export const ADD_CAFE = 'ADD_CAFE';
 export const LOAD_MENU = 'LOAD_MENU';
 export const SEARCH_CAFE = 'SEARCH_CAFE';
+export const ADD_MENU = 'ADD_MENU';
+export const DELETE_MENU = 'DELETE_MENU';
+export const DELETE_CAFE_EVENTS = 'DELETE_CAFE_EVENTS';

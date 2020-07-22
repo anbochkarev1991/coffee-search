@@ -83,16 +83,48 @@ router.post('/new', async (req, res) => {
   }
 });
 
-router.route('/:id/menu').get(async (req, res) => {
-  try {
-    console.log('REQ_PARAMS_ID Menu: ', req.params.id)
-    const menu = await Menu.find({ location: req.params.id })
-    console.log('MENU from back', menu)
-    return res.json({ menu })
-  } catch (error) {
-    console.log(error.message);
-    return res.json({ error: error.message });
-  }
-})
+router
+  .route('/:id/menu')
+  .get(async (req, res) => {
+    try {
+      // console.log('REQ_PARAMS_ID Menu: ', req.params.id)
+      const menu = await Menu.find({ location: req.params.id })
+      // console.log('MENU from back', menu)
+      return res.json({ menu })
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const itemFromSite = req.body;
+      console.log('>>>>>>>>REQ_BODY_ITEM: ', itemFromSite)
+      const cafe = await Cafe.findOne({ _id: req.params.id })
+      console.log('>>>>>>>cafe>>>>>>: ', cafe)
+
+      const newItem = new Menu({
+        goods: itemFromSite.goods,
+        cost: itemFromSite.cost,
+        size: itemFromSite.size,
+        location: req.params.id,
+      });
+      await newItem.save();
+      res.json(newItem);
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      // console.log('>>>>>REQ_BODY_ID_DELETE: ', req.body.id)
+      await Menu.deleteOne({ _id: req.body.id });
+      res.end();
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
 
 export default router;
