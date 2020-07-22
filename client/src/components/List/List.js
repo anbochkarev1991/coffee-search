@@ -15,7 +15,14 @@ function List() {
             <Link to={`/cafes/${cafe._id}/menu`}>
               <strong>{cafe.name}</strong>
             </Link>
-            <p>Rating: {cafe.rating}</p>
+            <p>
+              Rating:{' '}
+              {cafe.rating.length
+                ? cafe.rating.reduce((acc, rate) => {
+                    return acc + rate.value;
+                  }, 0) / cafe.rating.length
+                : 'Unrated'}
+            </p>
           </React.Fragment>
         ))}
     </div>

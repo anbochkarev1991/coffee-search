@@ -19,10 +19,8 @@ router
   .route('/:id/events')
   .get(async (req, res) => {
     try {
-      // console.log('>>>>>>>>REQ_PARAMS_ID: ', req.params.id)
-      const eventCafe = await Event.find({ location: req.params.id })
-      // console.log(eventCafe)
-      return res.json({ eventCafe })
+      const eventCafe = await Event.find({ location: req.params.id });
+      return res.json({ eventCafe });
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
@@ -31,10 +29,7 @@ router
   .post(async (req, res) => {
     try {
       const eventFromSite = req.body;
-      // console.log('>>>>>>>>REQ_BODY: ', eventFromSite.title)
-
-      const user = await User.findOne({ login: eventFromSite.author })
-      // console.log('>>>>>>>user>>>>>>: ', user)
+      const user = await User.findOne({ login: eventFromSite.author });
 
       const newEvent = new Event({
         title: eventFromSite.title,
@@ -42,16 +37,44 @@ router
         author: user._id,
         location: req.params.id,
         date: eventFromSite.date,
-      })
+      });
       await newEvent.save();
-      // console.log('>>>>>>NEW_EVENT: ', eventCafe)
       res.json(newEvent);
-
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
     }
-  })
+  });
+
+// Add rate
+router.route('/:id/rate').patch(async (req, res) => {
+  const { id } = req.params;
+  const { value, user } = req.body;
+  const rate = { user, value };
+
+  if (!user) {
+    return res.json({ error: 'Please log in to vote' });
+  }
+
+  try {
+    const cafe = await Cafe.findById(id);
+    const currentVote = cafe.rating.find((elem) => elem.user === user);
+
+    if (currentVote) {
+      currentVote.value = value;
+    } else {
+      cafe.rating.push(rate);
+    }
+
+    cafe.markModified('rating');
+    await cafe.save();
+    return res.json({ cafe });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ error: error.message });
+  }
+});
+
 router.route('/:id').get(async (req, res) => {
   const { id } = req.params;
   try {

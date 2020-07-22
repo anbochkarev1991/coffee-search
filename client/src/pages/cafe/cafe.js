@@ -20,6 +20,15 @@ export default function CafePage() {
   const user = useSelector((state) => state.enter);
   const [cafe, setCafe] = useState({});
 
+  console.log(cafe);
+  let averageRating;
+  if (cafe.rating) {
+    averageRating =
+      cafe.rating.reduce((acc, rate) => {
+        return acc + rate.value;
+      }, 0) / cafe.rating.length;
+  }
+
   useEffect(() => {
     (async () => {
       const response = await fetch(`/api/cafes/${id}`);
@@ -70,7 +79,7 @@ export default function CafePage() {
           start={0}
           stop={5}
           step={1}
-          initialRating={cafe.rating}
+          initialRating={averageRating}
           quiet={false}
           onClick={(value) => {
             const rate = {

@@ -23,7 +23,7 @@ const cafeSchema = new Schema({
     type: String,
     required: true,
   },
-  rating: [{ type: Schema.Types.ObjectId, ref: 'Rate' }],
+  rating: [Object],
   info: {
     type: Object,
   },
