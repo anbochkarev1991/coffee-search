@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import styles from './Trends.module.css';
 
 function Trends() {
-  const list = useSelector((state) => state.events.list);
+  let list = useSelector((state) => state.events.list);
+
+  list.sort((a, b) => new Date(a.date) - new Date(b.date));
+  list = list.slice(0, 10);
 
   return (
     <div className={styles.trendsList}>
@@ -12,7 +15,7 @@ function Trends() {
       <ul>
         {list &&
           list.map((event) => (
-            <React.Fragment key={event.date}>
+            <React.Fragment key={event._id}>
               <Link to={`/cafes/${event.location}`}>
                 <li>{event.title}</li>
               </Link>
