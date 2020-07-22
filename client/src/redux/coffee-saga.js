@@ -94,11 +94,13 @@ function* workerEvents() {
 }
 
 // Add rate
-async function fetchAddRate() {}
+async function fetchAddRate(rate) {
+  const response = await fetch(`/api/cafes/${id}/rate`);
+}
 
 function* workerRating(action) {
   try {
-    const json = yield call(fetchAddRate);
+    const json = yield call(fetchAddRate, action.payload);
     if (json.error) {
       yield put(failed(json.error));
     }

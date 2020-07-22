@@ -43,6 +43,8 @@ export function addRate(rate) {
     type: ADD_RATE,
     payload: rate,
   };
+}
+
 export function searchCafe(data) {
   return {
     type: SEARCH_CAFE,
