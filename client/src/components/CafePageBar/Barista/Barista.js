@@ -13,12 +13,10 @@ export default function Barista({ id }) {
     const response = await fetch(`/api/cafes/${idCafe}/barista`);
     const result = await response.json();
     if (result.barista.length) {
-      const data = result.barista.filter(
-        (man) => man.location === idCafe,
-      );
+      const data = result.barista.filter((man) => man.location === idCafe);
       dispatch(loadBarista(data, idCafe));
     }
-  };
+  }
 
   useEffect(() => {
     showBarista();
@@ -39,7 +37,9 @@ export default function Barista({ id }) {
                     </td>
                   </tr>
                   <tr>
-                    <td><strong>{emp.name}</strong></td>
+                    <td>
+                      <strong>{emp.name}</strong>
+                    </td>
                   </tr>
                   <tr>
                     <td>{emp.about}</td>

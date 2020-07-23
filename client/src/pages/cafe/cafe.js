@@ -64,9 +64,11 @@ export default function CafePage() {
               user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
             }
           >
-            {user.favorites.includes(id)
-              ? 'Remove from favorites'
-              : 'Add to favorites'}
+            {user.favorites.includes(id) ? (
+              <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+            ) : (
+              <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+            )}
           </button>
         )}
       </div>
@@ -131,10 +133,10 @@ export default function CafePage() {
       </div>
       <Switch>
         <Route path="/cafes/:id/menu">
-          <Menu id={id}/>
+          <Menu id={id} />
         </Route>
         <Route path="/cafes/:id/barista">
-          <Barista id={id}/>
+          <Barista id={id} />
         </Route>
         <Route path="/cafes/:id/batch">
           <Batch />
