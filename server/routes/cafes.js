@@ -42,7 +42,8 @@ router
         date: eventFromSite.date,
       })
       await newEvent.save();
-      res.json(newEvent);
+      const exportEvent = await Event.find({ _id: newEvent._id }).populate('author')
+      res.json(exportEvent);
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });

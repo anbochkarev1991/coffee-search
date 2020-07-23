@@ -39,7 +39,7 @@ export default function Barista({ id }) {
                     </td>
                   </tr>
                   <tr>
-                    <td>{emp.name}</td>
+                    <td><strong>{emp.name}</strong></td>
                   </tr>
                   <tr>
                     <td>{emp.about}</td>
