@@ -4,6 +4,7 @@ import Event from '../models/event.js';
 import User from '../models/user.js';
 import Menu from '../models/menu.js';
 import Barista from '../models/barista.js';
+import Comment from '../models/comment.js';
 
 const router = express.Router();
 
@@ -170,5 +171,48 @@ router
       return res.json({ error: error.message });
     }
   })
+
+  router
+  .route('/:id/comments')
+  .get(async (req, res) => {
+    try {
+      const comments = await Comment.find({ cafe: req.params.id })
+        .populate('author')
+        .sort({ date: -1 });
+      return res.json({ comments });
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      console.log(req.body);
+      const itemFromSite = req.body;
+      const user = await User.findOne({ login: req.body.login })
+      // const cafe = await Cafe.findOne({ _id: req.params.id })
+      const newItem = new Comment({
+        title : req.body.title,
+        body: req.body.body,
+        author: user._id,
+        cafe: req.params.id,
+      });
+      await newItem.save();
+      const exportComment = await Comment.find({ _id: newItem._id }).populate('author')
+      res.json(exportComment);
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await Comment.deleteOne({ _id: req.body.id });
+      res.end();
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  });
 
 export default router;

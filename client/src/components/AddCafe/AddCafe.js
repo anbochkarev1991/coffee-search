@@ -42,7 +42,6 @@ function AddCafe() {
       address: cafe.address,
       latitude: coords[0],
       longitude: coords[1],
-      owner: userId,
     }));
   }
 
