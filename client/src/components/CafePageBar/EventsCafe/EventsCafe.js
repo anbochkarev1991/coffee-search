@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCafeEvent, addCafeEvent, deleteCafeEvent } from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';
@@ -17,16 +16,6 @@ export default function EventsCafe({ id }) {
   const dispatch = useDispatch();
   const eventCafe = useSelector((state) => state.eventsCafe[idEvent]);
   const user = useSelector((state) => state.enter.login);
-  const cafes = useSelector((state) => state.coffee.list);
-  const cafe = cafes.filter((item) => item._id === idEvent)[0];
-  const userId = useSelector((state) => state.enter._id)
-
-  console.log(cafe);
-  function isAuthor() {
-    if (cafe.owner === userId) {
-      return true;
-    } return false;
-  }
 
   // Load event from DB
   async function showEvent() {
@@ -93,7 +82,7 @@ export default function EventsCafe({ id }) {
     <>
       <div className={styles.cafeContent}>
         <h2>События в нашей кофейне:</h2>
-        {isAuthor && <button className={styles.addEventBtn} onClick={addEventModal}>Создать событие</button>}
+        {user && <button className={styles.addEventBtn} onClick={addEventModal}>Создать событие</button>}
         <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
