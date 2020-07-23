@@ -20,3 +20,6 @@ export const ADD_MENU = 'ADD_MENU';
 export const DELETE_MENU = 'DELETE_MENU';
 export const DELETE_CAFE_EVENTS = 'DELETE_CAFE_EVENTS';
 export const LOAD_BARISTA = 'LOAD_BARISTA';
+export const LOAD_BATCH = 'LOAD_BATCH';
+export const ADD_BATCH = 'ADD_BATCH';
+export const DELETE_BATCH = 'DELETE_BATCH';

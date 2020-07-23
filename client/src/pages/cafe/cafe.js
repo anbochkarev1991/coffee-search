@@ -20,7 +20,7 @@ export default function CafePage() {
   const user = useSelector((state) => state.enter);
   const [cafe, setCafe] = useState({});
 
-  console.log(cafe);
+
   let averageRating;
   if (cafe.rating) {
     averageRating =
@@ -142,7 +142,7 @@ export default function CafePage() {
             <Barista id={id} />
           </Route>
           <Route path="/cafes/:id/batch">
-            <Batch />
+            <Batch id={id}/>
           </Route>
           <Route path="/cafes/:id/events">
             <EventsCafe id={id} />
