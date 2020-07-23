@@ -16,6 +16,7 @@ function Map() {
   const cafes = useSelector((state) => state.coffee.list);
   const user = useSelector((state) => state.enter.login);
   const search = useSelector((state) => state.coffee.search);
+
   useEffect(() => {
     if (cafes && cafes.length > 0 && !mapActive) {
       handleLoad();
@@ -68,7 +69,6 @@ function Map() {
   }
 
   function handleLoad() {
-
     navigator.geolocation.getCurrentPosition(function (position) {
       const coords = search.latitude ? [search.latitude, search.longitude] : [position.coords.latitude, position.coords.longitude];
       window.ymaps.ready(() => {

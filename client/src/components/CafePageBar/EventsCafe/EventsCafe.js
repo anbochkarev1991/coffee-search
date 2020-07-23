@@ -110,7 +110,7 @@ export default function EventsCafe({ id }) {
                 <strong>{event.title}</strong>
               </p>
               <p>Информация: {event.body}</p>
-              <p>Дата: {event.date}</p>
+              <p>Дата: {new Date(event.date).toLocaleString()}</p>
               <p>Организатор: {event.author.login}</p>
               {user && <button className="addEventBtn" id={event._id} onClick={() => deleteEventCafe(event._id)}>Удалить</button>}
             </React.Fragment>

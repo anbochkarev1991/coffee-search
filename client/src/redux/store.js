@@ -9,6 +9,7 @@ import eventReducer from './reducers/eventsCafe-reducers';
 import allEventsReducer from './reducers/events-reducers';
 import menu from './reducers/menu-reducers';
 import barista from './reducers/barista-reducers';
+import comments from './reducers/comments-reducers';
 import batch from './reducers/batch-reducers';
 
 const sagaMiddleware = reduxSaga();
@@ -24,6 +25,7 @@ const store = createStore(
     events: allEventsReducer,
     menu: menu,
     barista: barista,
+    comments: comments,
     batch: batch,
   }),
   initialState,

@@ -50,11 +50,11 @@ export default function Singup() {
       <form onSubmit={handleSubmit}>
         <div className={'form-group'}>
           <label htmlFor="login">
-            Login:
+            Логин:
             <input
               name="login"
               type="text"
-              placeholder="Login"
+              placeholder="Логин"
               required
               onChange={handleChange}
               value={login}
@@ -78,11 +78,11 @@ export default function Singup() {
         </div>
         <div className={'form-group'}>
           <label htmlFor="password">
-            Password:
+            Пароль:
             <input
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Пароль"
               required
               onChange={handleChange}
               value={password}

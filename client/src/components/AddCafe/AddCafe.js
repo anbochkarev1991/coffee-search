@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewCafe } from '../../redux/actions/actions';
+import { useHistory } from 'react-router-dom';
+import { addNewCafe, loadCafeListSaga } from '../../redux/actions/actions';
 
 function AddCafe() {
+  const history = useHistory();
   const userId = useSelector((state) => state.enter._id);
+  const cafes = useSelector((state) => state.enter.list);
   const dispatch = useDispatch();
   const [cafe, setCafe] = useState({
     name: '',
     address: '',
-    rating: '',
     latitude: '',
     longitude: '',
   });
+
 
   const [addCafe, setAddCafe] = useState(false);
 
@@ -37,6 +40,7 @@ function AddCafe() {
     return [Number(result[0]), Number(result[1])];
   }
 
+  
   async function saveCafe(event) {
     event.preventDefault();
     setAddCafe(!addCafe);
@@ -49,6 +53,7 @@ function AddCafe() {
         longitude: coords[1],
       }),
     );
+    dispatch(loadCafeListSaga());
   }
 
   return (
@@ -74,7 +79,7 @@ function AddCafe() {
               onChange={handleChange}
               name="address"
               value={cafe.address}
-              placeholder="Адрес"
+              placeholder="Город, улица, дом"
               className={'form-control'}
             />
           </div>
@@ -101,7 +106,7 @@ function AddCafe() {
             type="button"
             className="btn btn-dark mb-2"
           >
-            Добавить новое кафе
+            Добавить новую кофейню
           </button>
         </>
       )}

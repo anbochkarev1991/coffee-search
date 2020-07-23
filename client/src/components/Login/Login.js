@@ -53,11 +53,11 @@ export default function Login() {
       <form className={styles.loginForm} onSubmit={handleSubmit}>
         <div className={'form-group'}>
           <label htmlFor="login">
-            Login:
+            Логин:
             <input
               name="login"
               type="text"
-              placeholder="login"
+              placeholder="Логин"
               required
               onChange={handleChange}
               value={login}
@@ -67,11 +67,11 @@ export default function Login() {
         </div>
         <div className={'form-group'}>
           <label htmlFor="password">
-            Password:
+            Пароль:
             <input
               name="password"
               type="password"
-              placeholder="password"
+              placeholder="Пароль"
               required
               onChange={handleChange}
               value={password}
