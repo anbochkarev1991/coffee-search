@@ -110,6 +110,7 @@ router.post('/new', async (req, res) => {
       address: cafe.address,
       name: cafe.name,
       rating: cafe.rating,
+      owner: cafe.owner,
     });
     await newCafe.save();
     res.json(newCafe);
