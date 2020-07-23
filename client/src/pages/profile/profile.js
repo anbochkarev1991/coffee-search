@@ -58,18 +58,10 @@ function Profile() {
                 className={'form-control'}
               ></input>
             </div>
-            <button
-              onClick={save}
-              type="button"
-              className="btn btn-primary mb-2"
-            >
+            <button onClick={save} type="button" className="btn btn-light mb-2">
               Save
             </button>
-            <button
-              onClick={edit}
-              type="button"
-              className="btn btn-primary mb-2"
-            >
+            <button onClick={edit} type="button" className="btn btn-light mb-2">
               Cancel
             </button>
           </form>
@@ -79,7 +71,7 @@ function Profile() {
           <h4>Login: {user.login}</h4>
           <h4>Email: {user.email}</h4>
           {user.birthday && <h3>Birthday: {user.birthday}</h3>}
-          <button onClick={edit} type="button" className="btn btn-primary mb-2">
+          <button onClick={edit} type="button" className="btn btn-light mb-2">
             Edit info
           </button>
         </div>

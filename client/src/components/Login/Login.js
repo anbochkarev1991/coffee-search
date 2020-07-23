@@ -79,7 +79,7 @@ export default function Login() {
             />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary mb-2">
+        <button type="submit" className="btn btn-light mb-2">
           Войти
         </button>
         {user && <h3>Добро пожаловать, {user}!</h3>}

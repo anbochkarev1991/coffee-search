@@ -7,10 +7,11 @@ ul {
   display: flex;
   flex-direction: column;
   text-align: left;
+  font-size: 26px;
 }
 
 .link {
-  color: white;
+  color: rgb(231, 176, 176);
 }
 
 .link:hover {

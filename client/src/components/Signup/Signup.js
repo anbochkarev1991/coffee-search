@@ -98,8 +98,8 @@ export default function Singup() {
             onChange={handleChange}
             />
         </label> */}
-        <button type="submit" className="btn btn-primary mb-2">
-          Зарегистрироваться
+        <button type="submit" className="btn btn-light mb-2">
+          Подтвердить
         </button>
       </form>
       {user && <h3>Добро пожаловать, {user}!</h3>}
