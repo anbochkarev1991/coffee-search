@@ -3,12 +3,13 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCafeEvent, addCafeEvent, deleteCafeEvent } from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';
+import styles from '../../../pages/cafe/cafe.module.css';
 
 export default function EventsCafe({ id }) {
   const [newEvent, setNewEvent] = useState({
     title: '',
     body: '',
-    author: '',
+    author: {},
     date: Date,
   })
 
@@ -20,17 +21,13 @@ export default function EventsCafe({ id }) {
   // Load event from DB
   async function showEvent() {
     const response = await fetch(`/api/cafes/${idEvent}/events`);
-    console.log('>>>>>>>RESPONSE', response);
     const result = await response.json();
-    console.log('>>>>>RESULT_BEFORgE: ', result);
     if (result.eventCafe.length) {
       const data = result.eventCafe.filter(
         (event) => event.location === idEvent,
       );
-      console.log('>>>DATA POPULATE: ', data)
       dispatch(loadCafeEvent(data, idEvent));
     }
-    // return eventCafe;
   }
 
   useEffect(() => {
@@ -84,9 +81,9 @@ export default function EventsCafe({ id }) {
 
   return (
     <>
-      <div className="cafeContent">
+      <div className={styles.cafeContent}>
         <h2>События в нашей кофейне:</h2>
-        {user && <button className="addEventBtn" onClick={addEventModal}>Создать событие</button>}
+        {user && <button className={styles.addEventBtn} onClick={addEventModal}>Создать событие</button>}
         <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
@@ -99,7 +96,7 @@ export default function EventsCafe({ id }) {
               <br></br>
               <input onChange={inputEvent} name="author" type="text" placeholder="Организатор" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
-              <input onChange={inputEvent} name="date" type="date" placeholder="Дата" style={{ "width": "420px", "backgroundColor": "orange" }} />
+              <input onChange={inputEvent} name="date" type="datetime-local" placeholder="Дата" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
               <br></br>
             </label>

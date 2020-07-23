@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadMenu, addItemMenu, deleteItemMenu } from '../../../redux/actions/menu-actions';
 import styles from './Menu.module.css';
 import Modal from '../EventsCafe/ModalAddEvent';
+import stylesTab from '../../../pages/cafe/cafe.module.css';
 
 
 export default function Menu({ id }) {
@@ -22,7 +23,6 @@ export default function Menu({ id }) {
   async function showMenu() {
     const response = await fetch(`/api/cafes/${idCafe}/menu`);
     const result = await response.json();
-    console.log('>>>>>RESULT Front: ', result)
     if (result.menu.length) {
       const data = result.menu.filter(
         (menuCafe) => menuCafe.location === idCafe,
@@ -82,7 +82,7 @@ export default function Menu({ id }) {
 
   return (
     <>
-      <div className="cafeContent">
+      <div className={stylesTab.cafeContent}>
         <h2>Меню:</h2>
         {user && <button className={styles.addModalMenu} onClick={addEventModal}>Добавить</button>}
         <br></br>

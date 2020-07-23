@@ -3,6 +3,7 @@ import Cafe from '../models/cafe.js';
 import Event from '../models/event.js';
 import User from '../models/user.js';
 import Menu from '../models/menu.js';
+import Barista from '../models/barista.js';
 
 const router = express.Router();
 
@@ -43,7 +44,8 @@ router
         date: eventFromSite.date,
       });
       await newEvent.save();
-      res.json(newEvent);
+      const exportEvent = await Event.find({ _id: newEvent._id }).populate('author')
+      res.json(exportEvent);
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
@@ -154,5 +156,19 @@ router
       return res.json({ error: error.message });
     }
   });
+
+router
+  .route('/:id/barista')
+  .get(async (req, res) => {
+    try {
+      console.log('>>>>>Barists REQ PARAMS: ', req.params.id)
+      const barista = await Barista.find({ location: req.params.id })
+      console.log('>>>>>BACKEND BARISTAS: ', barista)
+      return res.json({ barista })
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
 
 export default router;

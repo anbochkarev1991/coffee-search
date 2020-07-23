@@ -51,15 +51,14 @@ export default function CafePage() {
   return (
     <>
       <div className={styles.cafeTitle}>
-        <h1 className="titleCafe">{cafe.name}</h1>
-
+        <h1 className={styles.titleCafe}>{cafe.name}</h1>
         {user.login && (
           <button
             type="button"
             className={
               user.favorites.includes(id)
                 ? 'btn btn btn-outline-danger my-2 my-sm-0'
-                : 'btn btn btn-outline-info my-2 my-sm-0'
+                : 'btn btn btn-outline-dark my-2 my-sm-0'
             }
             onClick={
               user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
@@ -94,39 +93,39 @@ export default function CafePage() {
           }}
         />
       </div>
-      <div className="tab">
+      <div className={styles.tab}>
         <button
-          className="tablinks"
+          className={styles.tablinks}
           onClick={() => history.push(`/cafes/${id}/menu`)}
         >
           Меню
         </button>
         <button
-          className="tablinks"
+          className={styles.tablinks}
           onClick={() => history.push(`/cafes/${id}/barista`)}
         >
           Бариста
         </button>
         <button
-          className="tablinks"
+          className={styles.tablinks}
           onClick={() => history.push(`/cafes/${id}/batch`)}
         >
           Зерно
         </button>
         <button
-          className="tablinks"
+          className={styles.tablinks}
           onClick={() => history.push(`/cafes/${id}/events`)}
         >
           События
         </button>
         <button
-          className="tablinks"
+          className={styles.tablinks}
           onClick={() => history.push(`/cafes/${id}/comments`)}
         >
           Отзывы
         </button>
         <button
-          className="tablinks"
+          className={styles.tablinks}
           onClick={() => history.push(`/cafes/${id}/insta`)}
         >
           Instagram
@@ -137,7 +136,7 @@ export default function CafePage() {
           <Menu id={id} />
         </Route>
         <Route path="/cafes/:id/barista">
-          <Barista />
+          <Barista id={id} />
         </Route>
         <Route path="/cafes/:id/batch">
           <Batch />

@@ -12,7 +12,7 @@ export default (state = {}, action) => {
         ...state,
         [action.payload.id]: [
           ...(state[action.payload.id] || []),
-          action.payload.event
+          ...action.payload.event
         ],
       }
       case DELETE_CAFE_EVENTS:

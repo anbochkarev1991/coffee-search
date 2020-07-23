@@ -3,6 +3,7 @@ import Cafe from './models/cafe.js';
 import User from './models/user.js';
 import Event from './models/event.js';
 import Menu from './models/menu.js';
+import Barista from './models/barista.js';
 import dotenv from 'dotenv';
 
 const { connect, disconnect } = mongoose;
@@ -229,6 +230,28 @@ async function seed() {
 
   // ];
 
+  // const events = [
+  //   new Event({
+  //     title: 'Мастер класс по капучинно',
+  //     body: 'Бариста призер чемпионатов покажет каждому как варить, местпа ограничены - только 15 человек',
+  //     location: '5f17f1748408460b5351c9a2',
+  //     author: '5f142219cda6ce4d7e7b9d61',
+
+  //   }),
+  //   new Event({
+  //     title: 'Мастер класс по спаггети',
+  //     body: 'Шеф-повар покажет каждому как варить, места ограничены - только 12 человек',
+  //     location: '5f17f1748408460b5351c9a6',
+  //     author: '5f142219cda6ce4d7e7b9d61',
+
+  // }),
+  // new Event({
+  //   title: 'День Рождение бариста Толика',
+  //   body: 'Наш красава Толик принимает поздравления от друзей кофейни и угощает всех особенным эспрессо',
+  //   location: '5f12c5019632fa02e5660e56',
+  //   author: '5f142219cda6ce4d7e7b9d61',
+  // })
+  // ]
   const events = [
     new Event({
       title: 'Мастер класс по капучинно',
@@ -252,19 +275,55 @@ async function seed() {
     // })
   ];
 
-  const menu = [
-    new Menu({
-      goods: 'Espresso',
-      cost: 150,
-      size: 0.4,
-      location: '5f17f1748408460b5351c9a2',
+  // const menu = [
+  //   new Menu({
+  //     goods: 'Espresso',
+  //     cost: 150,
+  //     size: 0.4,
+  //     location: '5f17f1748408460b5351c9a2',
+  //   }),
+  //   new Menu({
+  //     goods: 'Americano',
+  //     cost: 120,
+  //     size: 0.6,
+  //     location: '5f17f1748408460b5351c9a2',
+  //   }),
+  //   new Menu({
+  //     goods: 'Espresso',
+  //     cost: 140,
+  //     size: 0.4,
+  //     location: '5f17f1748408460b5351c9a6',
+  //   })
+  // ]
+
+  const barista = [
+    // new Barista({
+    //   name: 'Анатолий',
+    //   about: 'Креативщик и альтернативщик всегда варит не просто кофе, а хорошее настроение и заряд позитива',
+    //   photo: 'https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/barista/photo_2020-07-22_18-38-12.jpg',
+    //   location: '5f183633e0b8dd19adbb908f',
+    // }),
+    // new Barista({
+    //   name: 'Марина',
+    //   about: 'Богиня эспрессо, выпускает пар не только в кофемашине',
+    //   photo: 'https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/barista/photo_2020-07-22_18-38-07.jpg',
+    //   location: '5f183633e0b8dd19adbb908f',
+    // }),
+    new Barista({
+      name: 'Полина - сестра Марины',
+      about: 'Богиня капучинно, хранитель вашего настроения',
+      photo: 'https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/barista/photo_2020-07-22_18-38-07.jpg',
+      location: '5f183633e0b8dd19adbb9092',
     }),
-    new Menu({
-      goods: 'Americano',
-      cost: 120,
-      size: 0.6,
-      location: '5f17f1748408460b5351c9a2',
-    }),
+<<<<<<< HEAD
+  ]
+
+  // await Cafe.insertMany(cafe);
+  // await User.insertMany(users);
+  // await Event.insertMany(events);
+  // await Menu.insertMany(menu)
+  await Barista.insertMany(barista);
+=======
     new Menu({
       goods: 'Espresso',
       cost: 140,
@@ -277,6 +336,7 @@ async function seed() {
   // await User.insertMany(users);
   await Event.insertMany(events);
   await Menu.insertMany(menu);
+>>>>>>> 38e06debe8bc221b319e64670368df8c32ec6a00
   disconnect();
 }
 
