@@ -19,7 +19,7 @@ export default function Comments({ id }) {
   async function showComments() {
     const response = await fetch(`/api/cafes/${idCafe}/comments`);
     const result = await response.json();
-    if (result.comments.length) {
+    if (result.comments) {
       const data = result.comments.filter(
         (comment) => comment.cafe === idCafe,
       );
