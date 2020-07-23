@@ -1,5 +1,5 @@
-
 .App {
+  height: 100vh;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -44,35 +44,11 @@
   box-sizing: border-box;
 }
 
-.tabcontent {
-  float: right;
-  padding: 0px 12px;
-  border: 1px solid #ccc;
-  width: 70%;
-  border-left: none;
-  height: 300px;
-}
-
-.cafeContent {
-  background-color: dodgerblue;
-  box-shadow: lightskyblue 0 0 20px;
-  width: 60%;
-  height: auto;
-  margin: auto;
-}
-
-.titleCafe {
-  text-align: center;
-  color: dodgerblue;
-  text-shadow: lightskyblue 0 0 15px;
-  margin: 0 1vw;
-}
-
 .addEventBtn {
   font-size: 10px;
   background-color: inherit;
 }
-.baristaContent{
+.baristaContent {
   width: 300px;
   margin: auto;
   padding: 15px;
