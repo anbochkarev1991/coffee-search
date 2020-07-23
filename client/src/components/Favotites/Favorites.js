@@ -17,14 +17,16 @@ function Favorites() {
 
   return (
     <div className={styles.favsList}>
-      <ul>
-        {favs &&
-          favs.map((cafe) => (
-            <li key={cafe._id}>
-              <Link to={`/cafes/${cafe._id}`}>{cafe.name}</Link>
-            </li>
-          ))}
-      </ul>
+      {favs &&
+        favs.map((cafe) => (
+          <Link
+            key={cafe._id}
+            to={`/cafes/${cafe._id}`}
+            className={styles.link}
+          >
+            {cafe.name}
+          </Link>
+        ))}
     </div>
   );
 }

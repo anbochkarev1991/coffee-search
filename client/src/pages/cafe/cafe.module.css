@@ -24,7 +24,7 @@
 
 .tab button {
   display: block;
-  background-color: rgba(161, 118, 65, 0.678);
+  background-color: rgba(66, 86, 100, 0.925);
   color: rgb(255, 255, 255);
   font-weight: 500;
   padding: 22px 16px;
@@ -38,7 +38,7 @@
 }
 
 .tab button:hover {
-  background-color: rgb(128, 69, 1);
+  background-color: rgb(54, 140, 155);
 }
 
 .tab button.active {
@@ -55,8 +55,8 @@
 }
 
 .cafeContent {
-  background-color: rgba(180, 140, 90, 0.6);
-  box-shadow: rgb(192, 138, 37) 0 0 10px;
+  background-color: rgba(66, 86, 100, 0.925);
+  color: white;
   width: 60%;
   height: auto;
   margin: auto;
@@ -65,7 +65,6 @@
 .titleCafe {
   text-align: center;
   color: rgb(75, 51, 7);
-  text-shadow: rgb(192, 138, 39) 0 0 15px;
   margin: 0 1vw;
 }
 

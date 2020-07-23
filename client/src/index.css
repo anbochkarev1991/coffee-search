@@ -7,10 +7,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/coffee-search-images/brown-nut-lot-942810.jpg") no-repeat 0%;
+  /* background: url("https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/coffee-search-images/brown-nut-lot-942810.jpg") no-repeat 0%; */
   background-size: cover;
   background-attachment: fixed;
   font-family: 'Comfortaa', cursive;
+  background-color: #88bdbc;
 }
 
 code {

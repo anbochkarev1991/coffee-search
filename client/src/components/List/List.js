@@ -11,7 +11,7 @@ function List() {
       element.rating.reduce((acc, rate) => {
         return acc + rate.value;
       }, 0) / element.rating.length
-    );
+    ).toFixed(1);
   }
 
   list.sort((a, b) => averageRating(b) - averageRating(a));
@@ -24,7 +24,7 @@ function List() {
         list.map((cafe) => (
           <React.Fragment key={cafe._id}>
             <Link to={`/cafes/${cafe._id}/menu`} className={styles.link}>
-              <strong className={styles.cafes}>{cafe.name}</strong>
+              <strong>{cafe.name}</strong>
             </Link>
             <p>
               Rating: {cafe.rating.length ? averageRating(cafe) : 'Unrated'}
