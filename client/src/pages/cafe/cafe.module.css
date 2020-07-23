@@ -1,30 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cafeTitle {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 2vh;
+  margin: 2vh 0;
+}
+
+h1 {
+  text-align: center;
+  color: #000000;
+  margin: 0 1vw;
+  font-weight: bolder;
 }
 
 .rating {
-  color: rgb(107, 18, 18);
-  margin-bottom: 1%;
+  color: #254e58;
+  margin-bottom: 3vh;
+}
+
+.rating:hover {
+  color: #a53131;
 }
 
 .tab {
+  background-color: #254e58;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   float: left;
-  /* border: 1px solid #ccc; */
-  /* background-color: rgba(180, 140, 90, 0.2); */
   width: auto;
-  height: auto;
   margin-left: 10px;
 }
-/* #FBFCFC,#DAE5EE,#91AFCB,#777371,#CFB191 */
 
 .tab button {
   display: block;
-  background-color: rgba(161, 118, 65, 0.678);
+  background-color: #254e58;
   color: rgb(255, 255, 255);
   font-weight: 500;
   padding: 22px 16px;
@@ -38,7 +53,7 @@
 }
 
 .tab button:hover {
-  background-color: rgb(128, 69, 1);
+  background-color: rgb(54, 140, 155);
 }
 
 .tab button.active {
@@ -55,20 +70,16 @@
 }
 
 .cafeContent {
-  background-color: rgba(180, 140, 90, 0.6);
-  box-shadow: rgb(192, 138, 37) 0 0 10px;
+  border-radius: 10px;
+  background-color: #def2f1;
+  color: black;
   width: 60%;
   height: auto;
-  margin: auto;
 }
 
-.titleCafe {
-  text-align: center;
-  color: rgb(75, 51, 7);
-  text-shadow: rgb(192, 138, 39) 0 0 15px;
-  margin: 0 1vw;
+.cafeContent h2 {
+  color: black;
 }
-
 .addEventBtn {
   font-size: 10px;
   background-color: inherit;

@@ -9,25 +9,26 @@ li {
   margin-bottom: 1vw;
 }
 
-.events {
-  color: rgb(153, 240, 255);
+.link {
+  color: white;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #88bdbc;
 }
 
 .trendsList {
-  max-width: 15vw;
+  max-width: 40vw;
   padding: 1vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: rgba(66, 86, 100, 0.925);
+  background-color: #112d32;
 }
 
 h3 {
   align-self: center;
   margin-bottom: 1vw;
   color: white;
-}
-
-.link:hover {
-  text-decoration: none;
 }

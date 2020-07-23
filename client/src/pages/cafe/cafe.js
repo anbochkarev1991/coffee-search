@@ -50,49 +50,6 @@ export default function CafePage() {
 
   return (
     <>
-      <div className={styles.cafeTitle}>
-        <h1 className={styles.titleCafe}>{cafe.name}</h1>
-        {user.login && (
-          <button
-            type="button"
-            className={
-              user.favorites.includes(id)
-                ? 'btn btn btn-outline-danger my-2 my-sm-0'
-                : 'btn btn btn-outline-dark my-2 my-sm-0'
-            }
-            onClick={
-              user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
-            }
-          >
-            {user.favorites.includes(id) ? (
-              <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
-            ) : (
-              <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
-            )}
-          </button>
-        )}
-      </div>
-
-      <div>
-        <Rating
-          className={styles.rating}
-          emptySymbol={'fa fa-star-o fa-2x'}
-          fullSymbol={'fa fa-star fa-2x'}
-          start={0}
-          stop={5}
-          step={1}
-          initialRating={averageRating}
-          quiet={false}
-          onClick={(value) => {
-            const rate = {
-              value,
-              user: user._id,
-              cafe: id,
-            };
-            dispatch(addRate(rate));
-          }}
-        />
-      </div>
       <div className={styles.tab}>
         <button
           className={styles.tablinks}
@@ -131,26 +88,73 @@ export default function CafePage() {
           Instagram
         </button>
       </div>
-      <Switch>
-        <Route path="/cafes/:id/menu">
-          <Menu id={id} />
-        </Route>
-        <Route path="/cafes/:id/barista">
-          <Barista id={id} />
-        </Route>
-        <Route path="/cafes/:id/batch">
-          <Batch id={id} />
-        </Route>
-        <Route path="/cafes/:id/events">
-          <EventsCafe id={id} />
-        </Route>
-        <Route path="/cafes/:id/comments">
-          <Comments />
-        </Route>
-        <Route path="/cafes/:id/insta">
-          <Insta />
-        </Route>
-      </Switch>
+      <div className={styles.wrapper}>
+        <div className={styles.cafeTitle}>
+          <h1>{cafe.name}</h1>
+          {user.login && (
+            <button
+              type="button"
+              style={{ border: 0 }}
+              className={
+                user.favorites.includes(id)
+                  ? 'btn btn btn-outline-danger my-2 my-sm-0'
+                  : 'btn btn btn-outline-dark my-2 my-sm-0'
+              }
+              onClick={
+                user.favorites.includes(id)
+                  ? deleteFromFavorites
+                  : addToFavorites
+              }
+            >
+              {user.favorites.includes(id) ? (
+                <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+              ) : (
+                <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+              )}
+            </button>
+          )}
+        </div>
+
+        <div className={styles.rating}>
+          <Rating
+            emptySymbol={'fa fa-star-o fa-2x'}
+            fullSymbol={'fa fa-star fa-2x'}
+            start={0}
+            stop={5}
+            step={1}
+            initialRating={averageRating}
+            quiet={false}
+            onClick={(value) => {
+              const rate = {
+                value,
+                user: user._id,
+                cafe: id,
+              };
+              dispatch(addRate(rate));
+            }}
+          />
+        </div>
+        <Switch>
+          <Route path="/cafes/:id/menu">
+            <Menu id={id} />
+          </Route>
+          <Route path="/cafes/:id/barista">
+            <Barista id={id} />
+          </Route>
+          <Route path="/cafes/:id/batch">
+            <Batch id={id}/>
+          </Route>
+          <Route path="/cafes/:id/events">
+            <EventsCafe id={id} />
+          </Route>
+          <Route path="/cafes/:id/comments">
+            <Comments />
+          </Route>
+          <Route path="/cafes/:id/insta">
+            <Insta />
+          </Route>
+        </Switch>
+      </div>
     </>
   );
 }
