@@ -215,7 +215,7 @@ router
   });
 
 
-router
+  router
   .route('/:id/comments')
   .get(async (req, res) => {
     try {
@@ -235,7 +235,7 @@ router
       const user = await User.findOne({ login: req.body.login })
       // const cafe = await Cafe.findOne({ _id: req.params.id })
       const newItem = new Comment({
-        title: req.body.title,
+        title : req.body.title,
         body: req.body.body,
         author: user._id,
         cafe: req.params.id,
@@ -257,4 +257,5 @@ router
       return res.json({ error: error.message });
     }
   });
+  
 export default router;

@@ -147,7 +147,7 @@ export default function CafePage() {
             <EventsCafe id={id} />
           </Route>
           <Route path="/cafes/:id/comments">
-            <Comments />
+            <Comments id={id} />
           </Route>
           <Route path="/cafes/:id/insta">
             <Insta />

@@ -23,8 +23,10 @@ export default function Comments({ id }) {
   async function showComments() {
     const response = await fetch(`/api/cafes/${idCafe}/comments`);
     const result = await response.json();
-    if (result.comments.length) {
-      const data = result.comments.filter((comment) => comment.cafe === idCafe);
+    if (result.comments) {
+      const data = result.comments.filter(
+        (comment) => comment.cafe === idCafe,
+      );
       dispatch(loadCafeComments(data, idCafe));
     }
   }

@@ -1,6 +1,6 @@
 import { LOAD_COMMENTS, ADD_COMMENT, DELETE_COMMENT } from '../actions/action-types';
 
-export default (state = {}, action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case LOAD_COMMENTS:
       return {
