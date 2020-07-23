@@ -4,6 +4,7 @@ import Event from '../models/event.js';
 import User from '../models/user.js';
 import Menu from '../models/menu.js';
 import Barista from '../models/barista.js';
+import Batch from '../models/batch.js';
 
 const router = express.Router();
 
@@ -161,14 +162,55 @@ router
   .route('/:id/barista')
   .get(async (req, res) => {
     try {
-      console.log('>>>>>Barists REQ PARAMS: ', req.params.id)
       const barista = await Barista.find({ location: req.params.id })
-      console.log('>>>>>BACKEND BARISTAS: ', barista)
       return res.json({ barista })
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
     }
   })
+
+router
+  .route('/:id/batch')
+  .get(async (req, res) => {
+    try {
+      console.log('>>>>>Batch REQ PARAMS: ', req.params.id)
+      const batch = await Batch.find({ location: req.params.id })
+      console.log('>>>>>BACKEND BATCH: ', batch)
+      return res.json({ batch })
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      const batchFromSite = req.body;
+      console.log('BATCH_BACKEND: ', batchFromSite)
+      // const cafe = await Cafe.findOne({ _id: req.params.id });
+      const newBatch = new Batch({
+        title: batchFromSite.title,
+        region: batchFromSite.region,
+        roaster: batchFromSite.roaster,
+        cultivation: batchFromSite.cultivation,
+        location: req.params.id,
+      });
+      await newBatch.save();
+      console.log('Nerw_Batch_BACK: ', newBatch)
+      res.json(newBatch);
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await Batch.deleteOne({ _id: req.body.id });
+      res.end();
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  });
 
 export default router;

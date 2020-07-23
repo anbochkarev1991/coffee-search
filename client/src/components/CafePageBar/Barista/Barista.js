@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadBarista } from '../../../redux/actions/barista-actions';
-
+import styles from '../../../pages/cafe/cafe.module.css';
 
 export default function Barista({ id }) {
   const idCafe = id;

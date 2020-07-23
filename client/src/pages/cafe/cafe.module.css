@@ -73,3 +73,11 @@
   font-size: 10px;
   background-color: inherit;
 }
+
+.batchArea{
+  float: left;
+display: block;
+width: 200px;
+margin: 2px;
+margin-left: 140px;
+}

@@ -60,7 +60,6 @@ export default function EventsCafe({ id }) {
     });
     modalRef.current.close()
     const result = await response.json()
-    console.log('>>>>>>>>RESULT2222222: ', result)
     dispatch(addCafeEvent(result, idEvent))
   };
 
