@@ -1,12 +1,24 @@
 .topRated {
+  max-width: 12vw;
+  padding: 1vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: baseline;
   text-align: left;
-  background-color: rgba(168, 111, 64, 0.623);
+  background-color: rgba(66, 86, 100, 0.925);
   color: white;
 }
 
 .cafes {
-  color: rgb(58, 65, 68);
+  color: rgb(153, 240, 255);
+}
+
+h3 {
+  align-self: center;
+  margin-bottom: 1vw;
+}
+
+.link:hover {
+  text-decoration: none;
 }

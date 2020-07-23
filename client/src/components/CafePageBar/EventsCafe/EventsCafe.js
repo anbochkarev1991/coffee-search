@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCafeEvent, addCafeEvent, deleteCafeEvent } from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';

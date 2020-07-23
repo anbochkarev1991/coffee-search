@@ -64,9 +64,11 @@ export default function CafePage() {
               user.favorites.includes(id) ? deleteFromFavorites : addToFavorites
             }
           >
-            {user.favorites.includes(id)
-              ? 'Remove from favorites'
-              : 'Add to favorites'}
+            {user.favorites.includes(id) ? (
+              <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+            ) : (
+              <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+            )}
           </button>
         )}
       </div>
