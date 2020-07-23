@@ -24,6 +24,14 @@ function Map() {
     }
   }, [cafes]);
 
+  function averageRating(element) {
+    return (
+      element.rating.reduce((acc, rate) => {
+        return acc + rate.value;
+      }, 0) / element.rating.length
+    ).toFixed(1);
+  }
+
   function handleChange({ target: { name, value } }) {
     dispatch(searchCafe({
       ...search,
@@ -64,7 +72,7 @@ function Map() {
       }
     } catch (err) {
       console.log(err);
-      setError('Неправильно введено название и/или адрес кафе');
+      setError('Неправильно введено название и/или адрес кофейни');
     }
   }
 
@@ -83,9 +91,10 @@ function Map() {
           })
 
         for (let i = 0; i < cafes.length; i++) {
+          const rating = averageRating(cafes[i]) || 'Нет рейтинга';
           cafesCollection.add(new window.ymaps.Placemark(search.latitude ? [search.latitude, search.longitude] : [cafes[i].latitude, cafes[i].longitude], {
             balloonContentHeader: `<a href=/cafes/${search.id ? search.id : cafes[i]._id}/menu>${search.name ? search.name : cafes[i].name}</a>`,
-            balloonContentFooter: `Рейтинг: ${search.rating ? search.rating : cafes[i].rating}`,
+            balloonContentFooter: `Рейтинг: ${search.rating ? search.rating : rating}`,
             hintContent: search.name ? search.name : cafes[i].name,
           }));
         }
@@ -107,7 +116,7 @@ function Map() {
   return (
     <>
       <h5>Выберете город:</h5>
-      <select onChange={selectChange}>
+      <select onChange={selectChange} className={styles.selector}>
         <option>Москва</option>
         <option>Санкт-Петербург</option>
         {cities.map((city) => <option>{city}</option>)}
