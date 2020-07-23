@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addNewCafe } from '../../redux/actions/actions';
 
 function AddCafe() {
+  const userId = useSelector((state) => state.enter._id);
   const dispatch = useDispatch();
   const [cafe, setCafe] = useState({
     name: '',
