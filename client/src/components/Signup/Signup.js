@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signup } from '../../redux/actions/enter-actions';
+import styles from './Signup.module.css';
 
 export default function Singup() {
   const dispatch = useDispatch();
@@ -26,11 +27,11 @@ export default function Singup() {
         login,
         email,
         password,
-      })
+      }),
     });
-    const result= await response.json();
+    const result = await response.json();
     if (response.status === 200) {
-      dispatch(signup(result))
+      dispatch(signup(result));
       history.push('/');
     }
     setError('Ошибка регистрации');
@@ -40,50 +41,55 @@ export default function Singup() {
     setInputs({
       ...inputs,
       [name]: value,
-    })
+    });
   }
   const { login, email, password } = inputs;
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <form onSubmit={handleSubmit}>
-        <div className={"form-group"}>
-          <label htmlFor="login">Login:
-            <input 
+        <div className={'form-group'}>
+          <label htmlFor="login">
+            Login:
+            <input
               name="login"
               type="text"
               placeholder="Login"
-              required 
+              required
               onChange={handleChange}
               value={login}
-              className={"form-control"}
-             />
-            </label>
-          </div>
-          <div className={"form-group"}>
-            <label htmlFor="email">Email:
-            <input 
-                name="email"
-                type="email"
-                placeholder="email"
-                required 
-                onChange={handleChange}
-                value={email}
-                className={"form-control"} />
-            </label>
-          </div>
-          <div className={"form-group"}>
-            <label htmlFor="password">Password:
-            <input 
-                name="password"
-                type="password"
-                placeholder="password"
-                required 
-                onChange={handleChange}
-                value={password}
-                className={"form-control"} />
-            </label>
-          </div>
+              className={'form-control'}
+            />
+          </label>
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor="email">
+            Email:
+            <input
+              name="email"
+              type="email"
+              placeholder="email"
+              required
+              onChange={handleChange}
+              value={email}
+              className={'form-control'}
+            />
+          </label>
+        </div>
+        <div className={'form-group'}>
+          <label htmlFor="password">
+            Password:
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              required
+              onChange={handleChange}
+              value={password}
+              className={'form-control'}
+            />
+          </label>
+        </div>
         {/* <label htmlFor="birthday">Birthday:
         <input 
             name="birthday"
@@ -92,10 +98,12 @@ export default function Singup() {
             onChange={handleChange}
             />
         </label> */}
-        <button type="submit" className="btn btn-primary mb-2">Зарегистрироваться</button>
+        <button type="submit" className="btn btn-primary mb-2">
+          Зарегистрироваться
+        </button>
       </form>
-    {user && <h3>Добро пожаловать, {user}!</h3>}
-    {error}
-    </>
+      {user && <h3>Добро пожаловать, {user}!</h3>}
+      {error}
+    </div>
   );
 }

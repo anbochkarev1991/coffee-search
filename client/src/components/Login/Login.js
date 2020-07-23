@@ -49,9 +49,9 @@ export default function Login() {
   }
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
-        <div className={"form-group"}>
+        <div className={'form-group'}>
           <label htmlFor="login">
             Login:
             <input
@@ -61,11 +61,11 @@ export default function Login() {
               required
               onChange={handleChange}
               value={login}
-              className={"form-control"}
+              className={'form-control'}
             />
           </label>
         </div>
-        <div className={"form-group"}>
+        <div className={'form-group'}>
           <label htmlFor="password">
             Password:
             <input
@@ -75,14 +75,27 @@ export default function Login() {
               required
               onChange={handleChange}
               value={password}
-              className={"form-control"}
+              className={'form-control'}
             />
           </label>
         </div>
-        <button type="submit" className="btn btn-primary mb-2">Войти</button>
+        <button type="submit" className="btn btn-primary mb-2">
+          Войти
+        </button>
         {user && <h3>Добро пожаловать, {user}!</h3>}
-        {error && <h4 className={"d-flex justify-content-center"} style={{ color: "tomato", border: "1px solid lightgrey", width: "600px" }}>{error}</h4>}
+        {error && (
+          <h4
+            className={'d-flex justify-content-center'}
+            style={{
+              color: 'tomato',
+              border: '1px solid lightgrey',
+              width: '600px',
+            }}
+          >
+            {error}
+          </h4>
+        )}
       </form>
-    </>
+    </div>
   );
 }
