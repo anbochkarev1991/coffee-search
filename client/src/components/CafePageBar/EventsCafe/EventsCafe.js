@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCafeEvent, addCafeEvent, deleteCafeEvent } from '../../../redux/actions/eventsCafe-action';
+import {
+  loadCafeEvent,
+  addCafeEvent,
+  deleteCafeEvent,
+} from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';
 import styles from '../../../pages/cafe/cafe.module.css';
 
@@ -10,7 +14,7 @@ export default function EventsCafe({ id }) {
     body: '',
     author: {},
     date: Date,
-  })
+  });
 
   const idEvent = id;
   const dispatch = useDispatch();
@@ -34,11 +38,11 @@ export default function EventsCafe({ id }) {
   }, []);
 
   //Modal Window
-  const modalRef = React.useRef()
+  const modalRef = React.useRef();
 
   function addEventModal() {
-    modalRef.current.openModal()
-  };
+    modalRef.current.openModal();
+  }
 
   //Add new event
   function inputEvent({ target: { name, value } }) {
@@ -55,12 +59,12 @@ export default function EventsCafe({ id }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newEvent)
+      body: JSON.stringify(newEvent),
     });
-    modalRef.current.close()
-    const result = await response.json()
-    dispatch(addCafeEvent(result, idEvent))
-  };
+    modalRef.current.close();
+    const result = await response.json();
+    dispatch(addCafeEvent(result, idEvent));
+  }
 
   //Delete event cafe
   async function deleteEventCafe(id) {
@@ -74,31 +78,59 @@ export default function EventsCafe({ id }) {
     if (response.status === 200) {
       dispatch(deleteCafeEvent(id, idEvent));
     }
-  };
-
+  }
 
   return (
     <>
       <div className={styles.cafeContent}>
         <h2>События в нашей кофейне:</h2>
-        {user && <button className={styles.addEventBtn} onClick={addEventModal}>Создать событие</button>}
+        {user && (
+          <button className="btn btn-light mb-2 btn-sm" onClick={addEventModal}>
+            Создать событие
+          </button>
+        )}
         <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
-            <label htmlFor="newevent">
-              <h2>Новое событие</h2>
-              <br></br>
-              <input onChange={inputEvent} name="title" type="text" placeholder="Название" style={{ "width": "420px", "backgroundColor": "orange" }} />
-              <br></br>
-              <input onChange={inputEvent} name="body" type="text" placeholder="Описание" style={{ "height": "75px", "width": "420px", "backgroundColor": "orange" }} />
-              <br></br>
-              <input onChange={inputEvent} name="author" type="text" placeholder="Организатор" style={{ "width": "420px", "backgroundColor": "orange" }} />
-              <br></br>
-              <input onChange={inputEvent} name="date" type="datetime-local" placeholder="Дата" style={{ "width": "420px", "backgroundColor": "orange" }} />
-              <br></br>
-              <br></br>
-            </label>
-            <input type="submit" value="Создать" style={{ "backgroundColor": "dodgerblue" }} />
+            <h2>Новое событие</h2>
+            <br></br>
+            <input
+              onChange={inputEvent}
+              name="title"
+              type="text"
+              placeholder="Название"
+              className={'form-control mr-sm-2'}
+            />
+            <br></br>
+            <input
+              onChange={inputEvent}
+              name="body"
+              type="text"
+              placeholder="Описание"
+              className={'form-control mr-sm-2'}
+            />
+            <br></br>
+            <input
+              onChange={inputEvent}
+              name="author"
+              type="text"
+              placeholder="Организатор"
+              className={'form-control mr-sm-2'}
+            />
+            <br></br>
+            <input
+              onChange={inputEvent}
+              name="date"
+              type="datetime-local"
+              placeholder="Дата"
+              className={'form-control mr-sm-2'}
+            />
+            <br></br>
+            <input
+              type="submit"
+              value="Создать"
+              className="btn btn-light mb-2 btn-sm"
+            />
           </form>
         </Modal>
 
@@ -112,7 +144,15 @@ export default function EventsCafe({ id }) {
               <p>Информация: {event.body}</p>
               <p>Дата: {new Date(event.date).toLocaleString()}</p>
               <p>Организатор: {event.author.login}</p>
-              {user && <button className="addEventBtn" id={event._id} onClick={() => deleteEventCafe(event._id)}>Удалить</button>}
+              {user && (
+                <button
+                  className="btn btn-light mb-2 btn-sm"
+                  id={event._id}
+                  onClick={() => deleteEventCafe(event._id)}
+                >
+                  Удалить
+                </button>
+              )}
             </React.Fragment>
           ))}
       </div>

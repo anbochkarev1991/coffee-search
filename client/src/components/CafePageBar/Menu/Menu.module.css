@@ -1,23 +1,22 @@
-.tableMenu{
+.tableMenu {
   border: 0;
   align-content: center;
   width: 50%;
   margin: auto;
 }
 
-
-.trMenu{
+.trMenu {
   border: 0;
   align-content: center;
   margin: auto;
 }
 
-.addModalMenu{
+.addModalMenu {
   font-size: 10px;
   background-color: inherit;
 }
 
-.deleteMenu{
+.deleteMenu {
   font-size: 6px;
   background-color: inherit;
 }

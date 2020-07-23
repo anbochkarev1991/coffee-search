@@ -87,7 +87,7 @@ export default function Menu({ id }) {
       <div className={stylesTab.cafeContent}>
         <h2>Меню:</h2>
         {user && (
-          <button className={styles.addModalMenu} onClick={addEventModal}>
+          <button className="btn btn-light mb-2 btn-sm" onClick={addEventModal}>
             Добавить
           </button>
         )}
@@ -95,38 +95,37 @@ export default function Menu({ id }) {
         <Modal ref={modalRef}>
           <form onSubmit={addNewItem}>
             <label htmlFor="newitem">
-              <h2>Что вы хотите добавить</h2>
+              <h2>Что вы хотите добавить?</h2>
               <br></br>
               <input
+                className={'form-control mr-sm-2'}
                 onChange={inputItem}
                 name="goods"
                 type="text"
                 placeholder="Название"
-                style={{ width: '420px', backgroundColor: 'orange' }}
               />
               <br></br>
               <input
+                className={'form-control mr-sm-2'}
                 onChange={inputItem}
                 name="cost"
                 type="text"
                 placeholder="Цена"
-                style={{ width: '420px', backgroundColor: 'orange' }}
               />
               <br></br>
               <input
+                className={'form-control mr-sm-2'}
                 onChange={inputItem}
                 name="size"
                 type="text"
                 placeholder="Объем"
-                style={{ width: '420px', backgroundColor: 'orange' }}
               />
-              <br></br>
               <br></br>
             </label>
             <input
+              className="btn btn-light mb-2 btn-sm"
               type="submit"
               value="Создать"
-              style={{ backgroundColor: 'dodgerblue' }}
             />
           </form>
         </Modal>
@@ -155,7 +154,7 @@ export default function Menu({ id }) {
                       <button
                         id={menu._id}
                         onClick={() => deleteItem(menu._id)}
-                        className={styles.deleteMenu}
+                        className="btn btn-light mb-2 btn-sm"
                       >
                         Удалить
                       </button>
