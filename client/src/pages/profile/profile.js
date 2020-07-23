@@ -30,7 +30,7 @@ function Profile() {
   return (
     <div className={styles.profile}>
       <div className={styles.favsContainer}>
-        <h2>Favorite cafes:</h2>
+        <h2>Избранное:</h2>
         <Favorites />
       </div>
       {editing ? (
@@ -59,20 +59,20 @@ function Profile() {
               ></input>
             </div>
             <button onClick={save} type="button" className="btn btn-light mb-2">
-              Save
+              Сохранить
             </button>
             <button onClick={edit} type="button" className="btn btn-light mb-2">
-              Cancel
+              Отменить
             </button>
           </form>
         </div>
       ) : (
         <div className={styles.userInfo}>
-          <h4>Login: {user.login}</h4>
+          <h4>Логин: {user.login}</h4>
           <h4>Email: {user.email}</h4>
           {user.birthday && <h3>Birthday: {user.birthday}</h3>}
           <button onClick={edit} type="button" className="btn btn-light mb-2">
-            Edit info
+            Редактировать информацию
           </button>
         </div>
       )}
