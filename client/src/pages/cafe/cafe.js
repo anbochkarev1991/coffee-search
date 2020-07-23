@@ -88,12 +88,13 @@ export default function CafePage() {
           Instagram
         </button>
       </div>
-      <div>
+      <div className={styles.wrapper}>
         <div className={styles.cafeTitle}>
-          <h1 className={styles.titleCafe}>{cafe.name}</h1>
+          <h1>{cafe.name}</h1>
           {user.login && (
             <button
               type="button"
+              style={{ border: 0 }}
               className={
                 user.favorites.includes(id)
                   ? 'btn btn btn-outline-danger my-2 my-sm-0'
@@ -116,7 +117,6 @@ export default function CafePage() {
 
         <div className={styles.rating}>
           <Rating
-            className={styles.rating}
             emptySymbol={'fa fa-star-o fa-2x'}
             fullSymbol={'fa fa-star fa-2x'}
             start={0}
