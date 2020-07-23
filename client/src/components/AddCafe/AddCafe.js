@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addNewCafe } from '../../redux/actions/actions';
 
 function AddCafe() {
-  const userId = useSelector((state) => state.enter._id)
+  const userId = useSelector((state) => state.enter._id);
+  const cafes = useSelector((state) => state.enter.list);
   const dispatch = useDispatch();
   const [cafe, setCafe] = useState({
     name: '',
     address: '',
-    rating: '',
     latitude: '',
     longitude: '',
   });
@@ -43,6 +43,7 @@ function AddCafe() {
       latitude: coords[0],
       longitude: coords[1],
     }));
+    console.log(cafe);
   }
 
   return (
