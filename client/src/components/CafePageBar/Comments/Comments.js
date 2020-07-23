@@ -24,9 +24,7 @@ export default function Comments({ id }) {
     const response = await fetch(`/api/cafes/${idCafe}/comments`);
     const result = await response.json();
     if (result.comments) {
-      const data = result.comments.filter(
-        (comment) => comment.cafe === idCafe,
-      );
+      const data = result.comments.filter((comment) => comment.cafe === idCafe);
       dispatch(loadCafeComments(data, idCafe));
     }
   }
@@ -128,7 +126,7 @@ export default function Comments({ id }) {
               <p>Автор: {comment.author.login}</p>
               {user && (
                 <button
-                  className={styles.addEventBtn}
+                  className="btn btn-light mb-2 btn-sm"
                   id={comment._id}
                   onClick={() => deleteCommentCafe(comment._id)}
                 >

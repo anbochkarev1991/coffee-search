@@ -97,7 +97,7 @@ export default function CafePage() {
               className={
                 user.favorites.includes(id)
                   ? 'btn btn btn-outline-danger my-2 my-sm-0'
-                  : 'btn btn btn-outline-dark my-2 my-sm-0'
+                  : 'btn btn btn-outline-light my-2 my-sm-0'
               }
               onClick={
                 user.favorites.includes(id)
