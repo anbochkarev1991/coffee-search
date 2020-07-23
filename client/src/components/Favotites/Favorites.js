@@ -21,7 +21,7 @@ function Favorites() {
         favs.map((cafe) => (
           <Link
             key={cafe._id}
-            to={`/cafes/${cafe._id}`}
+            to={`/cafes/${cafe._id}/menu`}
             className={styles.link}
           >
             {cafe.name}
