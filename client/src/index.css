@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('/bar-1869656_1920.jpeg');
   /* background: url("https://coffee-search-elbrus-project.s3.eu-central-1.amazonaws.com/coffee-search-images/brown-nut-lot-942810.jpg") no-repeat 0%; */
   background-size: cover;
   background-attachment: fixed;
@@ -17,4 +18,29 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+nav {
+  background-color: rgba(34, 15, 26, 0.8) !important;
+  /* color: white; */
+  border-radius: 10px;
+  margin: 10px;
+}
+
+nav a {
+  color: rgb(34, 15, 26);
+}
+.container > .row > .col > div {
+  background-color: transparent;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.container > .row > .col {
+  background: rgba(34, 15, 26, 0.8);
+  padding: 0;
+  margin: 0 10px;
+  border-radius: 10px;
 }
