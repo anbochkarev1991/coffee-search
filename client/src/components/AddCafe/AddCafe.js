@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { addNewCafe, loadCafeListSaga } from '../../redux/actions/actions';
 
 function AddCafe() {
-  const history = useHistory();
-  const userId = useSelector((state) => state.enter._id);
-  const cafes = useSelector((state) => state.enter.list);
   const dispatch = useDispatch();
   const [cafe, setCafe] = useState({
     name: '',

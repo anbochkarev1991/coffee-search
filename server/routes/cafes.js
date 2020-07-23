@@ -4,11 +4,8 @@ import Event from '../models/event.js';
 import User from '../models/user.js';
 import Menu from '../models/menu.js';
 import Barista from '../models/barista.js';
-<<<<<<< HEAD
 import Comment from '../models/comment.js';
-=======
 import Batch from '../models/batch.js';
->>>>>>> e2edb7d5063fc7248b1d1756f127a078b36d694e
 
 const router = express.Router();
 
@@ -174,16 +171,6 @@ router
     }
   })
 
-<<<<<<< HEAD
-  router
-  .route('/:id/comments')
-  .get(async (req, res) => {
-    try {
-      const comments = await Comment.find({ cafe: req.params.id })
-        .populate('author')
-        .sort({ date: -1 });
-      return res.json({ comments });
-=======
 router
   .route('/:id/batch')
   .get(async (req, res) => {
@@ -192,7 +179,6 @@ router
       const batch = await Batch.find({ location: req.params.id })
       console.log('>>>>>BACKEND BATCH: ', batch)
       return res.json({ batch })
->>>>>>> e2edb7d5063fc7248b1d1756f127a078b36d694e
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
@@ -200,21 +186,6 @@ router
   })
   .post(async (req, res) => {
     try {
-<<<<<<< HEAD
-      console.log(req.body);
-      const itemFromSite = req.body;
-      const user = await User.findOne({ login: req.body.login })
-      // const cafe = await Cafe.findOne({ _id: req.params.id })
-      const newItem = new Comment({
-        title : req.body.title,
-        body: req.body.body,
-        author: user._id,
-        cafe: req.params.id,
-      });
-      await newItem.save();
-      const exportComment = await Comment.find({ _id: newItem._id }).populate('author')
-      res.json(exportComment);
-=======
       const batchFromSite = req.body;
       console.log('BATCH_BACKEND: ', batchFromSite)
       // const cafe = await Cafe.findOne({ _id: req.params.id });
@@ -228,7 +199,6 @@ router
       await newBatch.save();
       console.log('Nerw_Batch_BACK: ', newBatch)
       res.json(newBatch);
->>>>>>> e2edb7d5063fc7248b1d1756f127a078b36d694e
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
@@ -236,11 +206,7 @@ router
   })
   .delete(async (req, res) => {
     try {
-<<<<<<< HEAD
-      await Comment.deleteOne({ _id: req.body.id });
-=======
       await Batch.deleteOne({ _id: req.body.id });
->>>>>>> e2edb7d5063fc7248b1d1756f127a078b36d694e
       res.end();
     } catch (error) {
       console.log(error.message);
@@ -248,4 +214,47 @@ router
     }
   });
 
+
+router
+  .route('/:id/comments')
+  .get(async (req, res) => {
+    try {
+      const comments = await Comment.find({ cafe: req.params.id })
+        .populate('author')
+        .sort({ date: -1 });
+      return res.json({ comments });
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      console.log(req.body);
+      const itemFromSite = req.body;
+      const user = await User.findOne({ login: req.body.login })
+      // const cafe = await Cafe.findOne({ _id: req.params.id })
+      const newItem = new Comment({
+        title: req.body.title,
+        body: req.body.body,
+        author: user._id,
+        cafe: req.params.id,
+      });
+      await newItem.save();
+      const exportComment = await Comment.find({ _id: newItem._id }).populate('author')
+      res.json(exportComment);
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  })
+  .delete(async (req, res) => {
+    try {
+      await Comment.deleteOne({ _id: req.body.id });
+      res.end();
+    } catch (error) {
+      console.log(error.message);
+      return res.json({ error: error.message });
+    }
+  });
 export default router;

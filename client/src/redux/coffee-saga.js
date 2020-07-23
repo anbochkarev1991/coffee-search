@@ -5,16 +5,9 @@ import {
   ADD_CAFE,
   LOAD_ALL_EVENTS_SAGA,
   ADD_RATE,
-  LOAD_COMMENTS_SAGA,
-  LOAD_COMMENTS,
-  ADD_COMMENT_SAGA,
-  ADD_COMMENT,
-  DELETE_COMMENT_SAGA,
-  DELETE_COMMENT,
 } from './actions/action-types';
 import { failed, loadCafeList } from './actions/actions';
 import { loadAllEvents } from './actions/events-actions';
-import { loadCafeComments, addCafeComment } from './actions/comments-actions';
 
 // Load list of all cafes from DB
 async function fetchCafesList() {
