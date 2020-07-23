@@ -19,3 +19,4 @@ export const SEARCH_CAFE = 'SEARCH_CAFE';
 export const ADD_MENU = 'ADD_MENU';
 export const DELETE_MENU = 'DELETE_MENU';
 export const DELETE_CAFE_EVENTS = 'DELETE_CAFE_EVENTS';
+export const LOAD_BARISTA = 'LOAD_BARISTA';

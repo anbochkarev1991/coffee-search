@@ -9,7 +9,7 @@ export default function EventsCafe({ id }) {
   const [newEvent, setNewEvent] = useState({
     title: '',
     body: '',
-    author: '',
+    author: {},
     date: Date,
   })
 
@@ -21,17 +21,13 @@ export default function EventsCafe({ id }) {
   // Load event from DB
   async function showEvent() {
     const response = await fetch(`/api/cafes/${idEvent}/events`);
-    console.log('>>>>>>>RESPONSE', response);
     const result = await response.json();
-    console.log('>>>>>RESULT_BEFORgE: ', result);
     if (result.eventCafe.length) {
       const data = result.eventCafe.filter(
         (event) => event.location === idEvent,
       );
-      console.log('>>>DATA POPULATE: ', data)
       dispatch(loadCafeEvent(data, idEvent));
     }
-    // return eventCafe;
   }
 
   useEffect(() => {
@@ -100,7 +96,7 @@ export default function EventsCafe({ id }) {
               <br></br>
               <input onChange={inputEvent} name="author" type="text" placeholder="Организатор" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
-              <input onChange={inputEvent} name="date" type="date" placeholder="Дата" style={{ "width": "420px", "backgroundColor": "orange" }} />
+              <input onChange={inputEvent} name="date" type="datetime-local" placeholder="Дата" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
               <br></br>
             </label>

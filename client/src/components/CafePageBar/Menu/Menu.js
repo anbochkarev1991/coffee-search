@@ -23,7 +23,6 @@ export default function Menu({ id }) {
   async function showMenu() {
     const response = await fetch(`/api/cafes/${idCafe}/menu`);
     const result = await response.json();
-    console.log('>>>>>RESULT Front: ', result)
     if (result.menu.length) {
       const data = result.menu.filter(
         (menuCafe) => menuCafe.location === idCafe,
