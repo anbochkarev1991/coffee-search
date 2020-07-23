@@ -88,6 +88,7 @@ export default function CafePage() {
         </button>
       </div>
       <div className={styles.wrapper}>
+        <h5>{cafe.address}</h5>
         <div className={styles.cafeTitle}>
           <h1>{cafe.name}</h1>
           {user.login && (

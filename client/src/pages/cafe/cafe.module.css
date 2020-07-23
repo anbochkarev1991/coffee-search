@@ -21,6 +21,13 @@ h1 {
   font-weight: bolder;
 }
 
+h5 {
+  text-align: center;
+  color: #ffffff;
+  margin: 0 1vw;
+  font-weight: lighter;
+}
+
 .rating {
   color: #00e1ff;
   margin-bottom: 3vh;

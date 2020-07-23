@@ -63,7 +63,7 @@ function Map() {
           ...search,
           id: cafe._id,
           name: cafe.name,
-          // address: cafe.address,
+          address: cafe.address,
           rating: cafe.rating,
           latitude: cafe.latitude,
           longitude: cafe.longitude,
@@ -94,6 +94,7 @@ function Map() {
           const rating = averageRating(cafes[i]) || 'Нет рейтинга';
           cafesCollection.add(new window.ymaps.Placemark(search.latitude ? [search.latitude, search.longitude] : [cafes[i].latitude, cafes[i].longitude], {
             balloonContentHeader: `<a href=/cafes/${search.id ? search.id : cafes[i]._id}/menu>${search.name ? search.name : cafes[i].name}</a>`,
+            balloonContentBody: `Адрес: ${search.address ? search.address : cafes[i].address}`,
             balloonContentFooter: `Рейтинг: ${search.rating ? search.rating : rating}`,
             hintContent: search.name ? search.name : cafes[i].name,
           }));
