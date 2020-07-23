@@ -48,6 +48,7 @@ function AddCafe() {
     <div>
       {addCafe ?
         (<form onSubmit={saveCafe}>
+          <br />
           <div className={"form-group"}>
             <input
               required
@@ -55,7 +56,7 @@ function AddCafe() {
               onChange={handleChange}
               name="name"
               value={cafe.name}
-              placeholder="Name"
+              placeholder="Название"
               className={"form-control"}
             />
           </div>
@@ -66,31 +67,21 @@ function AddCafe() {
               onChange={handleChange}
               name="address"
               value={cafe.address}
-              placeholder="Address"
+              placeholder="Адрес"
               className={"form-control"}
             />
           </div>
-          <div className={"form-group"}>
-            <input
-              required
-              type="text"
-              onChange={handleChange}
-              name="rating"
-              value={cafe.rating}
-              placeholder="Rating"
-              className={"form-control"}
-            />
-          </div>
-          <button onClick={saveCafe} type="button" className="btn btn-primary mb-2">
-            Save
+          <button onClick={saveCafe} type="button" className="btn btn-dark mb-2">
+            Сохранить
           </button>
-          <button onClick={addCafeForm} type="button" className="btn btn-primary mb-2">
-            Cancel
+          {' '}
+          <button onClick={addCafeForm} type="button" className="btn btn-dark mb-2">
+            Отменить
           </button>
         </form>) : (
           <>
             <br />
-            <button onClick={addCafeForm} type="button" className="btn btn-outline-success mb-2">
+            <button onClick={addCafeForm} type="button" className="btn btn-light mb-2">
               Добавить новое кафе
             </button>
           </>

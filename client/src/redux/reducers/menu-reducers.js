@@ -6,21 +6,23 @@ export default (state = {}, action) => {
       return {
         ...state,
         [action.payload.id]: action.payload.event,
-      }
+      };
     case ADD_MENU:
       return {
         ...state,
         [action.payload.id]: [
           ...(state[action.payload.id] || []),
-          action.payload.event
+          action.payload.event,
         ],
-      }
+      };
     case DELETE_MENU:
       return {
         ...state,
-        [action.payload.id]: state[action.payload.id].filter((item) => action.payload.event !== item._id)
-      }
+        [action.payload.id]: state[action.payload.id].filter(
+          (item) => action.payload.event !== item._id,
+        ),
+      };
     default:
       return state;
   }
-}
+};

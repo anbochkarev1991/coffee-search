@@ -3,6 +3,7 @@ import { editUser } from '../../redux/actions/enter-actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Route, Switch } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router-dom';
+import { addRate } from '../../redux/actions/actions';
 import Menu from '../../components/CafePageBar/Menu/Menu';
 import Barista from '../../components/CafePageBar/Barista/Barista';
 import Batch from '../../components/CafePageBar/Batch/Batch';
@@ -10,6 +11,7 @@ import EventsCafe from '../../components/CafePageBar/EventsCafe/EventsCafe';
 import Comments from '../../components/CafePageBar/Comments/Comments';
 import Insta from '../../components/CafePageBar/Instagram/Instagram';
 import styles from './cafe.module.css';
+import Rating from 'react-rating';
 
 export default function CafePage() {
   const dispatch = useDispatch();
@@ -17,6 +19,15 @@ export default function CafePage() {
   const { id } = useParams();
   const user = useSelector((state) => state.enter);
   const [cafe, setCafe] = useState({});
+
+  console.log(cafe);
+  let averageRating;
+  if (cafe.rating) {
+    averageRating =
+      cafe.rating.reduce((acc, rate) => {
+        return acc + rate.value;
+      }, 0) / cafe.rating.length;
+  }
 
   useEffect(() => {
     (async () => {
@@ -59,6 +70,27 @@ export default function CafePage() {
           </button>
         )}
       </div>
+
+      <div>
+        <Rating
+          className={styles.rating}
+          emptySymbol={'fa fa-star-o fa-2x'}
+          fullSymbol={'fa fa-star fa-2x'}
+          start={0}
+          stop={5}
+          step={1}
+          initialRating={averageRating}
+          quiet={false}
+          onClick={(value) => {
+            const rate = {
+              value,
+              user: user._id,
+              cafe: id,
+            };
+            dispatch(addRate(rate));
+          }}
+        />
+      </div>
       <div className="tab">
         <button
           className="tablinks"
@@ -97,7 +129,6 @@ export default function CafePage() {
           Instagram
         </button>
       </div>
-
       <Switch>
         <Route path="/cafes/:id/menu">
           <Menu id={id}/>

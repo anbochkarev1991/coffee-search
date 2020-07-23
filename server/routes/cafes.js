@@ -5,7 +5,6 @@ import User from '../models/user.js';
 import Menu from '../models/menu.js';
 import Barista from '../models/barista.js';
 
-
 const router = express.Router();
 
 router.route('/').get(async (req, res) => {
@@ -22,9 +21,11 @@ router
   .route('/:id/events')
   .get(async (req, res) => {
     try {
-      const eventCafe = await Event.find({ location: req.params.id }).populate('author').sort({ 'date': 1 });
-      console.log(eventCafe)
-      return res.json({ eventCafe })
+      const eventCafe = await Event.find({ location: req.params.id })
+        .populate('author')
+        .sort({ date: 1 });
+      console.log(eventCafe);
+      return res.json({ eventCafe });
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
@@ -33,14 +34,15 @@ router
   .post(async (req, res) => {
     try {
       const eventFromSite = req.body;
-      const user = await User.findOne({ login: eventFromSite.author })
+      const user = await User.findOne({ login: eventFromSite.author });
+
       const newEvent = new Event({
         title: eventFromSite.title,
         body: eventFromSite.body,
         author: user._id,
         location: req.params.id,
         date: eventFromSite.date,
-      })
+      });
       await newEvent.save();
       const exportEvent = await Event.find({ _id: newEvent._id }).populate('author')
       res.json(exportEvent);
@@ -57,7 +59,36 @@ router
       console.log(error.message);
       return res.json({ error: error.message });
     }
-  })
+  });
+
+// Add rate
+router.route('/:id/rate').patch(async (req, res) => {
+  const { id } = req.params;
+  const { value, user } = req.body;
+  const rate = { user, value };
+
+  if (!user) {
+    return res.json({ error: 'Please log in to vote' });
+  }
+
+  try {
+    const cafe = await Cafe.findById(id);
+    const currentVote = cafe.rating.find((elem) => elem.user === user);
+
+    if (currentVote) {
+      currentVote.value = value;
+    } else {
+      cafe.rating.push(rate);
+    }
+
+    cafe.markModified('rating');
+    await cafe.save();
+    return res.json({ cafe });
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ error: error.message });
+  }
+});
 
 router.route('/:id').get(async (req, res) => {
   const { id } = req.params;
@@ -92,8 +123,8 @@ router
   .route('/:id/menu')
   .get(async (req, res) => {
     try {
-      const menu = await Menu.find({ location: req.params.id })
-      return res.json({ menu })
+      const menu = await Menu.find({ location: req.params.id });
+      return res.json({ menu });
     } catch (error) {
       console.log(error.message);
       return res.json({ error: error.message });
@@ -102,7 +133,7 @@ router
   .post(async (req, res) => {
     try {
       const itemFromSite = req.body;
-      const cafe = await Cafe.findOne({ _id: req.params.id })
+      const cafe = await Cafe.findOne({ _id: req.params.id });
       const newItem = new Menu({
         goods: itemFromSite.goods,
         cost: itemFromSite.cost,
@@ -124,7 +155,7 @@ router
       console.log(error.message);
       return res.json({ error: error.message });
     }
-  })
+  });
 
 router
   .route('/:id/barista')

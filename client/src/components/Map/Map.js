@@ -106,8 +106,7 @@ function Map() {
 
   return (
     <>
-      <h3>Beautiful map</h3>
-      <p>Выберете город:</p>
+      <h5>Выберете город:</h5>
       <select onChange={selectChange}>
         <option>Москва</option>
         <option>Санкт-Петербург</option>
@@ -136,7 +135,7 @@ function Map() {
           placeholder="Адрес"
           aria-label="Search"
         />
-        <button className={"btn btn-outline-success my-2 my-sm-0"} type="submit" style={{ margin: "0 0 0 20px" }}>Искать</button>
+        <button className={"btn btn-dark my-2 my-sm-0"} type="submit" style={{ margin: "0 0 0 20px" }}>Искать</button>
       </form>
       {user && <AddCafe />}
     </>

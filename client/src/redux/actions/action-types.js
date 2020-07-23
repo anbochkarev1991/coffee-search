@@ -13,6 +13,7 @@ export const ADD_CAFE_EVENTS = 'ADD_CAFE_EVENTS';
 export const LOAD_ALL_EVENTS = 'LOAD_ALL_EVENTS';
 export const LOAD_ALL_EVENTS_SAGA = 'LOAD_ALL_EVENTS_SAGA';
 export const ADD_CAFE = 'ADD_CAFE';
+export const ADD_RATE = 'ADD_RATE';
 export const LOAD_MENU = 'LOAD_MENU';
 export const SEARCH_CAFE = 'SEARCH_CAFE';
 export const ADD_MENU = 'ADD_MENU';
