@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadCafeEvent, addCafeEvent, deleteCafeEvent } from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';
+import styles from '../../../pages/cafe/cafe.module.css';
 
 export default function EventsCafe({ id }) {
   const [newEvent, setNewEvent] = useState({
@@ -84,9 +85,9 @@ export default function EventsCafe({ id }) {
 
   return (
     <>
-      <div className="cafeContent">
+      <div className={styles.cafeContent}>
         <h2>События в нашей кофейне:</h2>
-        {user && <button className="addEventBtn" onClick={addEventModal}>Создать событие</button>}
+        {user && <button className={styles.addEventBtn} onClick={addEventModal}>Создать событие</button>}
         <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
