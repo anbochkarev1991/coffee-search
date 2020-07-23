@@ -16,8 +16,11 @@ function Trends() {
         {list &&
           list.map((event) => (
             <React.Fragment key={event._id}>
-              <Link to={`/cafes/${event.location}/events`}>
-                <li>{event.title}</li>
+              <Link
+                to={`/cafes/${event.location}/events`}
+                className={styles.link}
+              >
+                <li className={styles.events}>{event.title}</li>
               </Link>
             </React.Fragment>
           ))}

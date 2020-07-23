@@ -1,20 +1,33 @@
 ul {
   list-style-type: none;
   padding: 0;
-  text-align: center;
+  text-align: left;
+  color: white;
 }
 
 li {
   margin-bottom: 1vw;
-  color: rgb(58, 65, 68);
+}
+
+.events {
+  color: rgb(153, 240, 255);
 }
 
 .trendsList {
+  max-width: 15vw;
+  padding: 1vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  text-align: left;
-  background-color: rgba(168, 111, 64, 0.623);
+  background-color: rgba(66, 86, 100, 0.925);
+}
+
+h3 {
+  align-self: center;
+  margin-bottom: 1vw;
   color: white;
-  text-align: center;
-  font-weight: 700;
+}
+
+.link:hover {
+  text-decoration: none;
 }

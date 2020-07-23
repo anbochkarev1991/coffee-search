@@ -23,7 +23,7 @@ function List() {
       {list &&
         list.map((cafe) => (
           <React.Fragment key={cafe._id}>
-            <Link to={`/cafes/${cafe._id}/menu`}>
+            <Link to={`/cafes/${cafe._id}/menu`} className={styles.link}>
               <strong className={styles.cafes}>{cafe.name}</strong>
             </Link>
             <p>
