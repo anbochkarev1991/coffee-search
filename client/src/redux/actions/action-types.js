@@ -26,3 +26,6 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_COMMENT_SAGA = 'ADD_COMMENT_SAGA';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const DELETE_COMMENT_SAGA = 'DELETE_COMMENT_SAGA';
+export const LOAD_BATCH = 'LOAD_BATCH';
+export const ADD_BATCH = 'ADD_BATCH';
+export const DELETE_BATCH = 'DELETE_BATCH';

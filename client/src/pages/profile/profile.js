@@ -29,6 +29,10 @@ function Profile() {
 
   return (
     <div className={styles.profile}>
+      <div className={styles.favsContainer}>
+        <h2>Favorite cafes:</h2>
+        <Favorites />
+      </div>
       {editing ? (
         <div className={styles.userInfo}>
           <form>
@@ -80,10 +84,6 @@ function Profile() {
           </button>
         </div>
       )}
-      <div className={styles.favsContainer}>
-        <h2>Favorite cafes:</h2>
-        <Favorites />
-      </div>
     </div>
   );
 }

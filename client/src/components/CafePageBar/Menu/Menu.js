@@ -93,7 +93,7 @@ export default function Menu({ id }) {
               <br></br>
               <input onChange={inputItem} name="goods" type="text" placeholder="Название" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
-              <input onChange={inputItem} name="cost" type="text" placeholder="Цена" style={{ "height": "75px", "width": "420px", "backgroundColor": "orange" }} />
+              <input onChange={inputItem} name="cost" type="text" placeholder="Цена" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>
               <input onChange={inputItem} name="size" type="text" placeholder="Объем" style={{ "width": "420px", "backgroundColor": "orange" }} />
               <br></br>

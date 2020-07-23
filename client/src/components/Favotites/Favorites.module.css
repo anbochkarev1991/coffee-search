@@ -8,3 +8,12 @@ ul {
   flex-direction: column;
   text-align: left;
 }
+
+.link {
+  color: white;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: #88bdbc;
+}

@@ -1,19 +1,29 @@
 .profile {
-  padding: 3vh 5vw;
+  padding: 0vh 5vw;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: stretch;
 }
 .userInfo {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  margin-bottom: 3vw;
+  padding: 3vw 1vw;
 }
 
 .favsContainer {
+  padding: 3vw 1vw;
+  margin: 0 1vh;
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  height: 100vh;
+  background-color: #254e58;
+}
+
+h2 {
+  color: white;
+  align-self: center;
+  margin-bottom: 1vw;
 }
