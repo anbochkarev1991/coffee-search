@@ -14,6 +14,10 @@ function Navbar() {
         }
       >
         <ul className={'nav nav-tabs'}>
+          <h3  className={styles.h3} exact to="/">
+            Specialty Union
+          </h3>
+          {' '}
           <NavLink exact to="/" className={'nav-item nav-link'}>
             На главную
           </NavLink>
