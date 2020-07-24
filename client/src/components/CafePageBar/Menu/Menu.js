@@ -86,11 +86,6 @@ export default function Menu({ id }) {
     <>
       <div className={stylesTab.cafeContent}>
         <h2>Меню:</h2>
-        {user && (
-          <button className="btn btn-light mb-2 btn-sm" onClick={addEventModal}>
-            Добавить
-          </button>
-        )}
         <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewItem}>
@@ -164,6 +159,11 @@ export default function Menu({ id }) {
               </React.Fragment>
             ))}
         </table>
+        {user && (
+          <button className="btn btn-light mb-2 btn-sm" onClick={addEventModal}>
+            Добавить
+          </button>
+        )}
       </div>
     </>
   );

@@ -21,6 +21,11 @@ h1 {
   font-weight: bolder;
 }
 
+h2 {
+  text-align: center;
+  margin-top: 2vh;
+}
+
 h5 {
   text-align: center;
   color: #ffffff;
@@ -80,13 +85,16 @@ h5 {
 }
 
 .cafeContent {
+  display: flex;
+  flex-direction: column;
   background: rgba(34, 15, 26, 0.8);
   padding: 5px;
-  margin: auto;
   border-radius: 10px;
   height: auto;
   color: white;
   width: 40vw;
+  text-align: left;
+  align-items: center;
 }
 
 .addEventBtn {

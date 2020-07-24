@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadBarista } from '../../../redux/actions/barista-actions';
 import styles from '../../../pages/cafe/cafe.module.css';
+import baristaStyle from './Barista.module.css';
 
 export default function Barista({ id }) {
   const idCafe = id;
@@ -37,12 +38,12 @@ export default function Barista({ id }) {
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <td className={baristaStyle.name}>
                       <strong>{emp.name}</strong>
                     </td>
                   </tr>
                   <tr>
-                    <td>{emp.about}</td>
+                    <td className={baristaStyle.about}>{emp.about}</td>
                   </tr>
                 </React.Fragment>
               ))}

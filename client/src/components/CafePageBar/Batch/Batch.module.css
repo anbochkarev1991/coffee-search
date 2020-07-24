@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+button {
+  align-self: center;
+}

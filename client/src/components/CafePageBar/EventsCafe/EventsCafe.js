@@ -7,6 +7,7 @@ import {
 } from '../../../redux/actions/eventsCafe-action';
 import Modal from './ModalAddEvent';
 import styles from '../../../pages/cafe/cafe.module.css';
+import eventsStyle from './Events.module.css';
 
 export default function EventsCafe({ id }) {
   const [newEvent, setNewEvent] = useState({
@@ -89,7 +90,6 @@ export default function EventsCafe({ id }) {
             Создать событие
           </button>
         )}
-        <br></br>
         <Modal ref={modalRef}>
           <form onSubmit={addNewEvent}>
             <h2>Новое событие</h2>
@@ -137,13 +137,14 @@ export default function EventsCafe({ id }) {
         {eventCafe &&
           eventCafe.map((event) => (
             <React.Fragment key={event._id}>
-              <hr></hr>
-              <p>
-                <strong>{event.title}</strong>
-              </p>
-              <p>Информация: {event.body}</p>
-              <p>Дата: {new Date(event.date).toLocaleString()}</p>
-              <p>Организатор: {event.author.login}</p>
+              <div className={eventsStyle.event}>
+                <p>
+                  <strong>{event.title}</strong>
+                </p>
+                <p>Информация: {event.body}</p>
+                <p>Дата: {new Date(event.date).toLocaleString()}</p>
+                <p>Организатор: {event.author.login}</p>
+              </div>
               {user && (
                 <button
                   className="btn btn-light mb-2 btn-sm"

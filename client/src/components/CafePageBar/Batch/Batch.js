@@ -6,6 +6,7 @@ import {
   deleteBatch,
 } from '../../../redux/actions/batch-actions';
 import styles from '../../../pages/cafe/cafe.module.css';
+import batchStyle from './Batch.module.css';
 import Modal from '../EventsCafe/ModalAddEvent';
 
 export default function Batch({ id }) {
@@ -81,9 +82,9 @@ export default function Batch({ id }) {
   }
 
   return (
-    <>
-      <div className={styles.cafeContent}>
-        <h2>Кофе Specialty:</h2>
+    <div className={styles.cafeContent}>
+      <div className={batchStyle.wrapper}>
+        <h2>Ассортимент:</h2>
         {user && (
           <button className="btn btn-light mb-2 btn-sm" onClick={addEventModal}>
             Добавить
@@ -156,6 +157,6 @@ export default function Batch({ id }) {
             </React.Fragment>
           ))}
       </div>
-    </>
+    </div>
   );
 }

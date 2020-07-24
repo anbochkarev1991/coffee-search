@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from '../../../pages/cafe/cafe.module.css';
+import commentsStyle from './Comments.module.css';
 import Modal from './ModalAddComment';
 import {
   loadCafeComments,
@@ -117,13 +118,14 @@ export default function Comments({ id }) {
         {commentCafe &&
           commentCafe.map((comment) => (
             <React.Fragment key={comment._id}>
-              <hr></hr>
-              <p>
-                <strong>{comment.title}</strong>
-              </p>
-              <p>{comment.body}</p>
-              <p>Дата: {new Date(comment.date).toLocaleString()}</p>
-              <p>Автор: {comment.author.login}</p>
+              <div className={commentsStyle.comment}>
+                <p>
+                  <strong>{comment.title}</strong>
+                </p>
+                <p>{comment.body}</p>
+                <p>Дата: {new Date(comment.date).toLocaleString()}</p>
+                <p>Автор: {comment.author.login}</p>
+              </div>
               {user && (
                 <button
                   className="btn btn-light mb-2 btn-sm"

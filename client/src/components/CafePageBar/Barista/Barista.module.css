@@ -1,7 +1,7 @@
 .tableMenu {
   border: 0;
   align-content: center;
-  width: 90%;
+  width: 75%;
   margin: auto;
   margin-bottom: 1vh;
   text-align: left;
@@ -9,15 +9,19 @@
 
 .trMenu {
   border: 0;
+  align-content: center;
   margin: auto;
 }
 
-.addModalMenu {
-  font-size: 10px;
-  background-color: inherit;
+.name {
+  display: flex;
+  margin: 1vh 0;
 }
 
-.deleteMenu {
-  font-size: 6px;
-  background-color: inherit;
+.about {
+  padding-bottom: 2vh;
+}
+
+strong {
+  margin: auto;
 }
