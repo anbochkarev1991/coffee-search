@@ -3,6 +3,7 @@
   float: right;
 }
 
-.h3 {
-  color: rgb(53, 32, 32)
+.h5 {
+  color: rgb(53, 32, 32);
+  align-self: center;
 }

@@ -14,9 +14,9 @@ function Navbar() {
         }
       >
         <ul className={'nav nav-tabs'}>
-          <h3  className={styles.h3} exact to="/">
+          <h5  className={styles.h5} exact to="/">
             Specialty Union
-          </h3>
+          </h5>
           {' '}
           <NavLink exact to="/" className={'nav-item nav-link'}>
             На главную
@@ -43,7 +43,7 @@ function Navbar() {
           )}
         </ul>
         <div className="d-flex justify-content-end">
-          {user && <h5> Добро пожаловать, {user}</h5>}
+          {user && <h5 className={styles.h5}> Добро пожаловать, {user}</h5>}
         </div>
       </nav>
     </>
