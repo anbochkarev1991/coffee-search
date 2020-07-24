@@ -11,7 +11,6 @@ function AddCafe() {
     longitude: '',
   });
 
-
   const [addCafe, setAddCafe] = useState(false);
 
   function handleChange({ target: { value, name } }) {
@@ -36,7 +35,6 @@ function AddCafe() {
     return [Number(result[0]), Number(result[1])];
   }
 
-  
   async function saveCafe(event) {
     event.preventDefault();
     setAddCafe(!addCafe);
@@ -100,7 +98,7 @@ function AddCafe() {
           <button
             onClick={addCafeForm}
             type="button"
-            className="btn btn-dark mb-2"
+            className="btn btn-light mb-2"
           >
             Добавить новую кофейню
           </button>
