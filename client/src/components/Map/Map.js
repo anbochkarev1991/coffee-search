@@ -45,7 +45,7 @@ function Map() {
   }
 
   async function searchCoordinates(address) {
-    const response = await fetch(`https://geocode-maps.yandex.ru/1.x/?apikey=95ef75db-c7f0-447b-9810-88ce1efe26d6&geocode=${address}&format=json`);
+    const response = await fetch(`https://geocode-maps.yandex.ru/1.x/?apikey=${process.env.REACT_APP_YMAPS_API}&geocode=${address}&format=json`);
     let result = await response.json();
     result = result.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ').reverse();
     return [Number(result[0]), Number(result[1])];
